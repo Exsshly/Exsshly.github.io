@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="庭院深深深几许">
+
+
+
+<title>Arch-Linux的后续部分配置 | 游园不值</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">游园不值</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">游园不值</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Arch-Linux的后续部分配置</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2021-04-30&nbsp;&nbsp;20:00:44</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><p>每次开机前需要执行<code>sudo dhcpcd</code>进行联网</p>
+<p>但可以通过执行</p>
+<p><code>sudo systemctl enable dhcpcd</code></p>
+<p>设置每次开机自动联网</p>
+<h4 id="前置软件包"><a href="#前置软件包" class="headerlink" title="前置软件包"></a>前置软件包</h4><ul>
+<li><p>安装基础软件包：<code>sudo pacman -S base-devel</code></p>
+</li>
+<li><p>安装git：<code>sudo pacman -S git</code></p>
+</li>
+<li><p>安装sudo：<code>pacman -S sudo</code></p>
+<p>通过</p>
+<p><code>sudo vim /etc/sudoers</code></p>
+<p>编辑sudo配置文件，取消<code>%wheel ALL=(ALL) ALL</code>的注释，使普通用户可使用sudo指令</p>
+</li>
+</ul>
+<h4 id="配置国内源"><a href="#配置国内源" class="headerlink" title="配置国内源"></a>配置国内源</h4><p><code>sudo vim /etc/pacman.d/mirrorlist</code></p>
+<p>最前面添加</p>
+<p><code>Server = https://mirrors.aliyun.com/archlinux/$repo/os/$arch</code></p>
+<p>其他源同理</p>
+<p><code>sudo pacman -Syy</code>    //更新软件源</p>
+<h4 id="安装dwm"><a href="#安装dwm" class="headerlink" title="安装dwm"></a>安装dwm</h4><p>安装dwm前置框架</p>
+<p><code>sudo pacman -S xorg xorg-xinit</code></p>
+<p><code>sudo pacman -S w3m</code></p>
+<p>进入</p>
+<p><code>w3m suckless.org</code></p>
+<p>分别下载 <u>menu-5.0.tar.gz</u>   <u>dwm-6.2.tar.gz</u>   <u>st-0.8.4.tar.gz</u>三个文件（默认下载在用户主目录下）</p>
+<p><code>mkdir w3m</code>    //新建文件夹，便于管理</p>
+<p><code>mv *.gz W3M</code>    //将下载的gz文件移入新建的文件夹</p>
+<p><code>cd w3m</code>    //进入新建的文件夹</p>
+<p>以下举例一个，分别对以上下载的三个文件重做</p>
+<p><code>tar -zxvf dwm-6.2.tar.gz</code>    //解压</p>
+<p><code>cd dwm-6.2</code>    //进入解压后的目录</p>
+<p><code>make</code>    //编译</p>
+<p><code>sudo make install</code>    //安装</p>
+<p><code>cd ..</code>    //返回到新建的文件夹</p>
+<p>以上解压~返回操作分别额外重做两次，确保安装三个已下载的软件包</p>
+<p>全部安装完后，可以通过</p>
+<p><code>which w3m</code>    //来确定成功安装</p>
+<p>通过</p>
+<p><code>sudo vim ~/.xinitrc</code></p>
+<p>在文件中添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec dwm</span><br></pre></td></tr></table></figure>
+
+<p>否则无法启动dwm</p>
+<p><code>reboot</code>    //重启</p>
+<p>登入账户后</p>
+<p><code>startx</code>    //启动dwm</p>
+<h4 id="配置顶部字的大小"><a href="#配置顶部字的大小" class="headerlink" title="配置顶部字的大小"></a>配置顶部字的大小</h4><p>进入dwm包目录</p>
+<p><code>sudo vim config.h</code></p>
+<p>修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">static const char *font[] =&#123;&quot;monospace:size=18&quot;&#125;;</span><br><span class="line">static const char dmenufont[] =&quot;monospace:size=20&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>18和20可自定义，即是字体大小</p>
+<p><em>其他的配置都在这个文件中，可参考Wiki按需修改</em></p>
+<p>保存退出</p>
+<p><code>sudo make clean install</code></p>
+<p>重启dwm</p>
+<h4 id="安装字体"><a href="#安装字体" class="headerlink" title="安装字体"></a>安装字体</h4><p><code>sudo pacman -S alacritty</code>    //安装alacritty</p>
+<p><code>sudo pacman -S noto-fonts-cjk</code>    //安装字体</p>
+<p>再进入dwm安装包文件夹内,修改config.h文件</p>
+<p>将static const char *termcd[]函数内的”<strong>st</strong>“修改为”<strong>alacritty</strong>“</p>
+<p><code>make clean install</code>    //重新编译安装</p>
+<p>重启</p>
+<h4 id="安装中文输入法"><a href="#安装中文输入法" class="headerlink" title="安装中文输入法"></a>安装中文输入法</h4><p><code>sudo pacman -S fcitx fcitx-googlepinyin fcitx-configtool</code>    //安装fcitx</p>
+<p><code>fcitx-configtool</code>    //打开fcitx，打开后关闭</p>
+<p><code>fcitx</code></p>
+<p>之后在输入法配置中搜索pinyi添加google pinyin即可使用</p>
+<p>为使输入法开机自启</p>
+<p><code>sudo vim ~/.xinitrc</code></p>
+<p>额外添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export GTK_IM_MOUDLE=fcitx</span><br><span class="line">export QT_IM_MOUDLE=fcitx</span><br><span class="line">export XMODFIERS=@im=fcitx</span><br><span class="line"></span><br><span class="line">fcitx &amp;</span><br></pre></td></tr></table></figure>
+
+<p>即可</p>
+<h4 id="右上角添加小键盘插件"><a href="#右上角添加小键盘插件" class="headerlink" title="右上角添加小键盘插件"></a>右上角添加小键盘插件</h4><p>打开Firefox浏览器，进入<a target="_blank" rel="noopener" href="http://dwm.suckless.org/patches/systray/">http://dwm.suckless.org/patches/systray/</a></p>
+<p>下载”<strong>dwm-systray-6.2.diff</strong>“到安装目录<strong>dwm</strong>下,并切换工作目录至此</p>
+<p>依次执行</p>
+<p><code>patch &lt; dwm-systray-6.2.diff</code><br><code>cp config.def.h config.h</code><br><code>sudo vim config.h</code></p>
+<p>将static const char *termcmd []函数内的”<strong>st</strong>“修改为”<strong>alacritty</strong>“</p>
+<p>（PS：由于这里采用了新的配置文件，上面的字体配置与顶部字配置要重新改）</p>
+<p>退出后执行</p>
+<p><code>sudo make clean install</code>        //重新编译安装</p>
+<p>最后重启dwm即可</p>
+<h4 id="区域及时区设置"><a href="#区域及时区设置" class="headerlink" title="区域及时区设置"></a>区域及时区设置</h4><p><code>sudo vim /etc/locale.gen</code></p>
+<p>分别将<strong>en_US.UTF-8</strong>和<strong>zh_CN.UTF-8</strong>取消注释后保存退出</p>
+<p><code>sudo locale-gen</code>.</p>
+<p><code>sudo vim /etc/locale.conf</code></p>
+<p>输入（=左右不要空格）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LANG=en_US.UTF-8</span><br></pre></td></tr></table></figure>
+
+<p>保存退出后重启dwm</p>
+<p><code>timedatectl list-timezones</code>    查看所有时区</p>
+<p><code>timedatectl set-timezone Asia/Shanghai</code>    设置时区为上海，或上面时区中的其他</p>
+<h4 id="右上角显示时间"><a href="#右上角显示时间" class="headerlink" title="右上角显示时间"></a>右上角显示时间</h4><p>在用户目录下</p>
+<p><code>sudo vim ~/.xinitrc</code></p>
+<p>额外添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while true</span><br><span class="line">do</span><br><span class="line">	xsetroot -name &quot;$(date)&quot;</span><br><span class="line">	sleep 1</span><br><span class="line">done &amp;</span><br></pre></td></tr></table></figure>
+
+<p>重启dwm</p>
+<h4 id="rofi安装"><a href="#rofi安装" class="headerlink" title="rofi安装"></a>rofi安装</h4><p><code>sudo pacman -S rofi</code></p>
+<p><code>rofi -show run</code></p>
+<p>进入dwm包目录</p>
+<p><code>sudo vim config.h</code></p>
+<p>将statc const char <em>dmenucmd i[]函数内的”<strong>dmenu_run</strong>“修改为”<strong>rofi</strong>“,”**-m*</em>“修改为”<strong>-show</strong>“,并删掉后面所有,最后在其后添加” <strong>“run”,NULL</strong>“</p>
+<p>保存退出</p>
+<p><code>sudo make clean install</code>        //重新编译安装</p>
+<p>重启dwm</p>
+<p>Alt+P调用</p>
+<h4 id="安装ranger文件管理器"><a href="#安装ranger文件管理器" class="headerlink" title="安装ranger文件管理器"></a>安装ranger文件管理器</h4><p><code>sudo pacman -S ranger</code></p>
+<p><code>ranger</code>    //启动文件管理器</p>
+<p>启动后默认不显示隐藏文件，如要修改则</p>
+<p><code>cd ~/.config</code></p>
+<p><code>ranger --copy-config= all</code></p>
+<p><code>sudo vim rc.conf</code></p>
+<p>将<strong>hiddenfiles false</strong>改为<strong>true</strong>    //显示隐藏文件</p>
+<p>其他配置也在此，如</p>
+<p><strong>preview_images false</strong>改为<strong>true</strong>则是预览图片</p>
+<p>（如果没有图片查看器可通过<code>sudo pacman -S feh</code>安装）</p>
+<h4 id="壁纸及分辨率设置"><a href="#壁纸及分辨率设置" class="headerlink" title="壁纸及分辨率设置"></a>壁纸及分辨率设置</h4><p><code>sudo pacman -S nitrogen</code>    //下载壁纸管理软件<br><code>nitrogen</code>    //启动软件，创建壁纸文件夹后放入壁纸用此打开即可设置壁纸<br><code>xrandr</code>    //查看已给出的分辨率<br><code>cvt 1920 1080</code>    //扫描该分辨率是否有效<br><code>xrandr --newmode ......</code>    //创建新的模式，输入上面Modeline后的查询结果<br><code>xrandr --addmode Vitrual-1 1280x1024_60.00</code>    //添加到输出设备上（假定为VGA1，自行找设备名），模式名为1280x1024_60.00<br><code>xrandr --output VGA1 --mode 1280x1024_60.00</code>    //设置指定分辨率</p>
+<p>PS:如果不想添加可以使用上面已给出的分辨率即可</p>
+<p><code>sudo vim ~/.xinitrc</code></p>
+<p>额外添加以下字段使分辨率及壁纸开机自动更换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xrandr --newmode ......</span><br><span class="line">xrandr --addmode VGA1 1280x1024_60.00</span><br><span class="line">xrandr --output VGA1 --mode 1280x1024_60.00</span><br><span class="line"></span><br><span class="line">nitrogen --restore &amp;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="窗口透明设置"><a href="#窗口透明设置" class="headerlink" title="窗口透明设置"></a>窗口透明设置</h4><h5 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h5><p><code>cd ~/.config</code></p>
+<p><code>sudo mkdir alacritty</code></p>
+<p><code>sudo cp /usr/share/doc/alacritty/example/alacritty.yml alacritty/</code>    //拷贝透明配置文件模板</p>
+<p><code>cd alacritty</code></p>
+<p><code>sudo vim alacritty.yml</code></p>
+<p>将”background_opacity:1.0”取消注释，1.0为不透明，可自定义</p>
+<h5 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h5><p><code>sudo pacman -S picom</code><br><code>picom</code></p>
+<p><code>cd ~/.config</code></p>
+<p><code>sudo mkdir picom</code></p>
+<p><code>sudo cp /etc/xdg/picom.conf picom/</code>    //拷贝picom配置文件</p>
+<p><code>cd picom</code></p>
+<p><code>sudo vim picom.conf</code></p>
+<p>将<strong>vsync</strong>的<strong>true</strong>修改为<strong>false</strong>（注释反注释）</p>
+<p>将<strong>active-opacity = 1.0</strong>（设置当前活动窗口透明度）</p>
+<p>将<strong>mark-ovredir-focused</strong>的<strong>true</strong>修改为<strong>false</strong>（注释反注释）</p>
+<p>将<strong>opacity-rule = []<strong>取消注释，[]内添加为</strong>[“100:class_g=’firefox’”]</strong>    //使Firefox不透明，其他同理</p>
+<p><code>picom</code></p>
+<p>重启dwm</p>
+<p><code>picom -b</code>    //使之后台运行</p>
+<p><code>sudo vim ~/.xinitrc</code></p>
+<p>额外添加，使之开机自启</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">picom -CGb &amp;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="启用声音设置"><a href="#启用声音设置" class="headerlink" title="启用声音设置"></a>启用声音设置</h4><p><code>sudo pacman -S alsa-utils</code><br><code>alsa</code>    //查看可用选项<br><code>alsamixer</code>    //打开音量合成器<br>重启即可</p>
+<h4 id="外来包安装举例"><a href="#外来包安装举例" class="headerlink" title="外来包安装举例"></a>外来包安装举例</h4><p>举例网易云音乐</p>
+<p><code>git clone https://aur.archlinux.org/netease-cloud-music.git</code><br><code>cd netease-cloud-music</code><br><code>makepkg -si</code></p>
+<p>即可</p>
+<p>最后修改完的.xinitrc文件示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">xrandr --output Virtual-1 --mode 1440x900</span><br><span class="line"></span><br><span class="line">nitrogen --restore &amp;</span><br><span class="line"></span><br><span class="line">picom -CGb &amp;</span><br><span class="line"></span><br><span class="line">export GTK_IM_MOUDLE=fcitx</span><br><span class="line">export QT_IM_MOUDLE=fcitx</span><br><span class="line">export XMODFIERS=@im=fcitx</span><br><span class="line"></span><br><span class="line">fcitx &amp;</span><br><span class="line"></span><br><span class="line">while true</span><br><span class="line">do</span><br><span class="line">	xsetroot -name &quot;$(date)&quot;</span><br><span class="line">	sleep 1</span><br><span class="line">done &amp;</span><br><span class="line"></span><br><span class="line">exec dwm</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="yaourt的安装"><a href="#yaourt的安装" class="headerlink" title="yaourt的安装"></a>yaourt的安装</h4><p>（<strong>在root下进行</strong>）</p>
+<p>编辑/etc/pacman.conf文件</p>
+<p>在合适的位置添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch</span><br></pre></td></tr></table></figure>
+
+<p>更新源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Sy</span><br></pre></td></tr></table></figure>
+
+<p>安装archlinuxcn-keyring并导入GPG key</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
+
+<p>安装yaourt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Sy yaourt</span><br></pre></td></tr></table></figure>
+
+<p>（<strong>在普通用户下进行</strong>）</p>
+<p>yaourt的使用</p>
+<ul>
+<li><p>搜索软件包：使用yaourt pkgname即可搜索</p>
+</li>
+<li><p>安装软件包：可以在搜索得到的结果中选择要安装的软件，输入序号即可,也可以用yaourt -S pkgname进行安装。如果是AUR里面的包，接下来会下载PKGBUILD文件，下载完成后会询问你是否需要编辑。选择之后就会开始询问是否继续构建，如果需要编辑的话，编辑完成后选择Y就行了。</p>
+</li>
+<li><p>接下来会自动完成下载并安装依赖、下载资源文件，压缩软件包的过程，最后会得到一个软件包，并询问是否安装，选择Y并输入密码就成功了,也可以选择n，软件包将会被保存到/tmp/yaourt-tmp-xxx目录下，xxx是用户名。</p>
+</li>
+<li><p>卸载：和pacman一样，使用yaourt -R pkgname就可以卸载</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yaourt -S pkgename – 从AUR安装软件包</span><br><span class="line">yaourt -Ss password – 使用关键字搜索软件包</span><br><span class="line">yaourt -Syu –aur – 从AUR升级本地软件数据库并安装更新</span><br><span class="line">yaourt -Si pkgname – 列出软件包信息</span><br><span class="line">yaourt -Sc – 从缓存中清楚旧的软件包</span><br><span class="line">yaourt -Su – 安装AUR中的更新软件包</span><br><span class="line">yaourt -Sy – 获取最新的AUR软件包数据库</span><br><span class="line">yaourt -Cd – 清楚AUR软件包数据库</span><br><span class="line">yaourt -R pkgname – 删除软件包</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag:</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">Back</a>
+                <span>· </span>
+                <a href="/">Home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/05/04/210504/">北京十四行——赠三弟圈圈</a>
+            
+            
+            <a class="next" rel="next" href="/2021/04/29/210429/">Arch-Linux的安装</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>🙄 
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/fireworks.js"></script>

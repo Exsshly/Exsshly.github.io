@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="庭院深深深几许">
+
+
+
+<title>adb调试 | 游园不值</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">游园不值</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">游园不值</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">adb调试</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2020-02-09&nbsp;&nbsp;15:42:31</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>adb即Android Debug Bridge（安卓调试桥） tools， 是一种功能多样的命令行工具，可让您与设备进行通信。adb 命令便于执行各种设备操作（例如安装和调试应用），并提供对 Unix shell（可用来在设备上运行各种命令）的访问权限。</p>
+<p>通俗来说，就是用于连接开发电脑（电脑）对安卓设备进行调试。理论支持所有运行安卓系统的设备。</p>
+<p>这里列举两项使用adb进而实现免root（对于一些国产定制操作系统root似乎很难实现）可操作的能力。</p>
+<p>下载adb工具包不再赘述。</p>
+<p>首先是连接你的设备。</p>
+<p><strong>确保在这之前已经在开发者选项中启用USB调试。</strong></p>
+<p>使用cmd命令进入adb工具目录。然后使用</p>
+<p><code>adb devices</code></p>
+<p>连接设备，连接成功情况如下（#内容为设备序列号）：</p>
+<p><code>$ adb devices</code></p>
+<p><code>List of devices attached</code></p>
+<p><code>################    device</code></p>
+<p>EMUI等定制系统可能需要确认USB调试授权。</p>
+<p>连接成功以后，adb可用的功能很多，可以说没有屏幕操作情况下也可以操作安卓系统。</p>
+<p>调试桥的安装apk、调试设备和开发PC之间拷贝文件等功能这里不表（普通用户谁真的用来系统调试？？？）这里只介绍卸载手机自带无法卸载的软件以及隐藏状态栏不需要的图标两项能力。</p>
+<h3 id="卸载软件"><a href="#卸载软件" class="headerlink" title="卸载软件"></a>卸载软件</h3><p>所用命令：</p>
+<p><code>adb shell pm uninstall --user 0 包名</code></p>
+<p>如上连接到设备以后，如需卸载指定软件（主要用来卸载在手机上无法卸载的出厂软件），只需知道想要卸载的软件包名，替换上面命令中的<strong>包名</strong>，每个软件都有自己独一无二的包名，如</p>
+<p>QQ：<code>com.tencent.mobileqq</code></p>
+<p>微信：<code>com.tencent.mm</code></p>
+<p><strong>Eg：</strong><br><code>adb shell pm uninstall --user 0 com.tencent.mobileqq</code></p>
+<p>即卸载QQ</p>
+<p>使用以上命令即可卸载无法直接在设备上卸载的应用。获取包名方法写在最后。</p>
+<p>如果不确定卸载的软件对手机是否有影响，可先进行停用测试。</p>
+<p>停用命令：<code>adb shell pm disable-user 包名</code></p>
+<p>启用命令：<code>adb shell pm enable 包名</code></p>
+<p>用法同卸载。</p>
+<p><strong>如果停用手机管家会导致无法清除后台应用，如果关了讯飞语音引擎，语音助手无法正常使用<del>(索性直接卸载语音助手，毕竟没几个人用)</del></strong></p>
+<h3 id="隐藏状态栏图标"><a href="#隐藏状态栏图标" class="headerlink" title="隐藏状态栏图标"></a>隐藏状态栏图标</h3><p>刘海屏用户知道，状态栏图标一旦多了，不仅不美观而且显得繁杂，对于一些没所谓的图标，可以通过adb进行隐藏。</p>
+<p>所用命令：</p>
+<p><code>adb shell settings put secure icon_blacklist 图标名</code></p>
+<p><strong>对应图标：</strong>bluetooth(蓝牙),nfc(NFC),alarm_clock(闹钟),location(定位),eyes_protect(护眼),mute(静音),volumn(震动),zen(免打扰)</p>
+<p><strong>Eg：</strong><code>adb shell settings put secure icon_blacklist bluetooth</code></p>
+<p>即隐藏状态栏中蓝牙图标</p>
+<p>同理，若想一次性隐藏以上图标，只需在各图标名之间加上半角逗号，即：</p>
+<p><code>adb shell settings put secure icon_blacklist bluetooth,nfc,alarm_clock,location,eyes_protect,mute,volumn,zen</code></p>
+<p>如果想要恢复初始设置，执行命令：</p>
+<p><code>adb shell settings put secure icon_blacklist null</code></p>
+<p>即可。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mzlogin/awesome-adb">这里</a>附一个adb命令大全。</p>
+<h3 id="获取包名的方法"><a href="#获取包名的方法" class="headerlink" title="获取包名的方法"></a>获取包名的方法</h3><p>输入命令：</p>
+<p><code>adb shell pm list package</code></p>
+<p>回车即可返回设备上所有的软件包名</p>
+<p>同时修改以上命令为：</p>
+<p><code>adb shell pm list packages &gt;list.txt</code></p>
+<p>回车即可把包名列为清单输出到adb所在的目录下，清单文件名为list.txt</p>
+<p>以上方法存在的缺点是对于包名不熟悉的人来说，不知道包名对应的应用是哪一个，这里再提供额外四种方法。</p>
+<p><strong>方法一（不推荐）：</strong></p>
+<p>执行命令：</p>
+<p><code>adb shell am monitor</code></p>
+<p>然后设备启动需要获取包名的应用后在电脑上返回：</p>
+<p><code>** Activity starting : 包名</code></p>
+<p>即是所要拾取的包名</p>
+<p><strong>方法二（不很推荐）：</strong></p>
+<p>有酷安app的情况下，在酷安-应用管理中打开相应软件，右上角点开下拉后选择复制弹出选项，选择包名即可复制包名至剪贴板。</p>
+<p>缺点：对于酷安库中没有的软件无能为力……</p>
+<p><strong>方法三（较为推荐）：</strong></p>
+<p>如果常用MT管理器软件，在左上打开选项卡，选择安装包提取，根据软件类型选择软件，在软件版本下就是包名，或点开软件后弹出软件详细信息。</p>
+<p><strong>方法四（推荐）：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.coolapk.com/apk/com.xcn.baoming?from=rss&version=1.0.1">点击此处</a>安装包名查看软件即可。</p>
+<h3 id="部分自带包名参照"><a href="#部分自带包名参照" class="headerlink" title="部分自带包名参照"></a>部分自带包名参照</h3><p><strong>其中加粗软件根据个人需求（找到替代）可删可停（华为某设备举例，其他大同小异）</strong></p>
+<p>com.android.cts.priv.ctsshim</p>
+<p>com.huawei.camera（相机）</p>
+<p>com.google.android.ext.services（android Services Library）</p>
+<p>com.huawei.android.launcher（华为桌面）</p>
+<p>com.android.gallery3d.overlay</p>
+<p><strong>com.android.mediacenter（音乐）</strong></p>
+<p>com.huawei.android.CotaDecompressService</p>
+<p>com.android.providers.telephony（通话/信息存储）</p>
+<p>com.huawei.internetaudioservice（智能线控）</p>
+<p>com.huawei.android.UEInfoCheck</p>
+<p><strong>com.android.phone.recorder（录音机）</strong></p>
+<p>com.android.providers.calendar（日历存储）</p>
+<p><strong>com.huawei.health（华为运动健康）</strong></p>
+<p>com.huawei.hidisk（华为文件管理）</p>
+<p>com.huawei.iaware</p>
+<p>com.huawei.bluetooth（通过蓝牙导入）</p>
+<p>com.android.providers.media（媒体存储）</p>
+<p><strong>com.huawei.android.thememanager（主题）</strong></p>
+<p>com.huawei.android.chr（HwChrService）</p>
+<p>com.huawei.android.hsf（华为框架服务）</p>
+<p>com.google.android.ext.shared（Android Shared Library）</p>
+<p>com.android.wallpapercropper（壁纸裁剪器）</p>
+<p>com.huawei.android.FloatTasks（悬浮导航）</p>
+<p><strong>com.huawei.intelligent（情景智能）</strong></p>
+<p>com.huawei.motionservice（手势服务）</p>
+<p>org.simalliance.openmobileapi.service（SmartcardService）</p>
+<p><strong>com.huawei.appmarket（华为应用市场）</strong></p>
+<p><strong>com.huawei.parentcontrol（学生模式）</strong></p>
+<p>com.huawei.secime（华为安全输入法）</p>
+<p>com.android.documentsui（文件）</p>
+<p>com.android.externalstorage（外部存储设备）</p>
+<p>com.android.htmlviewer（HTML查看器）</p>
+<p><strong>com.huawei.vdrive（驾驶模式）</strong></p>
+<p><strong>com.iflytek.speechsuite（讯飞语音引擎）</strong></p>
+<p>com.android.mms.service</p>
+<p><strong>com.huawei.wallet（华为钱包）</strong></p>
+<p>com.huawei.android.totemweather（天气）</p>
+<p>com.android.providers.downloads（下载管理器）</p>
+<p>com.huawei.locationsharing（位置共享）</p>
+<p>com.huawei.cryptosms.service（短信加密）</p>
+<p><strong>com.huawei.android.findmyphone（查找我的手机）</strong></p>
+<p>com.realvnc.android.remote（VNC远程控制）</p>
+<p><strong>com.huawei.phoneservice（会员服务）</strong></p>
+<p>com.huawei.screenrecorder（屏幕录制）</p>
+<p>com.huawei.videoeditor（视频编辑）</p>
+<p>com.huawei.securitymgr（隐私空间）</p>
+<p><strong>com.android.browser（浏览器）</strong></p>
+<p>com.android.soundrecorder（录音机）</p>
+<p>com.huawei.iconnect</p>
+<p>com.huawei.android.AutoRegSms</p>
+<p><strong>com.huawei.KoBackup（备份）</strong></p>
+<p>com.android.defcontainer（软件包访问帮助程序）</p>
+<p>com.android.providers.downloads.ui（下载内容）</p>
+<p>com.android.pacprocessor</p>
+<p>com.hisi.mapcon</p>
+<p><strong>com.baidu.input_huawei（百度输入法华为版）</strong></p>
+<p>com.huawei.logupload</p>
+<p>com.android.certinstaller（证书安装器）</p>
+<p>com.android.carrierconfig</p>
+<p><strong>com.google.android.marvin.talkback（TalkBack）</strong></p>
+<p>android</p>
+<p>com.huawei.imonitor</p>
+<p><strong>com.huawei.fans（花粉俱乐部）</strong></p>
+<p>com.huawei.hwid（华为移动服务）</p>
+<p><strong>com.huawei.remoteassistant（远程协助）</strong></p>
+<p>com.android.contacts（联系人）</p>
+<p>com.android.mms（信息）</p>
+<p>com.android.mtp（MTP服务）</p>
+<p>com.android.nfc（NFC服务）</p>
+<p>com.android.stk（SIM卡应用）</p>
+<p>com.android.backupconfirm</p>
+<p>com.huawei.android.instantshare（Huawei Share）</p>
+<p>com.huawei.indexsearch.observer</p>
+<p>com.huawei.trustagent（智能解锁）</p>
+<p><strong>com.huawei.trustspace（支付保护中心）</strong></p>
+<p>com.android.statementservice（Intent Filter Verification Services）</p>
+<p>com.huawei.indexsearch</p>
+<p>com.huawei.android.internal.app（Huawei Share）</p>
+<p><strong>com.huawei.gamebox（华为游戏中心）</strong></p>
+<p>com.huawei.hwasm</p>
+<p>=com.huawei.lives</p>
+<p>com.android.calendar（日历）</p>
+<p>com.huawei.wifiprobqeservice</p>
+<p>com.android.providers.settings</p>
+<p>com.android.sharedstoragebackup</p>
+<p><strong>com.android.printspooler（打印处理服务）</strong></p>
+<p>com.android.frameworkres.overlay</p>
+<p>com.android.dreams.basic（基本互动屏保）</p>
+<p>com.android.incallui（拨号）</p>
+<p>com.huawei.systemmanager（手机管家）</p>
+<p>com.android.inputdevices（输入设备）</p>
+<p><strong>com.huawei.yellowpage（在线黄页）</strong></p>
+<p>com.huawei.hilink.framework</p>
+<p>com.google.android.webview</p>
+<p>com.huawei.HwMultiScreenShot（滚动截屏）</p>
+<p>com.android.onetimeinitializer</p>
+<p><strong>com.huawei.vassistant（语音助手）</strong></p>
+<p>com.android.server.telecom（通话管理）</p>
+<p>com.example.android.notepad（备忘录）</p>
+<p>com.android.keychain（密钥链）</p>
+<p><strong>com.android.keyguard（华为杂志锁屏）</strong></p>
+<p>com.android.gallery3d（图库）</p>
+<p><strong>com.huawei.watch.sync（手表应用同步）</strong></p>
+<p>com.huawei.hwstartupguide（安装向导）</p>
+<p>com.huawei.fido.uafclient</p>
+<p>com.android.packageinstaller（打包安装程序）</p>
+<p><strong>com.svox.pico（Pico TTS）</strong></p>
+<p><strong>com.huawei.hwireader（华为阅读）</strong></p>
+<p>com.android.proxyhandler</p>
+<p>com.huawei.android.mirrorshare（无线分享）</p>
+<p>com.huawei.phonediagnose</p>
+<p><strong>com.android.inputmethod.latin（AOSP输入法）</strong></p>
+<p><strong>com.huawei.contactscamcard（名片全能王）</strong></p>
+<p>com.google.android.printservice.recommendation</p>
+<p>com.android.managedprovisioning（工作资料设置）</p>
+<p><strong>com.huawei.hiboard（负一屏）</strong></p>
+<p><strong>com.huawei.himovie（华为视频）</strong></p>
+<p><strong>com.huawei.compass（指南针）</strong></p>
+<p><strong>com.android.dreams.phototable（图片屏保程序）</strong></p>
+<p>com.huawei.android.dsdscardmanager（双卡管理）</p>
+<p>com.huawei.android.hwaps</p>
+<p>com.huawei.android.hwouc（系统更新）</p>
+<p><strong>com.huawei.android.hwpay（华为钱包安全支付）</strong></p>
+<p>com.huawei.android.wfdft（WLAN直连）</p>
+<p><strong>com.android.wallpaper.livepicker（动态壁纸）</strong></p>
+<p>com.amap.android.ams（高德位置服务）</p>
+<p>com.huawei.mmitest</p>
+<p><strong>com.android.apps.tag（标记）</strong></p>
+<p><strong>com.huawei.powergenie（省电精灵）</strong></p>
+<p>com.qeexo.smartshot（智能截屏）</p>
+<p>com.android.settings</p>
+<p><strong>com.vmall.client（华为商城）</strong></p>
+<p><strong>com.android.calculator2（计算器）</strong></p>
+<p>com.huawei.android.projectmenu（工程菜单）</p>
+<p>com.android.cts.ctsshim</p>
+<p><strong>com.huawei.android.pushagent（推送服务）</strong></p>
+<p>com.huawei.geofence（地理围栏）</p>
+<p>com.android.vpndialogs（VPN设置）</p>
+<p><strong>com.huawei.ihealth（华为健康）</strong></p>
+<p>com.huawei.android.location.activityrecognition（行为识别）</p>
+<p><strong>com.android.email（电子邮件）</strong></p>
+<p>com.android.phone（拨号）</p>
+<p>com.android.shell</p>
+<p>com.android.providers.blockednumber（存储已屏蔽的号码）</p>
+<p>com.android.providers.userdictionary（用户词典）</p>
+<p>com.android.emergency（个人紧急信息）</p>
+<p><strong>com.huawei.scanner（扫一扫）</strong></p>
+<p>com.android.location.fused（融合定位）</p>
+<p>com.android.deskclock（时钟）</p>
+<p>com.android.systemui（系统界面）</p>
+<p>com.android.exchange（Exchange服务）</p>
+<p>com.android.bluetoothmidiservice</p>
+<p>com.huawei.hwdetectrepair（智能检测）</p>
+<p>com.huawei.bd（HwUE）</p>
+<p>com.huawei.ca（CAServices）</p>
+<p>com.huawei.ims</p>
+<p>com.huawei.lbs（HwLBSService）</p>
+<p>com.android.bluetooth（蓝牙）</p>
+<p>com.android.providers.contacts（联系人存储）</p>
+<p>com.android.captiveportallogin</p>
+<p><strong>com.android.hwmirror（镜子）</strong></p>
+<p><strong>com.huawei.android.airsharing（多屏互动）</strong></p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag:</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">Back</a>
+                <span>· </span>
+                <a href="/">Home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/02/17/200217/">拾 穗</a>
+            
+            
+            <a class="next" rel="next" href="/2019/11/09/191109/">同 学</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>🙄 
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/fireworks.js"></script>

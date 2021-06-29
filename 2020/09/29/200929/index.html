@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="庭院深深深几许">
+
+
+
+<title>异或运算 | 游园不值</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">游园不值</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">游园不值</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">异或运算</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2020-09-29&nbsp;&nbsp;17:32:50</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>正数反码：与原码相同</p>
+<p>负数反码：符号位为“1”，数值位按位 取反。</p>
+<p>正数补码：与原码相同</p>
+<p>负数补码：求反加一</p>
+<p><label style="color:red"><strong>所有参与运算的都是以补码形式进行的 结果也是补码 因此也需要将补码转换成为原码的形式存在</strong></label></p>
+<p><strong>eg:</strong></p>
+<p><strong>-2 ^ 3</strong></p>
+<p>负数的补码，符号位为1，其余位为该数绝对值的原码按位取反；然后再加1。</p>
+<blockquote>
+<p>－2</p>
+<p>原码：1000 0000 0000 0010 （负数，最高为是1）</p>
+<p>反码：1111 1111 1111 1101 （按位取反）</p>
+<p>补码：1111 1111 1111 1110 （加一）</p>
+</blockquote>
+<p>如果是正数，原码和补码一样</p>
+<blockquote>
+<p>3的补码：<br>0000 0000 0000 0011</p>
+</blockquote>
+<p>因而</p>
+<p><strong>-2 ^ 3</strong>（按位异或）    </p>
+<p><strong>=</strong></p>
+<p><strong>1111 1111 1111 1110</strong></p>
+<p><strong>^</strong></p>
+<p><strong>0000 0000 0000 0011</strong></p>
+<p><strong>=</strong></p>
+<p><strong>1111 1111 1111 1101</strong></p>
+<p>因为结果也是补码，所以必须要转换成为原码</p>
+<p>分为两种情况：</p>
+<p>1.如果最高为为1 即为负数 那么最高位不变 其他按位取反，</p>
+<p>最后加一 和前边补码转原码是一样的</p>
+<p>2.最高为是0,不用转化</p>
+<p><strong>因此最后的结果转化为十进制为 -3</strong></p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag:</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">Back</a>
+                <span>· </span>
+                <a href="/">Home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/12/18/201218/">Hollow</a>
+            
+            
+            <a class="next" rel="next" href="/2020/09/26/200926/">山 鬼</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>🙄 
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/fireworks.js"></script>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="庭院深深深几许">
+
+
+
+<title>一点东西(tbs) | 游园不值</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">游园不值</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">游园不值</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">一点东西(tbs)</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2019-05-08&nbsp;&nbsp;21:04:39</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="2019-07-18更新："><a href="#2019-07-18更新：" class="headerlink" title="2019/07/18更新："></a>2019/07/18更新：</h3><p>现在有了最简单的方法，下划线的部分是比较原始的，和能够直接打开office类的tencent文件夹和我不能打开的做了一些对比，然后得出不同的tbs文件，这样现在看来真的好笨啊。最后那几个文件有没有用也不知道，现在新的方法是无意间在网上看到的，我竟然没想到我是想启用，而这个发帖的人却是想关闭，<a target="_blank" rel="noopener" href="https://tieba.baidu.com/p/5590234223?red_tag=1046414981">原帖地址</a>，解决方法就是用你想启用内核的那个软件打开这个网站，然后启用这个内核（安装线上内核）即可，也不用费劲找文件什么的，emm，这样好简单……</p>
+<p>没错就是这个地址：<a target="_blank" rel="noopener" href="http://debugtbs.qq.com/">http://debugtbs.qq.com/</a></p>
+<h3 id="老方法："><a href="#老方法：" class="headerlink" title="老方法："></a>老方法：</h3><p>针对此类问题：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://cn.club.vmall.com/thread-16301148-1-1.html">QQ文件不支持本地查看</a></p>
+</blockquote>
+<p>前几天在清理手机垃圾时，误删了手机tencent里的几个文件夹，没想到却是删掉了office家族本地预览的插件，导致群里分享的文件点开后只能下载而不能点开即看，经过比对，少的文件是tencent文件夹里的tbs(<a target="_blank" rel="noopener" href="https://x5.tencent.com/">腾讯浏览服务</a>)文件夹，直到现在我才知道这个TBS并不仅仅用来预览这些文件，这里不多赘述，详情移步<a target="_blank" rel="noopener" href="https://x5.tencent.com/tbs/product/tbs.html">这里</a>,但我这里只是用到了它的文件打开能力，也就是下面所说的：</p>
+<blockquote>
+<p>2.7 增强浏览能力：</p>
+<p>1). 文件打开能力：</p>
+<p>目前支持42种文件格式，包括20种文档、12种音乐、6种图片和4种压缩包。帮助应用实现应用内文档浏览，无需跳转调用其他应用。</p>
+<p>2). 视频支持能力：</p>
+<p>目前支持26种视频格式。</p>
+</blockquote>
+<p><del>如果出现<strong>文件暂不支持本地查看，请用其他应用打开或用QQ浏览器打开</strong>，具体解决方法如下：</del></p>
+<p><del>在手机根目录下进入**tencent/tbs/backup/com.tencent.mm/**文件夹中，将原来的三个文件放回，再次进入Tim点开office文件加载插件既可。</del></p>
+<p><del>后来，经过重新加载以后，在清理垃圾的时候，发现那几个文件最后是被清理掉的，我认为这些文件起到的是引导的作用，引导重新加载这些插件，然后它们就完成使命，至于真正的插件文件在哪，目前没有找到……</del></p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag:</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">Back</a>
+                <span>· </span>
+                <a href="/">Home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/05/14/190514/">对于能力有限的人，志向反而是一生的拖累。</a>
+            
+            
+            <a class="next" rel="next" href="/2019/05/03/190503/">大明湖游记</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>🙄 
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/fireworks.js"></script>

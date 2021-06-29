@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="庭院深深深几许">
+
+
+
+<title>工具网站 | 游园不值</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">游园不值</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">游园不值</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">工具网站</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2021-01-28&nbsp;&nbsp;16:45:25</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>由于老篇过于陈旧导致一些网站失效以及未整理的过冗，故重新整理出此页。</p>
+<p>因此<a target="_blank" rel="noopener" href="https://smallpark.github.io/2019/07/24/190724/">原页</a>仅作部分备份功能且参考价值相对较低。</p>
+<p>建议电脑浏览，使用PC页右边有分类跳转。</p>
+<p>使用手机浏览可用浏览器自带搜索功能，如果知道的话x2。</p>
+<p>另外App部分不再重新整理，<a target="_blank" rel="noopener" href="https://smallpark.github.io/2019/07/26/190726/">点这里</a>跳转，这里的应用仅有推荐及备份作用。</p>
+<h3 id="资讯阅读"><a href="#资讯阅读" class="headerlink" title="资讯阅读"></a>资讯阅读</h3><p>此项目收录用来阅读信息的部分站点</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>链接</th>
+<th>功能</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>今日热榜</td>
+<td><a target="_blank" rel="noopener" href="http://tophub.today/">http://tophub.today</a></td>
+<td>聚合了主要网站的热搜排行等</td>
+<td>消遣</td>
+</tr>
+<tr>
+<td>果汁排行榜</td>
+<td><a target="_blank" rel="noopener" href="http://guozhivip.com/rank">http://guozhivip.com/rank</a></td>
+<td>聚合了更多网站的热搜排行等</td>
+<td>消遣</td>
+</tr>
+<tr>
+<td>AnyKnew</td>
+<td><a target="_blank" rel="noopener" href="http://www.anyknew.com/">http://www.anyknew.com</a></td>
+<td>聚合了部分网站的热搜排行等</td>
+<td>消遣</td>
+</tr>
+<tr>
+<td>小鸡词典</td>
+<td><a target="_blank" rel="noopener" href="http://jikipedia.com/">http://jikipedia.com</a></td>
+<td>用于网络流行语查询及阅读</td>
+<td>消遣</td>
+</tr>
+<tr>
+<td>每日一文</td>
+<td><a target="_blank" rel="noopener" href="http://meiriyiwen.com/">http://meiriyiwen.com</a></td>
+<td>每天一篇小文章，可选随机文章</td>
+<td>消遣</td>
+</tr>
+<tr>
+<td>三分钟阅读</td>
+<td><a target="_blank" rel="noopener" href="http://www.sanfenzhong.net/">http://www.sanfenzhong.net</a></td>
+<td>聚合了部分网站的热搜排行，并提供部分杂志</td>
+<td>消遣</td>
+</tr>
+<tr>
+<td>知微事见</td>
+<td><a target="_blank" rel="noopener" href="https://ef.zhiweidata.com/">https://ef.zhiweidata.com</a></td>
+<td>以图像形式展示舆论热点</td>
+<td>仅供一乐</td>
+</tr>
+<tr>
+<td>SteamDB</td>
+<td><a target="_blank" rel="noopener" href="https://steamdb.info/">https://steamdb.info</a></td>
+<td>提供Steam中游戏历史价格等信息</td>
+<td>无</td>
+</tr>
+<tr>
+<td>SteamDB +1</td>
+<td><a target="_blank" rel="noopener" href="https://steamdb.info/upcoming/free">https://steamdb.info/upcoming/free</a></td>
+<td>集合了Steam中限时免费入库及周免游戏</td>
+<td>无</td>
+</tr>
+<tr>
+<td>全历史</td>
+<td><a target="_blank" rel="noopener" href="http://www.allhistory.com/">http://www.allhistory.com</a></td>
+<td>世界历史百科全书</td>
+<td>无</td>
+</tr>
+<tr>
+<td>WikiHow</td>
+<td><a target="_blank" rel="noopener" href="https://www.wikihow.com/">https://www.wikihow.com</a></td>
+<td>众包式知识百科全书</td>
+<td>无</td>
+</tr>
+<tr>
+<td>知妖</td>
+<td><a target="_blank" rel="noopener" href="https://www.cbaigui.com/">https://www.cbaigui.com</a></td>
+<td>一个收录了中国古今妖怪的网站</td>
+<td>无</td>
+</tr>
+<tr>
+<td>中华珍宝馆</td>
+<td><a target="_blank" rel="noopener" href="http://www.ltfc.net/">http://www.ltfc.net</a></td>
+<td>一个可以让你欣赏到超多古代、近现代高清字画的网站</td>
+<td>无</td>
+</tr>
+<tr>
+<td>医学微视</td>
+<td><a target="_blank" rel="noopener" href="http://www.mvyxws.com/">http://www.mvyxws.com</a></td>
+<td>普及医学知识</td>
+<td>无</td>
+</tr>
+<tr>
+<td>濒临灭绝的动物拼图碎片</td>
+<td><a target="_blank" rel="noopener" href="http://www.webhek.com/misc-res/species-in-pieces">http://www.webhek.com/misc-res/species-in-pieces</a></td>
+<td>一个用30个CSS碎片拼图展示30种濒临灭绝动物的网站</td>
+<td>无</td>
+</tr>
+</tbody></table>
+<h3 id="刷剧观影"><a href="#刷剧观影" class="headerlink" title="刷剧观影"></a>刷剧观影</h3><p>此项目收录用来看或下载电影及电视剧的站点</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>链接</th>
+<th>功能</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MVCAT电影推荐</td>
+<td><a target="_blank" rel="noopener" href="https://www.mvcat.com/">https://www.mvcat.com</a></td>
+<td>通过选择类别推荐对应电影</td>
+<td>不知道看什么电影？那就看看这里吧！</td>
+</tr>
+<tr>
+<td>No视频</td>
+<td><a target="_blank" rel="noopener" href="http://www.novipnoad.com/">http://www.novipnoad.com</a></td>
+<td>提供一些电影电视剧在线观看，无广告且高清</td>
+<td>资源相对较少（其实也不少），但优质</td>
+</tr>
+<tr>
+<td>IVI测试</td>
+<td><a target="_blank" rel="noopener" href="http://ivi.bupt.edu.cn/">http://ivi.bupt.edu.cn</a></td>
+<td>网站提供了国内各电视台同步观看</td>
+<td>CCTV及地方台电视观看</td>
+</tr>
+<tr>
+<td>电影天堂</td>
+<td><a target="_blank" rel="noopener" href="http://www.dytt8.net/">http://www.dytt8.net</a></td>
+<td>电影下载，提供磁力链接</td>
+<td>第一时间更新电影数字版，老资源可能失效</td>
+</tr>
+<tr>
+<td>天天美剧</td>
+<td><a target="_blank" rel="noopener" href="http://www.ttzmz.vip/">http://www.ttzmz.vip</a></td>
+<td>最新美剧下载，提供多种下载方式</td>
+<td>下载各类美剧用，网站可能很慢</td>
+</tr>
+<tr>
+<td>茶杯狐</td>
+<td><a target="_blank" rel="noopener" href="http://cupfox.com/">http://cupfox.com</a></td>
+<td>提供小道网站影视搜索聚合</td>
+<td>因多源而资源多，可用</td>
+</tr>
+<tr>
+<td>迅速影视</td>
+<td><a target="_blank" rel="noopener" href="http://www.xunsu.cc/">http://www.xunsu.cc</a></td>
+<td>提供电影电视剧抢版电影观看，有部分广告，画质一般</td>
+<td>资源较多，但质量一般，类似网站很多</td>
+</tr>
+<tr>
+<td>1090影视</td>
+<td><a target="_blank" rel="noopener" href="http://1090ys2.com/">http://1090ys2.com</a></td>
+<td>提供电影电视剧观看，有部分广告，画质一般</td>
+<td>资源较多，但质量一般，类似网站很多</td>
+</tr>
+<tr>
+<td>各网站VIP影视解析</td>
+<td><a target="_blank" rel="noopener" href="http://www.meiriyixue.cn/jx">http://www.meiriyixue.cn/jx</a></td>
+<td>用于解析爱奇艺、腾讯视频等需要VIP的视频资源</td>
+<td>可用，作为第二选择</td>
+</tr>
+<tr>
+<td><del>思古解析</del></td>
+<td><del><a target="_blank" rel="noopener" href="https://www.sigujiexi.com/">https://www.sigujiexi.com</a></del></td>
+<td><del>上一条的作者页</del></td>
+<td><del>备份防失效用</del></td>
+</tr>
+<tr>
+<td>疯狂影视搜索</td>
+<td><a target="_blank" rel="noopener" href="http://ifkdy.com/">http://ifkdy.com</a></td>
+<td>网站提供影视资源搜索</td>
+<td>暂时没用过，看似可用</td>
+</tr>
+</tbody></table>
+<h3 id="搜索导航"><a href="#搜索导航" class="headerlink" title="搜索导航"></a>搜索导航</h3><p>一些小众搜索引擎及网址导航</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>链接</th>
+<th>功能</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>飞叶</td>
+<td><a target="_blank" rel="noopener" href="http://ifeiye.com/">http://ifeiye.com</a></td>
+<td>一个很全的导航网站</td>
+<td>导航</td>
+</tr>
+<tr>
+<td>秘迹搜索</td>
+<td><a target="_blank" rel="noopener" href="http://mijisou.com/">http://mijisou.com</a></td>
+<td>搜索</td>
+<td>搜索</td>
+</tr>
+<tr>
+<td>极客搜索</td>
+<td><a target="_blank" rel="noopener" href="https://s.geekbang.org/">https://s.geekbang.org</a></td>
+<td>搜索</td>
+<td>搜索</td>
+</tr>
+<tr>
+<td>Ecosia</td>
+<td><a target="_blank" rel="noopener" href="https://www.ecosia.org/">https://www.ecosia.org</a></td>
+<td>搜索</td>
+<td>搜索</td>
+</tr>
+<tr>
+<td>超能搜</td>
+<td><a target="_blank" rel="noopener" href="https://www.chaonengsou.com/">https://www.chaonengsou.com</a></td>
+<td>搜索</td>
+<td>搜索</td>
+</tr>
+<tr>
+<td>多吉搜索</td>
+<td><a target="_blank" rel="noopener" href="http://www.dogedoge.com/">http://www.dogedoge.com</a></td>
+<td>搜索</td>
+<td>搜索</td>
+</tr>
+<tr>
+<td>SimilarSites</td>
+<td><a target="_blank" rel="noopener" href="https://www.similarsites.com/">https://www.similarsites.com</a></td>
+<td>用于搜索相似网站</td>
+<td>无</td>
+</tr>
+<tr>
+<td>兰客导航(旧)</td>
+<td><a target="_blank" rel="noopener" href="http://lackk.com/nav">http://lackk.com/nav</a></td>
+<td>无</td>
+<td>无</td>
+</tr>
+<tr>
+<td>兰客导航(新)</td>
+<td><a target="_blank" rel="noopener" href="http://n.lackk.com/">http://n.lackk.com/</a></td>
+<td>无</td>
+<td>无</td>
+</tr>
+<tr>
+<td>大数据导航</td>
+<td><a target="_blank" rel="noopener" href="http://hao.199it.com/">http://hao.199it.com</a></td>
+<td>提供网站数据分析</td>
+<td>暂时没什么用</td>
+</tr>
+<tr>
+<td>世界各国网址大全</td>
+<td><a target="_blank" rel="noopener" href="http://www.world68.com/">http://www.world68.com</a></td>
+<td>收录国外大网站</td>
+<td>暂时没什么用</td>
+</tr>
+<tr>
+<td>iData</td>
+<td><a target="_blank" rel="noopener" href="https://www.cn-ki.net/">https://www.cn-ki.net</a></td>
+<td>提供论文搜索</td>
+<td>无</td>
+</tr>
+</tbody></table>
+<h3 id="素材模板"><a href="#素材模板" class="headerlink" title="素材模板"></a>素材模板</h3><p>此项目提供素材或模板下载站点</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>链接</th>
+<th>功能</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Office模板和主题</td>
+<td><a target="_blank" rel="noopener" href="https://templates.office.com/">https://templates.office.com/</a></td>
+<td>微软提供的Office类文件模板</td>
+<td>包括但不限于word、power point</td>
+</tr>
+<tr>
+<td>OfficePlus</td>
+<td><a target="_blank" rel="noopener" href="http://www.officeplus.cn/Template/Home.shtml">http://www.officeplus.cn/Template/Home.shtml</a></td>
+<td>微软中国提供的Office模板</td>
+<td>包含word、excel、power point模板，不失为一个好的选择</td>
+</tr>
+<tr>
+<td>Stockio</td>
+<td><a target="_blank" rel="noopener" href="https://www.stockio.com/">https://www.stockio.com</a></td>
+<td>提供免费的图片、图标、字体和视频素材</td>
+<td>网站速度一般，资源较优质，剪视频需要音效、视频时不失为一个好的选择</td>
+</tr>
+<tr>
+<td>MixKit</td>
+<td><a target="_blank" rel="noopener" href="https://mixkit.co/">https://mixkit.co</a></td>
+<td>提供音效视频素材</td>
+<td>剪视频需要音效、视频时不失为一个好的选择</td>
+</tr>
+<tr>
+<td>51PPT模板</td>
+<td><a target="_blank" rel="noopener" href="http://www.51pptmoban.com/">http://www.51pptmoban.com</a></td>
+<td>第三方免费PPT模板下载站</td>
+<td>资源一般，但包罗万象</td>
+</tr>
+<tr>
+<td>HiPPTer</td>
+<td><a target="_blank" rel="noopener" href="http://www.hippter.com/">http://www.hippter.com</a></td>
+<td>本身不提供素材，一个素材网址导航</td>
+<td>集合了许多素材网站的网站</td>
+</tr>
+<tr>
+<td>Pexels</td>
+<td><a target="_blank" rel="noopener" href="http://www.pexels.com=/">http://www.pexels.com=</a></td>
+<td>免费提供素材图片和视频</td>
+<td>见功能</td>
+</tr>
+<tr>
+<td>Videezy</td>
+<td><a target="_blank" rel="noopener" href="http://www.videezy.com/">http://www.videezy.com</a></td>
+<td>提供免费高画质HD、4K影片素材</td>
+<td>剪视频可能用到，网站速度较慢</td>
+</tr>
+<tr>
+<td>阿里巴巴矢量图标库</td>
+<td><a target="_blank" rel="noopener" href="http://www.iconfont.cn/">http://www.iconfont.cn</a></td>
+<td>提供矢量图标下载</td>
+<td>需要图标时不失为一个好的选择</td>
+</tr>
+<tr>
+<td>爱给网</td>
+<td><a target="_blank" rel="noopener" href="https://www.aigei.com/">https://www.aigei.com</a></td>
+<td>免费提供音效和配乐等音频素材</td>
+<td>见功能</td>
+</tr>
+<tr>
+<td>AdDog</td>
+<td><a target="_blank" rel="noopener" href="http://www.addog.vip/">http://www.addog.vip</a></td>
+<td>广告人的网址导航</td>
+<td>用于设计广告查找素材</td>
+</tr>
+<tr>
+<td>60logo</td>
+<td><a target="_blank" rel="noopener" href="http://60logo.com/">http://60logo.com</a></td>
+<td>网站提供logo交易，未经许可滥用可能导致版权问题</td>
+<td>见功能</td>
+</tr>
+<tr>
+<td>字体家</td>
+<td><a target="_blank" rel="noopener" href="http://www.zitijia.com/">http://www.zitijia.com</a></td>
+<td>提供各种字体下载</td>
+<td>设计需要变换字体不失为一个好的选择</td>
+</tr>
+<tr>
+<td>觅元素</td>
+<td><a target="_blank" rel="noopener" href="http://www.51yuansu.com/">http://www.51yuansu.com/</a></td>
+<td>PNG素材提供</td>
+<td>包罗万象的免扣图PNG素材</td>
+</tr>
+<tr>
+<td>站长素材</td>
+<td><a target="_blank" rel="noopener" href="http://sc.chinaz.com/">http://sc.chinaz.com</a></td>
+<td>下载图片、音效、字体、各种模板的网站</td>
+<td>无</td>
+</tr>
+<tr>
+<td>Pixiv热门</td>
+<td><a target="_blank" rel="noopener" href="http://pixivic.com/">http://pixivic.com</a></td>
+<td>Pixiv插画搜索</td>
+<td>无</td>
+</tr>
+<tr>
+<td>壁纸</td>
+<td><a target="_blank" rel="noopener" href="https://wallhaven.cc/">https://wallhaven.cc</a></td>
+<td>国外网站，提供大量优质壁纸</td>
+<td>无</td>
+</tr>
+<tr>
+<td>壁纸</td>
+<td><a target="_blank" rel="noopener" href="https://wallpaperscraft.com/">https://wallpaperscraft.com</a></td>
+<td>国外网站，提供大量壁纸</td>
+<td>无</td>
+</tr>
+<tr>
+<td>壁纸</td>
+<td><a target="_blank" rel="noopener" href="https://wall.alphacoders.com/">https://wall.alphacoders.com</a></td>
+<td>国外网站，提供壁纸及壁纸搜索</td>
+<td>无</td>
+</tr>
+<tr>
+<td>壁纸</td>
+<td><a target="_blank" rel="noopener" href="https://wall.alphacoders.com/">https://wall.alphacoders.com</a></td>
+<td>国外网站，提供壁纸搜索功能</td>
+<td>无</td>
+</tr>
+<tr>
+<td>壁纸</td>
+<td><a target="_blank" rel="noopener" href="http://lab.mkblog.cn/wallpaper">http://lab.mkblog.cn/wallpaper</a></td>
+<td>提供大量多尺寸壁纸</td>
+<td>无</td>
+</tr>
+</tbody></table>
+<h3 id="素材创作"><a href="#素材创作" class="headerlink" title="素材创作"></a>素材创作</h3><p>此项目收录制作各种素材的站点</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>链接</th>
+<th>功能</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Canva</td>
+<td><a target="_blank" rel="noopener" href="http://www.canva.com/">http://www.canva.com</a></td>
+<td>在线平面设计</td>
+<td>无</td>
+</tr>
+<tr>
+<td>ProcessOn</td>
+<td><a target="_blank" rel="noopener" href="http://www.processon.com/">http://www.processon.com</a></td>
+<td>在线协作绘图平台</td>
+<td>无</td>
+</tr>
+<tr>
+<td>图表制作</td>
+<td><a target="_blank" rel="noopener" href="http://www.lizibuluo.com/">http://www.lizibuluo.com/</a></td>
+<td>在线制作图表，不仅仅是制表</td>
+<td>见功能</td>
+</tr>
+<tr>
+<td>电脑带壳截图</td>
+<td><a target="_blank" rel="noopener" href="https://dimmy.club/">https://dimmy.club/</a></td>
+<td>图片或电脑截屏套上电脑壳，类似手机带壳截图</td>
+<td>见功能</td>
+</tr>
+<tr>
+<td>WordArt</td>
+<td><a target="_blank" rel="noopener" href="http://wordart.com/">http://wordart.com</a></td>
+<td>在线生成文字云</td>
+<td>见功能</td>
+</tr>
+<tr>
+<td>微词云</td>
+<td><a target="_blank" rel="noopener" href="https://www.weiciyun.com/">https://www.weiciyun.com</a></td>
+<td>在线生成文字云</td>
+<td>见功能</td>
+</tr>
+<tr>
+<td>U钙网</td>
+<td><a target="_blank" rel="noopener" href="http://www.uugai.com/">http://www.uugai.com</a></td>
+<td>在线设计LOGO</td>
+<td>见功能</td>
+</tr>
+<tr>
+<td>兰图绘</td>
+<td><a target="_blank" rel="noopener" href="http://www.ldmap.net/">http://www.ldmap.net</a></td>
+<td>在线地图标绘云平台</td>
+<td>见功能</td>
+</tr>
+<tr>
+<td>中国色</td>
+<td><a target="_blank" rel="noopener" href="http://zhongguose.com/">http://zhongguose.com</a></td>
+<td>提供中国传统颜色及RGB</td>
+<td>见功能</td>
+</tr>
+<tr>
+<td>Avatar</td>
+<td><a target="_blank" rel="noopener" href="https://multiavatar.com/">https://multiavatar.com</a></td>
+<td>生成简易头像</td>
+<td>见功能</td>
+</tr>
+</tbody></table>
+<h3 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理"></a>文件处理</h3><p>此项目收录在线处理文件的站点</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>链接</th>
+<th>功能</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>UUPOOP</td>
+<td><a target="_blank" rel="noopener" href="http://www.uupoop.com/">http://www.uupoop.com</a></td>
+<td>在线编辑图片</td>
+<td>见功能</td>
+</tr>
+<tr>
+<td>Photopea</td>
+<td><a target="_blank" rel="noopener" href="https://www.photopea.com/">https://www.photopea.com</a></td>
+<td>在线Photoshop</td>
+<td>网站速度慢，不很建议</td>
+</tr>
+<tr>
+<td>I♥IMG</td>
+<td><a target="_blank" rel="noopener" href="http://www.iloveimg.com/">http://www.iloveimg.com</a></td>
+<td>在线图片处理</td>
+<td>图片压缩、切割、格式转换、增删水印等</td>
+</tr>
+<tr>
+<td>TinyPNG</td>
+<td><a target="_blank" rel="noopener" href="https://tinypng.com/">https://tinypng.com</a></td>
+<td>图片大小压缩</td>
+<td>压缩图片体积，单张限5M，首选推荐</td>
+</tr>
+<tr>
+<td>Squuoosh</td>
+<td><a target="_blank" rel="noopener" href="http://squoosh.app/">http://squoosh.app</a></td>
+<td>图片大小压缩</td>
+<td>压缩图片体积，不很推荐，备选</td>
+</tr>
+<tr>
+<td>DocSmall</td>
+<td><a target="_blank" rel="noopener" href="https://docsmall.com/">https://docsmall.com</a></td>
+<td>文件处理</td>
+<td>提供图片、Gif图片压缩以及PDF文件压缩、合并及分割</td>
+</tr>
+<tr>
+<td>123apps</td>
+<td><a target="_blank" rel="noopener" href="https://123apps.com/cn">https://123apps.com/cn</a></td>
+<td>提供多种格式文件在线编辑</td>
+<td>提供各种文件在线编辑及转换</td>
+</tr>
+<tr>
+<td>Office Converter</td>
+<td><a target="_blank" rel="noopener" href="https://cn.office-converter.com/">https://cn.office-converter.com</a></td>
+<td>提供多种格式文件在线转换</td>
+<td>简易版在线格式工厂，首选</td>
+</tr>
+<tr>
+<td>All to All</td>
+<td><a target="_blank" rel="noopener" href="http://alltoall.net/">http://alltoall.net</a></td>
+<td>提供多种格式文件在线转换</td>
+<td>简易版在线格式工厂，备选</td>
+</tr>
+<tr>
+<td>BigJpg</td>
+<td><a target="_blank" rel="noopener" href="https://bigjpg.com/">https://bigjpg.com</a></td>
+<td>AI人工智能图片无损放大</td>
+<td>图片放大，但没有吹的那么厉害</td>
+</tr>
+<tr>
+<td>稿定抠图</td>
+<td><a target="_blank" rel="noopener" href="https://koutu.gaoding.com/">https://koutu.gaoding.com</a></td>
+<td>抠图</td>
+<td>见功能，简单粗暴</td>
+</tr>
+<tr>
+<td>SmallPDF</td>
+<td><a target="_blank" rel="noopener" href="http://smallpdf.com/">http://smallpdf.com</a></td>
+<td>PDF文件在线处理</td>
+<td>简易PDF处理</td>
+</tr>
+<tr>
+<td>HiPDF</td>
+<td><a target="_blank" rel="noopener" href="https://www.hipdf.cn/">https://www.hipdf.cn</a></td>
+<td>PDF文件在线处理</td>
+<td>PDF格式转换、简单编辑等，功能稍多</td>
+</tr>
+<tr>
+<td>PDF派</td>
+<td><a target="_blank" rel="noopener" href="https://www.pdfpai.com/">https://www.pdfpai.com</a></td>
+<td>PDF文件在线处理</td>
+<td>提供最多PDF处理功能，网站包括但不限于处理PDF</td>
+</tr>
+</tbody></table>
+<h3 id="网页工具"><a href="#网页工具" class="headerlink" title="网页工具"></a>网页工具</h3><p>此项目中的工具一言难尽（讲明白其功能），具体自行体验</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>链接</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>万能指令</td>
+<td><a target="_blank" rel="noopener" href="https://wn.run/">https://wn.run</a></td>
+<td>无</td>
+</tr>
+<tr>
+<td>兔二工具</td>
+<td><a target="_blank" rel="noopener" href="https://www.tool22.com/">https://www.tool22.com</a></td>
+<td>很多，很好</td>
+</tr>
+<tr>
+<td>工具人</td>
+<td><a target="_blank" rel="noopener" href="https://www.toolfk.com/">https://www.toolfk.com</a></td>
+<td>程序员在线工具</td>
+</tr>
+<tr>
+<td>脚本之家在线工具</td>
+<td><a target="_blank" rel="noopener" href="http://tools.jb51.net/">http://tools.jb51.net</a></td>
+<td>程序员在线工具</td>
+</tr>
+<tr>
+<td>JSON工具集</td>
+<td><a target="_blank" rel="noopener" href="http://www.bejson.com/">http://www.bejson.com</a></td>
+<td>用于处理json代码</td>
+</tr>
+<tr>
+<td>Pastebin</td>
+<td><a target="_blank" rel="noopener" href="https://paste.ubuntu.com/">https://paste.ubuntu.com</a></td>
+<td>代码短期分享，首选</td>
+</tr>
+<tr>
+<td>Carbon</td>
+<td><a target="_blank" rel="noopener" href="https://carbon.now.sh/">https://carbon.now.sh</a></td>
+<td>代码短期分享，备选</td>
+</tr>
+<tr>
+<td>草料二维码</td>
+<td><a target="_blank" rel="noopener" href="https://cli.im/">https://cli.im</a></td>
+<td>提供二维码生成功能</td>
+</tr>
+<tr>
+<td>爱资料在线工具</td>
+<td><a target="_blank" rel="noopener" href="https://www.toolnb.com/">https://www.toolnb.com</a></td>
+<td>一言难尽，汇总了成批的在线实用工具</td>
+</tr>
+<tr>
+<td>精准云工具</td>
+<td><a target="_blank" rel="noopener" href="https://jingzhunyun.com/">https://jingzhunyun.com</a></td>
+<td>一言难尽，汇总了成批的在线实用工具和网站导航</td>
+</tr>
+<tr>
+<td>MikuTools</td>
+<td><a target="_blank" rel="noopener" href="https://tools.miku.ac/">https://tools.miku.ac</a></td>
+<td>一言难尽，提供许多网页在线工具，部分收费</td>
+</tr>
+<tr>
+<td>AirDroid</td>
+<td><a target="_blank" rel="noopener" href="http://web.airdroid.com/">http://web.airdroid.com</a></td>
+<td>提供一部在线手机</td>
+</tr>
+<tr>
+<td>收藏猫</td>
+<td><a target="_blank" rel="noopener" href="https://chrome.pictureknow.com/">https://chrome.pictureknow.com</a></td>
+<td>提供chromium内核浏览器部分插件下载</td>
+</tr>
+<tr>
+<td>极简插件</td>
+<td><a target="_blank" rel="noopener" href="http://chrome.zzzmh.cn/">http://chrome.zzzmh.cn</a></td>
+<td>第三方chromium内核浏览器插件商店</td>
+</tr>
+<tr>
+<td>WiteBoard</td>
+<td><a target="_blank" rel="noopener" href="http://witeboard.com/">http://witeboard.com</a></td>
+<td>在线网页书写白板</td>
+</tr>
+<tr>
+<td>拷贝兔</td>
+<td><a target="_blank" rel="noopener" href="https://cp.anyknew.com/">https://cp.anyknew.com</a></td>
+<td>实现不同设备间文件或文本的临时性快速分享</td>
+</tr>
+<tr>
+<td>奶牛快传</td>
+<td><a target="_blank" rel="noopener" href="https://cowtransfer.com/">https://cowtransfer.com</a></td>
+<td>实现不同设备间文件或文本的临时性快速分享</td>
+</tr>
+<tr>
+<td>哔哩哔哩封面提取</td>
+<td><a target="_blank" rel="noopener" href="http://b.qiuyeye.cn/">http://b.qiuyeye.cn</a></td>
+<td>提取哔哩哔哩视频的封面图片</td>
+</tr>
+<tr>
+<td>哔哩哔哩封面提取</td>
+<td><a target="_blank" rel="noopener" href="http://www.galmoe.com/">http://www.galmoe.com/</a></td>
+<td>提取哔哩哔哩视频的封面图片</td>
+</tr>
+<tr>
+<td>微信公众号封面提取</td>
+<td><a target="_blank" rel="noopener" href="http://www.gjw123.com/tools-getWxArticleImages">http://www.gjw123.com/tools-getWxArticleImages</a></td>
+<td>提取微信公众号文章的封面图片</td>
+</tr>
+<tr>
+<td>极简在线样机</td>
+<td><a target="_blank" rel="noopener" href="https://cleanmock.com/designer">https://cleanmock.com/designer</a></td>
+<td>快速生成Mockup</td>
+</tr>
+<tr>
+<td>SuperParse</td>
+<td><a target="_blank" rel="noopener" href="http://superparse.com/">http://superparse.com</a></td>
+<td>国外视频解析</td>
+</tr>
+<tr>
+<td>百度文库下载</td>
+<td><a target="_blank" rel="noopener" href="https://www.xiawenku.cn/">https://www.xiawenku.cn</a></td>
+<td>百度文库免券下载</td>
+</tr>
+<tr>
+<td>TingFM</td>
+<td><a target="_blank" rel="noopener" href="http://tingfm.com/">http://tingfm.com</a></td>
+<td>在线收听全国的FM广播</td>
+</tr>
+<tr>
+<td>稿定设计</td>
+<td><a target="_blank" rel="noopener" href="http://www.gaoding.com/">http://www.gaoding.com</a></td>
+<td>提供各种设计工具</td>
+</tr>
+<tr>
+<td>老照片着色</td>
+<td><a target="_blank" rel="noopener" href="http://colourise.sg/">http://colourise.sg</a></td>
+<td>黑白照片自动着色</td>
+</tr>
+<tr>
+<td>360查字体</td>
+<td><a target="_blank" rel="noopener" href="http://fonts.safe.360.cn/">http://fonts.safe.360.cn</a></td>
+<td>检查你电脑上安装的字体是否可商用</td>
+</tr>
+<tr>
+<td>DeepL</td>
+<td><a target="_blank" rel="noopener" href="https://www.deepl.com/translator">https://www.deepl.com/translator</a></td>
+<td>在线翻译</td>
+</tr>
+<tr>
+<td>音乐搜索器</td>
+<td><a target="_blank" rel="noopener" href="http://www.musictool.top/">http://www.musictool.top</a></td>
+<td>多源音乐一站搜索</td>
+</tr>
+<tr>
+<td>视频鱼</td>
+<td><a target="_blank" rel="noopener" href="http://www.shipinyu.com/">http://www.shipinyu.com</a></td>
+<td>提供视频地址解析下载，类似硕鼠</td>
+</tr>
+<tr>
+<td>Frp</td>
+<td><a target="_blank" rel="noopener" href="https://www.natfrp.com/">https://www.natfrp.com</a></td>
+<td>内网穿透</td>
+</tr>
+<tr>
+<td>P站视频解析</td>
+<td><a target="_blank" rel="noopener" href="https://www.pornhubdownload.com/">https://www.pornhubdownload.com</a></td>
+<td>见名称</td>
+</tr>
+</tbody></table>
+<h3 id="小说网站"><a href="#小说网站" class="headerlink" title="小说网站"></a>小说网站</h3><p>此项目收录一些比较优质的小说阅读及下载网站</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>藏书阁</td>
+<td><a target="_blank" rel="noopener" href="http://www.csg99.com/">http://www.csg99.com</a></td>
+</tr>
+<tr>
+<td>血红小说</td>
+<td><a target="_blank" rel="noopener" href="http://www.xuehongxs.net/">http://www.xuehongxs.net</a></td>
+</tr>
+<tr>
+<td>ePUBee</td>
+<td><a target="_blank" rel="noopener" href="http://cn.epubee.com/books">http://cn.epubee.com/books</a></td>
+</tr>
+<tr>
+<td>鸠摩搜书</td>
+<td><a target="_blank" rel="noopener" href="https://www.jiumodiary.com/">https://www.jiumodiary.com</a></td>
+</tr>
+<tr>
+<td>计算机书籍控</td>
+<td><a target="_blank" rel="noopener" href="http://bestcbooks.com/">http://bestcbooks.com</a></td>
+</tr>
+<tr>
+<td><del>好读</del></td>
+<td><del><a target="_blank" rel="noopener" href="http://www.haodoo.net/">http://www.haodoo.net</a></del></td>
+</tr>
+</tbody></table>
+<h3 id="教学网站"><a href="#教学网站" class="headerlink" title="教学网站"></a>教学网站</h3><p>此项目收录各种学习资料提供网站</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>链接</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Oeasy</td>
+<td><a target="_blank" rel="noopener" href="http://oeasy.org/">http://oeasy.org</a></td>
+<td>提供各种学习资料</td>
+</tr>
+<tr>
+<td>我要自学网</td>
+<td><a target="_blank" rel="noopener" href="https://www.51zxw.net/">https://www.51zxw.net</a></td>
+<td>提供各种计算机学习资料</td>
+</tr>
+<tr>
+<td>田间小站</td>
+<td><a target="_blank" rel="noopener" href="https://www.tjxz.cc/">https://www.tjxz.cc</a></td>
+<td>提供英语学习资料</td>
+</tr>
+<tr>
+<td>大学资源网</td>
+<td><a target="_blank" rel="noopener" href="http://www.dxzy163.com/">http://www.dxzy163.com</a></td>
+<td>提供大学课堂需要的资料公开课等</td>
+</tr>
+<tr>
+<td>淘链客</td>
+<td><a target="_blank" rel="noopener" href="http://www.toplinks.cc/">http://www.toplinks.cc</a></td>
+<td>提供各种学习文档资源下载</td>
+</tr>
+<tr>
+<td>考试酷</td>
+<td><a target="_blank" rel="noopener" href="https://www.examcoo.com/">https://www.examcoo.com</a></td>
+<td>免费的电子作业与在线考试系统云平台</td>
+</tr>
+</tbody></table>
+<h3 id="游戏相关"><a href="#游戏相关" class="headerlink" title="游戏相关"></a>游戏相关</h3><p>提供在线或离线游戏下载</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>链接</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>iGGgames</td>
+<td><a target="_blank" rel="noopener" href="https://igg-games.com/">https://igg-games.com</a></td>
+<td>提供破解游戏下载，首选，下载时或需科学上网</td>
+</tr>
+<tr>
+<td>AllGames</td>
+<td><a target="_blank" rel="noopener" href="https://agfy.co/">https://agfy.co</a></td>
+<td>提供破解游戏下载，备选</td>
+</tr>
+<tr>
+<td>LinesFRVR</td>
+<td><a target="_blank" rel="noopener" href="http://lines.frvr.com/">http://lines.frvr.com</a></td>
+<td>在线连线消遣游戏</td>
+</tr>
+<tr>
+<td>在线DOS游戏</td>
+<td><a target="_blank" rel="noopener" href="https://dos.zczc.cz/">https://dos.zczc.cz</a></td>
+<td>怀旧向，提供在线玩DOS游戏</td>
+</tr>
+<tr>
+<td>小霸王</td>
+<td><a target="_blank" rel="noopener" href="https://www.yikm.net/">https://www.yikm.net</a></td>
+<td>怀旧向，提供在线红白机游戏等</td>
+</tr>
+<tr>
+<td>NazoGame</td>
+<td><a target="_blank" rel="noopener" href="https://nazo.one-story.cn/">https://nazo.one-story.cn</a></td>
+<td>简单游戏</td>
+</tr>
+<tr>
+<td>Minecraft</td>
+<td><a target="_blank" rel="noopener" href="https://classic.minecraft.net/">https://classic.minecraft.net</a></td>
+<td>提供在线远古版本Minecraft</td>
+</tr>
+<tr>
+<td>MazeGenerator</td>
+<td><a target="_blank" rel="noopener" href="http://www.mazegenerator.net/">http://www.mazegenerator.net</a></td>
+<td>生成迷宫图</td>
+</tr>
+<tr>
+<td>Mikutap</td>
+<td><a target="_blank" rel="noopener" href="https://aidn.jp/mikutap">https://aidn.jp/mikutap</a></td>
+<td>敲击键盘字母A-Z，就会发出不同的声音，网站上也能够出现不同的图案</td>
+</tr>
+<tr>
+<td>Neal.fun</td>
+<td><a target="_blank" rel="noopener" href="https://neal.fun/">https://neal.fun</a></td>
+<td>一个无聊的娱乐网站</td>
+</tr>
+</tbody></table>
+<h3 id="未分类"><a href="#未分类" class="headerlink" title="未分类"></a>未分类</h3><p>此项目内容无法归类，无聊且无用</p>
+<table>
+<thead>
+<tr>
+<th>名称/简介</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Adobe官方用于直接下载adobe系列软件安装压缩包</td>
+<td><a target="_blank" rel="noopener" href="http://helpx.adobe.com/download-install/kb/creative-cloud-apps-download.html">http://helpx.adobe.com/download-install/kb/creative-cloud-apps-download.html</a></td>
+</tr>
+<tr>
+<td>数据外泄查询，看看您是否处于数据外泄事件之中。看看黑客已经掌握了您哪些资料，并了解如何先发制人。</td>
+<td><a target="_blank" rel="noopener" href="http://monitor.firefox.com/">http://monitor.firefox.com</a></td>
+</tr>
+<tr>
+<td>我的密码有多安全？用于理论计算破解密码需要的时间</td>
+<td><a target="_blank" rel="noopener" href="https://howsecureismypassword.net/">https://howsecureismypassword.net</a></td>
+</tr>
+<tr>
+<td>FakeUpdate， 一个可以模拟电脑各种系统升级的界面的网站，工作学习<del>摸鱼</del>用</td>
+<td><a target="_blank" rel="noopener" href="http://fakeupdate.net/">http://fakeupdate.net</a></td>
+</tr>
+<tr>
+<td>用于生成诺基亚短信界面</td>
+<td><a target="_blank" rel="noopener" href="https://zzkia.noddl.me/">https://zzkia.noddl.me</a></td>
+</tr>
+<tr>
+<td>42.zip，网站提供了一个42K的压缩包，当你反复解压后会得到一堆总大小为4.5PB的不知名文件</td>
+<td><a target="_blank" rel="noopener" href="https://unforgettable.dk/">https://unforgettable.dk</a></td>
+</tr>
+<tr>
+<td>NSF播放器，这个网站收集了三千多首BGM，特殊点在于这些BGM几乎都是我们听过的经典游戏BGM</td>
+<td><a target="_blank" rel="noopener" href="https://nsf.magecorn.com/">https://nsf.magecorn.com</a></td>
+</tr>
+<tr>
+<td>一个超实用的网站，用于生成彩虹P</td>
+<td><a target="_blank" rel="noopener" href="https://chp.shadiao.app/">https://chp.shadiao.app</a></td>
+</tr>
+<tr>
+<td>SkyPixel，一个聚集了全球航拍爱好者、及专业摄像师们的平台</td>
+<td><a target="_blank" rel="noopener" href="https://www.skypixel.com/">https://www.skypixel.com</a></td>
+</tr>
+<tr>
+<td>模拟2050年的地球样貌</td>
+<td><a target="_blank" rel="noopener" href="https://2050.earth/">https://2050.earth</a></td>
+</tr>
+<tr>
+<td>IOS捷径库，Safari打开</td>
+<td><a target="_blank" rel="noopener" href="http://jiejingku.net/">http://jiejingku.net</a></td>
+</tr>
+<tr>
+<td>提供四大名著的其他信息，例如地图等</td>
+<td><a target="_blank" rel="noopener" href="https://www.sdmz.net/">https://www.sdmz.net</a></td>
+</tr>
+<tr>
+<td>拼音首字母缩写释义工具</td>
+<td><a target="_blank" rel="noopener" href="https://lab.magiconch.com/nbnhhsh">https://lab.magiconch.com/nbnhhsh</a></td>
+</tr>
+<tr>
+<td>抽象话生成，将语句和emoji互相转换</td>
+<td><a target="_blank" rel="noopener" href="https://cxh.papapoi.com/">https://cxh.papapoi.com</a></td>
+</tr>
+<tr>
+<td>emoji表情大全</td>
+<td><a target="_blank" rel="noopener" href="https://www.emojiall.com/">https://www.emojiall.com</a></td>
+</tr>
+<tr>
+<td>用于<del>生成老婆</del></td>
+<td><a target="_blank" rel="noopener" href="https://waifulabs.com/">https://waifulabs.com</a></td>
+</tr>
+<tr>
+<td>论文查重</td>
+<td><a target="_blank" rel="noopener" href="https://www.paperfree.cn/">https://www.paperfree.cn</a></td>
+</tr>
+<tr>
+<td>领取网易云音乐数字专辑&amp;礼品卡</td>
+<td><a target="_blank" rel="noopener" href="https://chen310.github.io/music/albums">https://chen310.github.io/music/albums</a></td>
+</tr>
+</tbody></table>
+<h3 id="其他类"><a href="#其他类" class="headerlink" title="其他类"></a>其他类</h3><p>此项目内容源于友链，原文已删除，部分网站与上述重合且多余，此处不再整理。</p>
+<h4 id="搞学习"><a href="#搞学习" class="headerlink" title="搞学习"></a>搞学习</h4><p>TED（最优质的演讲）：<a target="_blank" rel="noopener" href="https://www.ted.com/">https://www.ted.com/</a><br>谷粉学术：<a target="_blank" rel="noopener" href="https://gfsoso.99lb.net/scholar.html/">https://gfsoso.99lb.net/scholar.html/</a><br>大学资源网：<a target="_blank" rel="noopener" href="http://www.dxzy163.com/">http://www.dxzy163.com/</a><br>简答题：<a target="_blank" rel="noopener" href="http://www.jiandati.com/">http://www.jiandati.com/</a><br>网易公开课：<a target="_blank" rel="noopener" href="https://open.163.com/ted/">https://open.163.com/ted/</a><br>网易云课堂：<a target="_blank" rel="noopener" href="https://study.163.com/">https://study.163.com/</a><br>中国大学MOOC：<a target="_blank" rel="noopener" href="http://www.icourse163.org/">www.icourse163.org/</a><br>网易云课堂：study.163.com/<br>我要自学网：<a target="_blank" rel="noopener" href="http://www.51zxw.net/">www.51zxw.net/</a><br>学堂在线：<a target="_blank" rel="noopener" href="http://www.xuetangx.com/">www.xuetangx.com/</a><br>爱课程：<a target="_blank" rel="noopener" href="http://www.icourses.cn/">www.icourses.cn/</a><br>猫咪论文：<a target="_blank" rel="noopener" href="https://lunwen.im/">https://lunwen.im/</a><br>iData（论文搜索）：<a target="_blank" rel="noopener" href="http://www.cn-ki.net/">www.cn-ki.net/</a><br>文泉考试：<a target="_blank" rel="noopener" href="https://www.wqkaoshi.com/">https://www.wqkaoshi.com/</a></p>
+<h4 id="找书籍"><a href="#找书籍" class="headerlink" title="找书籍"></a>找书籍</h4><p>书栈网（极力推荐）：<a target="_blank" rel="noopener" href="https://www.bookstack.cn/">https://www.bookstack.cn/</a><br>码农之家（计算机电子书下载）：<a target="_blank" rel="noopener" href="http://www.xz577.com/">www.xz577.com/</a><br>鸠摩搜书：<a target="_blank" rel="noopener" href="http://www.jiumodiary.com/">www.jiumodiary.com/</a><br>云海电子图书馆：<a target="_blank" rel="noopener" href="http://www.pdfbook.cn/">www.pdfbook.cn/</a><br>周读（书籍搜索）：ireadweek.com/<br>知轩藏书：<a target="_blank" rel="noopener" href="http://www.zxcs.me/">http://www.zxcs.me/</a><br>脚本之家电子书下载：<a target="_blank" rel="noopener" href="https://www.jb51.net/books/">https://www.jb51.net/books/</a><br>搜书VIP-电子书搜索：<a target="_blank" rel="noopener" href="http://www.soshuvip.com/all.html">http://www.soshuvip.com/all.html</a><br>书格（在线古籍图书馆）：<a target="_blank" rel="noopener" href="https://new.shuge.org/">https://new.shuge.org/</a><br>彩云阅读：<a target="_blank" rel="noopener" href="http://cajviewer.cnki.net/cajcloud/">http://cajviewer.cnki.net/cajcloud/</a><br>必看网（人生必看的书籍）：<a target="_blank" rel="noopener" href="https://www.biikan.com/">https://www.biikan.com/</a></p>
+<h4 id="冷知识-黑科技"><a href="#冷知识-黑科技" class="headerlink" title="冷知识 / 黑科技"></a>冷知识 / 黑科技</h4><p>图片立体像素画：<a target="_blank" rel="noopener" href="https://pissang.github.io/voxelize-image/">https://pissang.github.io/voxelize-image/</a><br>福利单词（一个不太正经的背单词网站）：<a target="_blank" rel="noopener" href="http://dict.ftqq.com/">http://dict.ftqq.com/</a><br>查无此人（刷新网站，展现一张AI 生成的人脸照片）：<a target="_blank" rel="noopener" href="https://thispersondoesnotexist.com/">https://thispersondoesnotexist.com/</a><br>在线制作地图图例：<a target="_blank" rel="noopener" href="https://mapchart.net/">https://mapchart.net/</a><br>创意光线绘画：<a target="_blank" rel="noopener" href="http://weavesilk.com/">http://weavesilk.com/</a><br>星系观察：<a target="_blank" rel="noopener" href="https://stellarium-web.org/">https://stellarium-web.org/</a><br>煎蛋：<a target="_blank" rel="noopener" href="http://jandan.net/">http://jandan.net/</a><br>渣男-说话的艺术：<a target="_blank" rel="noopener" href="https://lovelive.tools/">https://lovelive.tools/</a><br>全历史：<a target="_blank" rel="noopener" href="https://www.allhistory.com/">https://www.allhistory.com/</a><br>iData：<a target="_blank" rel="noopener" href="https://www.cn-ki.net/">https://www.cn-ki.net/</a><br>术语在线：<a target="_blank" rel="noopener" href="http://www.termonline.cn/">http://www.termonline.cn/</a></p>
+<h4 id="写代码"><a href="#写代码" class="headerlink" title="写代码"></a>写代码</h4><p>GitHub：<a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a><br>码云：<a target="_blank" rel="noopener" href="https://gitee.com/">https://gitee.com/</a><br>源码之家：<a target="_blank" rel="noopener" href="https://www.mycodes.net/">https://www.mycodes.net/</a><br>JSON to Dart：<a target="_blank" rel="noopener" href="https://javiercbk.github.io/json_to_dart/">https://javiercbk.github.io/json_to_dart/</a><br>Json在线解析验证：<a target="_blank" rel="noopener" href="https://www.json.cn/">https://www.json.cn/</a><br>在线接口测试（Getman）：<a target="_blank" rel="noopener" href="https://getman.cn/">https://getman.cn/</a></p>
+<h4 id="资源搜索"><a href="#资源搜索" class="headerlink" title="资源搜索"></a>资源搜索</h4><p>DogeDoge搜索引擎：<a target="_blank" rel="noopener" href="http://www.dogedoge.com/">www.dogedoge.com/</a><br>秘迹搜索：<a target="_blank" rel="noopener" href="https://mijisou.com/">https://mijisou.com/</a><br>小白盘：<a target="_blank" rel="noopener" href="https://www.xiaobaipan.com/">https://www.xiaobaipan.com/</a><br>云盘精灵（资源搜索）：<a target="_blank" rel="noopener" href="http://www.yunpanjingling.com/">www.yunpanjingling.com/</a><br>虫部落（资源搜索）：<a target="_blank" rel="noopener" href="http://www.chongbuluo.com/">www.chongbuluo.com/</a><br>如风搜（资源搜索）：<a target="_blank" rel="noopener" href="http://www.rufengso.net/">http://www.rufengso.net/</a><br>爱扒：<a target="_blank" rel="noopener" href="https://www.zyboe.com/">https://www.zyboe.com/</a></p>
+<h4 id="小工具"><a href="#小工具" class="headerlink" title="小工具"></a>小工具</h4><p>奶牛快传（在线传输文件利器）：cowtransfer.com/<br>文叔叔（大文件传输，不限速）：<a target="_blank" rel="noopener" href="https://www.wenshushu.cn/">https://www.wenshushu.cn/</a><br>云端超级应用空间（PS，PPT，Excel，Ai）：<a target="_blank" rel="noopener" href="https://uzer.me/">https://uzer.me/</a><br>香当网（年终总结，个人简历，事迹材料，租赁合同，演讲稿）：<a target="_blank" rel="noopener" href="https://www.xiangdang.net/">https://www.xiangdang.net/</a><br>熵数（图表制作，数据可视化）：<a target="_blank" rel="noopener" href="https://dydata.io/appv2/#/pages/index/home/">https://dydata.io/appv2/#/pages/index/home/</a><br>拷贝兔：<a target="_blank" rel="noopener" href="https://cp.anyknew.com/">https://cp.anyknew.com/</a><br>图片无限变放大：<a target="_blank" rel="noopener" href="http://bigjpg.com/zh/">http://bigjpg.com/zh/</a><br>幕布（在线大纲笔记工具）：mubu.com<br>在线转换器（在线转换器转换任何测量单位）：<a target="_blank" rel="noopener" href="https://zh.justcnw.com/">https://zh.justcnw.com/</a><br>调查问卷制作：<a target="_blank" rel="noopener" href="https://www.wenjuan.com/">https://www.wenjuan.com/</a><br>果核剥壳（软件下载）：<a target="_blank" rel="noopener" href="https://www.ghpym.com/">https://www.ghpym.com/</a><br>软件下载：<a target="_blank" rel="noopener" href="https://www.unyoo.com/">https://www.unyoo.com/</a><br>MSDN我告诉你（windows系统镜像及部分软件下载）：<a target="_blank" rel="noopener" href="https://msdn.itellyou.cn/">https://msdn.itellyou.cn/</a></p>
+<h4 id="导航页（工具集）"><a href="#导航页（工具集）" class="headerlink" title="导航页（工具集）"></a>导航页（工具集）</h4><p>世界各国网址大全：<a target="_blank" rel="noopener" href="http://www.world68.com/">http://www.world68.com/</a><br>小森林导航：<a target="_blank" rel="noopener" href="http://www.xsldh6.com/">http://www.xsldh6.com/</a><br>简捷工具：<a target="_blank" rel="noopener" href="http://www.shulijp.com/">http://www.shulijp.com/</a><br>NiceTool.net 好工具网：<a target="_blank" rel="noopener" href="http://www.nicetool.net/">http://www.nicetool.net/</a><br>现实君工具箱（综合型在线工具集成网站）：<a target="_blank" rel="noopener" href="http://tool.uixsj.cn/">http://tool.uixsj.cn/</a><br>蓝调网站：<a target="_blank" rel="noopener" href="http://lcoc.top/">http://lcoc.top/</a><br>偷渡鱼：<a target="_blank" rel="noopener" href="https://touduyu.com/">https://touduyu.com/</a><br>牛导航：<a target="_blank" rel="noopener" href="http://www.ziliao6.com/">http://www.ziliao6.com/</a><br>小呆导航：<a target="_blank" rel="noopener" href="https://www.webjike.com/index.html">https://www.webjike.com/index.html</a><br>简法主页：<a target="_blank" rel="noopener" href="http://www.jianfast.com/">http://www.jianfast.com/</a><br>KIM主页：<a target="_blank" rel="noopener" href="https://kim.plopco.com/">https://kim.plopco.com/</a><br>聚BT：<a target="_blank" rel="noopener" href="https://jubt.net/cn/index.html">https://jubt.net/cn/index.html</a><br>精准云工具合集：<a target="_blank" rel="noopener" href="https://jingzhunyun.com/">https://jingzhunyun.com/</a><br>兔2工具合集：<a target="_blank" rel="noopener" href="https://www.tool2.cn/">https://www.tool2.cn/</a><br>爱资料工具（在线实用工具集合）：<a target="_blank" rel="noopener" href="http://www.toolnb.com/">www.toolnb.com/</a><br>工具导航：<a target="_blank" rel="noopener" href="https://hao.logosc.cn/">https://hao.logosc.cn/</a></p>
+<h4 id="看视频"><a href="#看视频" class="headerlink" title="看视频"></a>看视频</h4><p>电影推荐（分类别致）：<a target="_blank" rel="noopener" href="http://www.mvcat.com/">http://www.mvcat.com/</a><br>APP影院：<a target="_blank" rel="noopener" href="https://app.movie/">https://app.movie/</a><br>去看TV：<a target="_blank" rel="noopener" href="https://www.qukantv.net/">https://www.qukantv.net/</a><br>动漫视频网：<a target="_blank" rel="noopener" href="http://www.zzzfun.com/">http://www.zzzfun.com/</a><br>94神马电影网：<a target="_blank" rel="noopener" href="http://www.9rmb.com/">http://www.9rmb.com/</a><br>NO视频官网：<a target="_blank" rel="noopener" href="http://www.novipnoad.com/">http://www.novipnoad.com/</a><br>蓝光画质电影：<a target="_blank" rel="noopener" href="http://www.languang.co/">http://www.languang.co/</a><br>在线看剧：<a target="_blank" rel="noopener" href="http://dy.27234.cn/">http://dy.27234.cn/</a><br>大数据导航：<a target="_blank" rel="noopener" href="http://hao.199it.com/">http://hao.199it.com/</a><br>多功能图片网站：<a target="_blank" rel="noopener" href="https://www.logosc.cn/so/">https://www.logosc.cn/so/</a><br>牛牛TV：<a target="_blank" rel="noopener" href="http://www.ziliao6.com/tv/">http://www.ziliao6.com/tv/</a><br>VideoFk解析视频：<a target="_blank" rel="noopener" href="http://www.videofk.com/">http://www.videofk.com/</a><br>蓝调网站：<a target="_blank" rel="noopener" href="http://lcoc.top/vip2.3/">http://lcoc.top/vip2.3/</a><br>永久资源采集网：<a target="_blank" rel="noopener" href="http://www.yongjiuzy1.com/">http://www.yongjiuzy1.com/</a></p>
+<h4 id="学设计"><a href="#学设计" class="headerlink" title="学设计"></a>学设计</h4><p>码力全开（产品/设计师/独立开发者的资源库）：<a target="_blank" rel="noopener" href="https://www.maliquankai.com/designnav/">https://www.maliquankai.com/designnav/</a><br>免费音频素材：<a target="_blank" rel="noopener" href="https://icons8.cn/music/">https://icons8.cn/music/</a><br>新CG儿（视频素材模板，无水印+免费下载）：<a target="_blank" rel="noopener" href="https://www.newcger.com/">https://www.newcger.com/</a><br>Iconfont（阿里巴巴矢量图标库）：<a target="_blank" rel="noopener" href="https://www.iconfont.cn/">https://www.iconfont.cn/</a><br>小图标下载：<a target="_blank" rel="noopener" href="https://www.easyicon.net/">https://www.easyicon.net/</a><br>Flight Icon：<a target="_blank" rel="noopener" href="https://www.flighticon.co/">https://www.flighticon.co/</a><br>第一字体转换器：<a target="_blank" rel="noopener" href="http://www.diyiziti.com/">http://www.diyiziti.com/</a><br>doyoudosh（平面设计）：<a target="_blank" rel="noopener" href="http://www.doyoudo.com/">www.doyoudo.com/</a><br>企业宣传视频在线制作：<a target="_blank" rel="noopener" href="https://duomu.tv/">https://duomu.tv/</a><br>MAKE海报设计官网：<a target="_blank" rel="noopener" href="http://maka.im/">http://maka.im/</a><br>一键海报神器：<a target="_blank" rel="noopener" href="https://www.logosc.cn/photo/?utm_source=hao.logosc.cn&amp;utm_medium=referral">https://www.logosc.cn/photo/?utm_source=hao.logosc.cn&amp;utm_medium=referral</a><br>字由（字体设计）：<a target="_blank" rel="noopener" href="http://www.hellofont.cn/">http://www.hellofont.cn/</a><br>查字体网站：<a target="_blank" rel="noopener" href="https://fonts.safe.360.cn/">https://fonts.safe.360.cn/</a><br>爱给网（免费素材下载的网站，包括音效、配乐，3D、视频、游戏，平面、教程）：<a target="_blank" rel="noopener" href="http://www.aigei.com/">http://www.aigei.com/</a><br>在线视频剪辑：<a target="_blank" rel="noopener" href="https://bilibili.clipchamp.com/editor/">https://bilibili.clipchamp.com/editor/</a></p>
+<h4 id="搞文档"><a href="#搞文档" class="headerlink" title="搞文档"></a>搞文档</h4><p>即书（在线制作PPT）：<a target="_blank" rel="noopener" href="https://www.keysuper.com/">https://www.keysuper.com/</a><br>PDF处理：<a target="_blank" rel="noopener" href="https://smallpdf.com/cn/">https://smallpdf.com/cn/</a><br>PDF处理：<a target="_blank" rel="noopener" href="https://www.ilovepdf.com/zh-cn/">https://www.ilovepdf.com/zh-cn/</a><br>PDF处理：<a target="_blank" rel="noopener" href="https://www.pdfpai.com/">https://www.pdfpai.com/</a><br>PDF处理：<a target="_blank" rel="noopener" href="https://www.hipdf.cn/">https://www.hipdf.cn/</a><br>图片压缩，PDF处理：<a target="_blank" rel="noopener" href="https://docsmall.com/">https://docsmall.com/</a><br>腾讯文档（在线协作编辑和管理文档）：docs.qq.com/<br>ProcessOn（在线协作制作结构图）：<a target="_blank" rel="noopener" href="http://www.processon.com/">www.processon.com/</a><br>iLovePDF（在线转换PDF利器）：<a target="_blank" rel="noopener" href="http://www.ilovepdf.com/">www.ilovepdf.com/</a><br>PPT在线制作：<a target="_blank" rel="noopener" href="https://www.woodo.cn/">https://www.woodo.cn/</a><br>PDF24工具（pdf处理工具）：<a target="_blank" rel="noopener" href="https://tools.pdf24.org/en/">https://tools.pdf24.org/en/</a><br>IMGBOT（在线图片处理）：<a target="_blank" rel="noopener" href="http://www.imgbot.ai/">www.imgbot.ai/</a><br>福昕云编辑（在线编辑PDF）：edit.foxitcloud.cn/<br>TinyPNG（在线压缩图片）：tinypng.com/<br>UZER.ME（在线使用各种大应用，在线使用CAD，MATLAB，Office三件套）：uzer.me/<br>优品PPT（模板下载）：<a target="_blank" rel="noopener" href="http://www.ypppt.com/">http://www.ypppt.com/</a><br>第一PPT（模板下载）：<a target="_blank" rel="noopener" href="http://www.1ppt.com/xiazai/">http://www.1ppt.com/xiazai/</a><br>三顿PPT导航：sandunppt.com/<br>Excel函数表：<a target="_blank" rel="noopener" href="https://support.office.com/zh-cn/article/excel-%E5%87%BD%E6%95%B0%EF%BC%88%E6%8C%89%E5%AD%97%E6%AF%8D%E9%A1%BA%E5%BA%8F%EF%BC%89-b3944572-255d-4efb-bb96-c6d90033e188">https://support.office.com/zh-cn/article/excel-函数（按字母顺序）-b3944572-255d-4efb-bb96-c6d90033e188</a></p>
+<h4 id="找图片"><a href="#找图片" class="headerlink" title="找图片"></a>找图片</h4><p>电脑壁纸：<br><a target="_blank" rel="noopener" href="http://lcoc.top/bizhi/">http://lcoc.top/bizhi/</a><br><a target="_blank" rel="noopener" href="https://unsplash.com/">https://unsplash.com/</a><br><a target="_blank" rel="noopener" href="https://pixabay.com/">https://pixabay.com/</a><br><a target="_blank" rel="noopener" href="https://www.pexels.com/">https://www.pexels.com/</a><br><a target="_blank" rel="noopener" href="https://visualhunt.com/">https://visualhunt.com/</a><br><a target="_blank" rel="noopener" href="https://www.ssyer.com/">https://www.ssyer.com/</a><br>彼岸图网：<a target="_blank" rel="noopener" href="http://pic.netbian.com/">http://pic.netbian.com/</a><br>极像素（超高清大图）：<a target="_blank" rel="noopener" href="https://www.sigoo.com/">https://www.sigoo.com/</a><br>免费版权图片搜索：<a target="_blank" rel="noopener" href="https://www.logosc.cn/so/">https://www.logosc.cn/so/</a></p>
+<h3 id="摘自公众号文章"><a href="#摘自公众号文章" class="headerlink" title="摘自公众号文章"></a>摘自公众号文章</h3><table>
+<thead>
+<tr>
+<th>标题</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU2ODEyNzY3Mw==&mid=2247550372&idx=1&sn=79eeeeacd47fbfdd69a2cd7d9531e513&source=41#wechat_redirect">教你不花一分钱，找到想用的论文并直接下载使用</a></td>
+<td>见标题</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkyNTAyNzY1OQ==&mid=2247489550&idx=1&sn=ab542dc7e1fdc4f9703ddb130dbe74c1&source=41#wechat_redirect">你要啥？我一次性全搞给你…</a></td>
+<td>公众号提供的一些软件下载</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/IItItPy6IKnBnkSmOe9VrA">9个 “卧槽” 的网站 ！！！</a></td>
+<td>有趣的网站</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/5SCMES3-ODjNp4z3g4vsvQ">有哪些能玩上一天的网站：</a></td>
+<td>见标题</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU2ODEyNzY3Mw==&mid=2247550277&idx=1&sn=3beb7cb6f989293ad6222721cca35d5f&source=41#wechat_redirect">B站有哪些可以推荐的学习 up 主？</a></td>
+<td>见标题</td>
+</tr>
+</tbody></table>
+<h4 id="个人的东西1"><a href="#个人的东西1" class="headerlink" title="个人的东西1"></a>个人的东西1</h4><p><a target="_blank" rel="noopener" href="http://www.coovo.com/">http://www.coovo.com/</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.mefcl.com/">http://www.mefcl.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.hbxer.top/">https://blog.hbxer.top/</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.zdfans.com/">http://www.zdfans.com/</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.demongan.com/">http://www.demongan.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cuiuc.com/">https://www.cuiuc.com/</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.xiazaigang.com/">http://www.xiazaigang.com/</a></p>
+<p><a target="_blank" rel="noopener" href="http://yx.bsh.me/">http://yx.bsh.me/</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.fakenamegenerator.com/">http://www.fakenamegenerator.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://htmlcolorcodes.com/">https://htmlcolorcodes.com/</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.receive-sms.com/">http://www.receive-sms.com/</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.receivefreesms.com/">http://www.receivefreesms.com/</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.receive-sms-now.com/">http://www.receive-sms-now.com/</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.receivesmsonline.net/">http://www.receivesmsonline.net/</a></p>
+<p><a target="_blank" rel="noopener" href="https://club.huawei.com/thread-21271310-1-1.html">https://club.huawei.com/thread-21271310-1-1.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://namemc.com/">https://namemc.com/</a></p>
+<p><a target="_blank" rel="noopener" href="http://mcpe-monster.com/">http://mcpe-monster.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://game.bilibili.com/unheard/">https://game.bilibili.com/unheard/</a></p>
+<p><a target="_blank" rel="noopener" href="https://woriqq.com/">https://woriqq.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000008040387#articleHeader1">https://segmentfault.com/a/1190000008040387#articleHeader1</a></p>
+<h4 id="个人的东西2"><a href="#个人的东西2" class="headerlink" title="个人的东西2"></a>个人的东西2</h4><p><a target="_blank" rel="noopener" href="https://baileyswu.github.io/">https://baileyswu.github.io/</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.jarjar.cn/">http://www.jarjar.cn/</a></p>
+<p><a target="_blank" rel="noopener" href="https://d2fan.com/">https://d2fan.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://geekplux.com/">https://geekplux.com/</a></p>
+<p><a target="_blank" rel="noopener" href="http://ijiaober.github.io/">http://ijiaober.github.io/</a></p>
+<p><a target="_blank" rel="noopener" href="https://haojen.github.io/">https://haojen.github.io/</a></p>
+<p><a target="_blank" rel="noopener" href="https://ijinxin.github.io/blog/">https://ijinxin.github.io/blog/</a></p>
+<p><a target="_blank" rel="noopener" href="https://itimetraveler.github.io/hexo-theme-hiero/index.html">https://itimetraveler.github.io/hexo-theme-hiero/index.html</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.liaofuzhan.com/">http://www.liaofuzhan.com/</a></p>
+<p><a target="_blank" rel="noopener" href="http://litten.me/">http://litten.me/</a></p>
+<p><a target="_blank" rel="noopener" href="https://siricee.github.io/">https://siricee.github.io/</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.minhow.com/">https://blog.minhow.com/</a></p>
+<p><a target="_blank" rel="noopener" href="http://shenzekun.cn/">http://shenzekun.cn/</a></p>
+<p><a target="_blank" rel="noopener" href="https://crayonnew.github.io/">https://crayonnew.github.io/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ohyhello.com/">https://www.ohyhello.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://slykiten.com/">https://slykiten.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.mayuko.cn/">https://blog.mayuko.cn/</a></p>
+<p><a target="_blank" rel="noopener" href="https://tumutanzi.com/">https://tumutanzi.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://biji.io/links">https://biji.io/links</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ohyhello.com/">https://www.ohyhello.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://vwin.github.io/">https://vwin.github.io/</a></p>
+<p><a target="_blank" rel="noopener" href="https://vevlins.github.io/">https://vevlins.github.io/</a></p>
+<p><a target="_blank" rel="noopener" href="https://yanm1ng.github.io/">https://yanm1ng.github.io/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.91h5.cc/">https://www.91h5.cc/</a></p>
+<p><a target="_blank" rel="noopener" href="https://hiitea.io/">https://hiitea.io/</a></p>
+<p><a target="_blank" rel="noopener" href="https://qsang.xin/">https://qsang.xin/</a></p>
+<p><a target="_blank" rel="noopener" href="https://xaoxuu.com/">https://xaoxuu.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://lkblog.net/">https://lkblog.net/</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Jiangjiang-jiang">https://github.com/Jiangjiang-jiang</a></p>
+<p><a target="_blank" rel="noopener" href="http://p.luob.cn/">http://p.luob.cn/</a></p>
+<p><a target="_blank" rel="noopener" href="https://chaoo.oschina.io/">https://chaoo.oschina.io/</a></p>
+<p><a target="_blank" rel="noopener" href="http://764350177.lofter.com/">http://764350177.lofter.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.timefly.cn/">https://www.timefly.cn/</a></p>
+<p><a target="_blank" rel="noopener" href="https://shuoit.net/">https://shuoit.net/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.haomwei.com/">https://www.haomwei.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lovebing/">https://www.cnblogs.com/lovebing/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.yanjiayu.cn/">https://www.yanjiayu.cn/</a></p>
+<p><a target="_blank" rel="noopener" href="https://xiaoyou66.com/">https://xiaoyou66.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://seriouszyx.github.io/">https://seriouszyx.github.io/</a></p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag:</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">Back</a>
+                <span>· </span>
+                <a href="/">Home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/02/11/210211/">除 夕</a>
+            
+            
+            <a class="next" rel="next" href="/2021/01/04/210104/">MIUI负一屏文案</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>🙄 
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/fireworks.js"></script>

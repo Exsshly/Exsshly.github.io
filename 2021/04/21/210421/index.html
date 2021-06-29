@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="庭院深深深几许">
+
+
+
+<title>如何优雅的在机房使用MSedge | 游园不值</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">游园不值</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">游园不值</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">如何优雅的在机房使用MSedge</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2021-04-21&nbsp;&nbsp;19:56:53</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>————记一次无意发现</p>
+<p>其实学校机房的电脑用过无数次了，电脑自带硬盘保护，每次重启都恢复最开始的样子。</p>
+<p>但是硬盘里的浏览器好像只有ie7或ie8，干啥啥不行，加载网页都显示不全那种。</p>
+<p>此外还有年久失修的Firefox（56版本）和Chrome，每次打开这两个浏览器后就会自动检查更新，然后伴随的就是下载安装的卡顿（渣机），有时候甚至死机，再开机又是重新开始……（不要刚为什么不带自己的电脑，电脑重且到机房远，加上我又懒）</p>
+<p>直到前几天，在某论坛看到单文件版的MSedge90，然后就兴致勃勃的下载带到机房</p>
+<p>但是第一天用时打开很慢（毕竟渣机），打开后任何页面都是“无标题”，包括自己的设置页等，又懒得搞，毕竟划了一晚上水，一开始还以为360的锅。</p>
+<p>可今天却要用到了，无奈之下，就研究起这个单文件了。</p>
+<p>虽然打开很慢，总比检查更新硬盘里有的好很多，单文件确是能打开，但开任何网页还是“无标题”，然后在网上查（用手机）各种方法，最后采用了新建快捷方式并在快捷方式目标文件下添加以下字段，用于开关沙盒（此方法用于解决之前Chrome崩溃的bug）？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--test-type --no-sandbox</span><br></pre></td></tr></table></figure>
+
+<p>这样一来，也是能打开了。但是每次打开都是要慢一拍，很让👴费解，第一次慢就算了，然后追根溯源，发现在<br>会在</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\YourName\AppData\Local\Temp</span><br></pre></td></tr></table></figure>
+
+<p>文件夹下生成一个7zipsfx000文件夹，这就是Windows的临时文件夹。</p>
+<p>好家伙，问题解决了，👴从来没考虑过这个是自解压文件，亏👴一直以为是真的集成的可执行单文件，还是👴不学无术了。</p>
+<p>每次打开都慢的原因是每次打开这个单文件，就在目录下解压出名为文件夹7zipsfx000、7zipsfx001、7zipsfx002……运行的其实还是解压后的./msedge.exe……</p>
+<p>这样一来，👴就了然了。</p>
+<p>看似🐂🍺的东西表面之下，不过是简单的东西，只不过没有发现而已。</p>
+<p>至于7zipsfx，参7zip自解压文件的生成以及文件组成……</p>
+<p>长点心罢。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag:</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%94%9F%E6%B4%BB/"># 生活</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">Back</a>
+                <span>· </span>
+                <a href="/">Home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/04/24/210424/">泡馆</a>
+            
+            
+            <a class="next" rel="next" href="/2021/04/14/210414/">Linux常用指令</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>🙄 
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/fireworks.js"></script>
