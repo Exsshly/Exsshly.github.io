@@ -102,6 +102,68 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
@@ -122,18 +184,19 @@
         </header>
 
         <div class="post-content">
-            <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="db9400605b5a040c70c9b5d896abc1e797bb67b8f675f893ff4141cbfce4e355">4ecd1815fa41cccee0e23db51522d4593cf78b76e0b00a3831bb0f8120a3bdb9673e94661f485f81d554b9efc22039e6b566d77bbb48ba772a49954b498f7e30ffe019917b83aaf95648cd4a7474392343f839b8319ff313ec4fcf733e4d25c9d53fdba44decb2829f8d9550c74909695b443cf216ee8fe52a6eed2d83e8094eeee4804e30a088e2f404d8753a4c6d577af2af80a242e89710cdf16fa1b2246fafba5841e292aff44246245f8cf5af3a6f52b2adbc4e48336f828b27d13e89b449365ecb6f263809c10524b6f327d7c379eb05728dcefaa2b9a87f6e1d5a6a3b08a386420a536429a05baf97e0aa8672058212e0ddef51c3da84ce56e9add5d72883ebe12c1f6e7959aa7befd8ce16850263811be869e56430e29d2ae15ad3c5b8c82dc6467ed1c101d23866bbc71b55ff070c5683cd5175c72faea5176a531ee84090b3fe2cfc246c15f493aa39c9c663eb658338afbb4fb7d1eec4b1a4af497d75f8d364289aa46e754b3c55d44370add6b5ff639a33efec4a86e837604737626feeef4f5360fbc6977109159042dfaac534dfdb74f867601e347f89c89d603360dc4a26e5a810220ef9d387329ed00815950254100d94193ac4df3c693cf9fb00b2c11bcd441757cd563511d125c1c1b56b43cdab6694296f265179087426c3f511e3dc8bcd11b5708659dea96840ea78fd7421a709b53fc34db0349fc96b39e72435fbb1bce913f7ef77d49e4062525567791e45795620d2053d084f9d946421760ff970d0a73bf427a65454ecf2ed0eaa8c894564b6b5be855a7739ddf34ea20102fa17bc619680c2c491cdc6a48d39ee1e676bac94fbde8bbeda43d4cb1f3a7b9366a126dbc2db5590ecbc7e388337291be9fb9268eafa7728f99a16e04eca7885de9536be6cd586bd9747549c431f5e92b394144d1862bb417e20ebf2125afe4c5f233ce05bef49b08353d56f0e16025ee1068346b3c1c56cfcc6039059dfc07edde5be3dd5c5210fc655c8b2447c5465f5d74c701e798aebc20d68fca6466f8a8549ff9b0529d3df0da46f1d61ccad5d93dbd6c9a4e80dc32deb4d4d87f04e46417a0d0b3b90c450eb9fce773ace4467c0e038347b9b9d762cc7a76ebf8a83d2f187bb9666f5f743ebf471d8a661ec05e00274a6dd46916b4c6c2cb032639a155c4eda983153701a5a2a51200a34c76dc1ebc75d0d901709da324836de94554af40d365568dc8a6c98f94498bbce505f7206296c38e6d3c15f69c794ec4b105df1afc905858824f6c67a5fe304087f2889e45a7b5898980e98de376dcc2816bcc314be324cf23344c1f959c01bfec076ff8e26542965fc83b8b9b4e9279e86e0a2f02838a71f20fa53552e2bae0d71ad4007e42cdb4fce57ef09c95e6da5cc6a20cbf4c9cb10db58981ec27ffa9f088b466b2222438dc3936258b5a7b33f78228405fda405af8aece5cbcab7adef8b6bb25388d624fe80f6efb2b1b7b130d037504df8138da61c2c9c16be1bf7ad6dc7294a010077514ae07e3dbaafacd018fe901406b9502b475e9c3c244e2fbb3ca84b1ef0ef533632fa2f962df62d9b2c85591a89e67932f6bb90a9584ea579681e6b22c7b1c95a926b21b511e38d730300ee73f39d593ecc3e0d9845f6a25a768b9b6cddbd9bfbd0149076b103f793ded72fbc08578987dae65ce669bc6b86d895b0831decb3c4e7874970f9a5a7a7dde1a33c885469042ac9a1f3444cc6ae70066e4b123c190ad154a26034cf17960428e454ef987218b69ec97f6e8faeb7420ef918040347027a7dad74a05d75211de45f3ef0b9a65eb4fd10a2a5ab0c4b6961565b1746d7acded46d9bc6b7bf315738b18e3e55e9a22d4073001f847e5aca9987fb73d09f1a03ba7d308e6c6c1abbd81225c3eb389814b79c040ccf6f4fa2e3b2b6d8c9ff9a7fd17bcca32a094a7b53290fcb6a107a3cc0126bf2ba92e4e763a4a1eae43bc1f47644a90253c73db2644fbdf8fa51869ce4c108528c9bca1365ebf8e214c49adcf259aeb4bf156c9763f1369fd881db29f8231a5c2d09206b3e89203986c50921582c5c50b8e1ab7ee7995b42d36e40269be9f905acd7f54fa65ca42a8dc9232c71455a15f816a45938523be281a9df6445cb459a413e896c932cd401f96d8568af9fccf53b1a8889ab96922792a6ce967150405b12d4d1ec0d5c0f426279852c023bb5cf12916224c0b7cf67f81af3ce77b3e1b3f33a07c56bf5c52480692443a4872a8a4605dbb9a4d93a9fc71312df05138705ae7b6d6a1bfad4129ef87e7dd9fe0d74ad1d119003914f5bf78af6871d82bfaf74015da9232ecaf5a750ef2b64b6cedd64bc78afa9b7ff4685fc71600a420329b1f21393c186aae93cd03c7d820969c080e91ad0f5426e36e030e94e7347487840a1bddf51ada392311f6892f24d01b110bae1c5d5e3cb219f857e71d2d1e5b373af85920b51c88aef52b9ca7f9b5c51064ac71e414df528e3b559982245254280d1197075693b520455af3b50360e1f3172a037857cbd38ed8d226ce9e88e8904cce2afabf05b6d48ba8be7b65ccf6cc02ba3f035b52e4026a8823a565596fa6ae48ac411fa44045ba6dade50933b4e0f9ca1d0c541fa5e44d5d5ca0cc226f1d48bf1116a8efe4c0179f29bc6e77a83e879885c34fe26a214c4a17fcd37a2c0f42c015e9754143fa204ec6eed119edfb52f20f46014e13c9a633e12cae8e952433f6840fc578716d8cb0f5ffa043655ab54f6fb3f83800549822ef4d96aa3bf6cc32648af320266e426bb6c35218475e5e9bca7964c3f2b265cbe1815a74f3fe0e7650645a5f3906c80e8707c0e39e3f2a98f6795b19914f1c76cc782789f5300ed87e080592abc3f345b0c0df181a6f775169c4695d188e9783c64fd807415d4d58256fa9fead09f92f4162aa20bd34b28c1d14081417d387c18f26ee85da2ff46027d00e1cb96a663793fa9ce91d3feea8861210c8ff67aec067c134e8703aa3a65610a0e953ee0b88ba1d077dc81139769698bb2e0f9ba7d311a8c5a33238f8729422a274b38db294a8ca4700ad2499cc78edfa2786fd19e940c7d830fc11e23315851028ca6e519256c8571a4bd60914b14135a405e87fb487f8259619cec4f67d9d88d9073302841c93f1b08b91171e250aa8b57d0dedda090d9cdc2c4cf3a7423d42b2fa6bb4696c5ec22e319b0168283dd9ea0b9e81302d6df45f87332ada7cf2e38af9024632cf5bc5db7fe26a577047e08a4deeda8e9a9780822904038e210f4e06e041cac6cd24e74a9f11b26345728af6cf2c59dc5f178853951ed954a001cba69887e60c30fd99b198cf983b0adfc2701b0786b048fb261fc2ddd35a35e94e82af37bdd83998831065804697aa3d1824c475f41e14f4ad6af5dedfd38006e7fe5e70f3e30e427322c236412a1361601bf1204807bfd045855e9b6ef6013016641b974060161e39fbeed6674171a643c1d9e874d5ac3d97807b3cc3ecb77b1544ddb0f94ac176b26d86547e095195273d9d8f887a58d9422d980bfda925e9517a68cca21747b782d42518a13364a04b13904077917823f6fa2bad125909dec93d80f6a38abeb270e321e8b219612e92332ad41ed6b5f0862f2d6ef27e95314a4966b26681004cdf1a1e654bc2fe3ad895481ae174f1bcd1082337b1f91813f0ab367eb4c65c94e5f4e45fd46b31a5a5bc7ac486c0b94671d731037a14fe7c72a20f7c5fdcf1d6afa7d4792d8cdc7bc444c96703ba6145bb0044a8e9bb3eb22c8bad2df870872212e69e16be960b33b976d385b95d4e23e368aa79095e28d9a955ca0190ac1df8bc0f527eb3323dcdbbbb299853ae8c04f2e0a4aeca214fbcf13058d3264f778cbda38488ef29c8003ca47f0edc20ad1e7d97ffc4867ac4b5843330e029a66ada4ccb37a260d818e244de0f7b19415b82329c4d24b360b736c6d8a04638337f3a43fd0c684dccc305db8a170e763504334597460cfd863ca9d4c69f64520dbc74f39427259d3656165f04323daf3db893dad8b1de0abe6a2484afde34a7ac96f7f00dc3fdf0868bfe602f415214662f34556f8a6bbfca9d72ee139fa56896e585a064b7d7a2fe4524b044cc17cf7b9fbb6a748c85187dda3aaa8d4d67736dda98a3e727bea949da6a6d5e321e7e8a6238fa2cd59597a7828201794b34569bb4e8f5c685b64520ee6a26db3c2fd635ea0b24ccf5c4dcf7822b0f1c7359f916c94437d45e379b4470dd9483701353b98cf09208506ea6709bc5c1ed910ce76981114a4cca09df54be8206aa7e5c8a8bf8cc140f0c4434fe93a9206da3ac5c46b5b22074a43eca0da485791d95677640eb56eaa823ec0ea7f86e63032f28e77fb426b3158db50c0ad2261c083d3bcbd408703e8ab1ac816ef478b06c79aee661a808c82aaf62599b15851a3b34938eb2740f20e291a01b1cdd1e3dfda350a3f20d72377f7c99b</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Psd</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+            <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>到明天，《权力的游戏第八季》播出最后一集也就告一段落了，一代不朽美剧也落下帷幕……就在上个月，这一季第一集播出的时候，一周一集感觉真的是更的有点慢了，到现在，时间如白驹过隙，一个多月，转眼就过去了。</p>
+<p>从刚开始播出的时候，一直到现在，甚至明天早上，只能在高数课上眼巴巴的看着朋友圈动态发的“首映”以及群里人物剧情的讨论，而我，那时却只能在课上讨论<strong>多重积分</strong>……</p>
+<h2 id="入坑"><a href="#入坑" class="headerlink" title="入坑"></a>入坑</h2><p>其实我早就知道这美剧，也看过不少人吹爆它，但我看到剧照尤其是古装剧，就能想起大天朝的宫斗剧，着实头疼……</p>
+<p>转折在高二升高三那个<del>漫长的</del>暑假，七月很短，期末在中旬，然后就回家休息两天然后写十天左右的作业再收拾东西再滚去学校补课(高考)，八月补了若干天的自习，最后人性化的给了我们九月一前的一周七天假期，在家实在是无聊，就用这七天的小长假，没日没夜的看，七天最后刷完了七季。看的酣畅淋漓，真香……</p>
+<p>说真的，看第一季的时候确实很难坚持下来，庞大的家族体系、复杂的人物关系以及看似毫不相关的剧情，实在是很伤。但是越到后来，剧情线越发清楚，越看越有意思，无法自拔……</p>
+<p>到了高三，学业渐忙，关于《权力的游戏》唯一的慰藉就是，偶尔碰到几个<del>臭味相投</del>志同道合同学在吃饭时候讨论一下剧情，就这样，不知多久，高三也就过来了。</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>再然后就是大一的上学期，我竟是没想到，军训后大一新生竟然要上一年的早晚自习，我X，好不容易过了三年早晚自习，这一套还是有一年，我只能愤懑的去上早晚自习。但是却不安分，尤其是手机也要上交……想想也是苦逼。于是晚自习寂寞难耐，想去图书馆转转，偶然竟然看到了《冰与火之歌》全套，那便不用客气，怒借《冰与火之歌》第一卷的三本，从此晚自习倒也安分埋头苦读，真好。</p>
+<p>借阅记录：<br><img src="190519.jpg"></p>
+<p>遗憾的是，那时候看得太急，很多细节都没记住，而且后来美剧和小说脱节，有时也会将两个进度记混……</p>
+<h2 id="再见"><a href="#再见" class="headerlink" title="再见"></a>再见</h2><p>天下没有不散的筵席，尽管现在很多人都说最后的这两集有些烂尾的感觉，毕竟它已经陪伴GOT迷们八九年的时光，天下没有真正的完美，权游也难免，看便是了，实在是接受不了结局，那就等着马丁老爷子后续的小说吧。</p>
+<p>怎么说，感谢权游陪伴过那些我无聊的时光，以及，那些和我谈论剧情的人。</p>
+<p>……</p>
+
         </div>
 
         
