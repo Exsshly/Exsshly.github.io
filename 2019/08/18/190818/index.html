@@ -10,7 +10,7 @@
 
 
 
-<title>Tips | 游园不值</title>
+<title>记住密码脚本 | 游园不值</title>
 
 
 
@@ -106,14 +106,14 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Tips</h1>
+            <h1 class="post-title">记住密码脚本</h1>
             
                 <div class="post-meta">
                     
 
                     
                         <span class="post-time">
-                        Date: <a href="#">2023-01-01&nbsp;&nbsp;6:00:00</a>
+                        Date: <a href="#">2019-08-18&nbsp;&nbsp;15:10:26</a>
                         </span>
                     
                     
@@ -122,8 +122,100 @@
         </header>
 
         <div class="post-content">
-            <p>由于某些特殊原因，大部分posts不便于展示<br>等待将来重写后再提交<br>Farewell…</p>
+            <p>记住密码：</p>
+<p><code>(function () &#123;</code></p>
+<pre><code>var ask = true;
 
+var counter = 0;
+
+whenReady(go);
+
+function go() &#123;
+
+    
+    if (!document.querySelector(&quot;input[type=password]&quot;)) &#123;
+        if (counter &gt; 10) return;
+        counter++;
+        setTimeout(go, 100);
+        return;
+    &#125;
+    
+    var allInput = document.querySelectorAll(&quot;input&quot;);
+    var allShownInput = [];
+    var name;
+    var pass;
+    for (var i = 0; i &lt; allInput.length; i++) &#123;
+        if (allInput[i].offsetWidth != 0) &#123;
+            if (allInput[i].hasAttribute(&quot;type&quot;)) &#123;
+                if ((allInput[i].getAttribute(&quot;type&quot;) == &quot;password&quot;) || (allInput[i].getAttribute(&quot;type&quot;) == &quot;text&quot;)) allShownInput.push(allInput[i]);
+            &#125; else &#123;
+                allShownInput.push(allInput[i]);
+            &#125;
+        &#125;
+    &#125;
+    for (i = 1; i &lt; allShownInput.length; i++) &#123;
+        if (allShownInput[i].type == &quot;password&quot;) &#123;
+            pass = allShownInput[i];
+            name = allShownInput[i - 1];
+        &#125;
+    &#125;
+    if ((!pass) || (!name)) &#123;
+        if (counter &gt; 20) return;
+        counter++;
+        setTimeout(go, 200);
+        return;
+    &#125;
+    
+
+    if (ask) &#123;
+        if (!localStorage.xxM_ifrm) &#123;
+            if (confirm(&quot;记住本站密码吗？&quot;)) &#123; 
+                localStorage.setItem(&quot;xxM_ifrm&quot;, &quot;true&quot;);
+                localStorage.xxM_ifrm = &quot;true&quot;;
+            &#125; else &#123;
+                localStorage.setItem(&quot;xxM_ifrm&quot;, &quot;false&quot;);
+                return;
+            &#125;
+        &#125;
+        if (localStorage.xxM_ifrm == &quot;false&quot;) &#123;
+            return;
+        &#125;
+    &#125;
+  
+
+
+   
+    if (!localStorage.xxM_name) &#123;
+        localStorage.setItem(&quot;xxM_name&quot;, &quot;&quot;);
+        localStorage.setItem(&quot;xxM_pass&quot;, &quot;&quot;);
+    &#125;
+    name.value = localStorage.xxM_name;
+    pass.value = localStorage.xxM_pass;
+    name.addEventListener(&quot;input&quot;, function () &#123;
+        localStorage.xxM_name = name.value;
+    &#125;);
+    pass.addEventListener(&quot;input&quot;, function () &#123;
+        localStorage.xxM_pass = pass.value;
+    &#125;);
+    
+
+    setTimeout(function () &#123; 
+        if ((name.value != localStorage.xxM_name) || (pass.value !=localStorage.xxM_pass)) &#123;
+            name.value = localStorage.xxM_name;
+            pass.value = localStorage.xxM_pass;
+        &#125;
+    &#125;, 500);
+   
+
+&#125;
+</code></pre>
+<p><code>function whenReady(func) &#123;if(document.readyState===&quot;interactive&quot;||document.readyState===&quot;complete&quot;) &#123;func();&#125;else&#123;document.addEventListener(&quot;DOMContentLoaded&quot;,func);&#125;&#125;</code></p>
+<p><code>&#125;)();</code></p>
+<p>清除保存密码：</p>
+<p><code>localStorage.removeItem(&quot;xxM_ifrm&quot;);</code></p>
+<p><code>localStorage.removeItem(&quot;xxM_name&quot;);</code></p>
+<p><code>localStorage.removeItem(&quot;xxM_pass&quot;);</code></p>
+<div style="text-align: right"> 出处@[枯寂如秋](https://shimo.im/docs/I8axPbephlQaEjiY/read) </div>
         </div>
 
         
@@ -132,6 +224,10 @@
                 <span>Tag:</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -142,8 +238,10 @@
         </section>
         <section class="post-nav">
             
+                <a class="prev" rel="prev" href="/2020/02/17/200217/">拾 穗</a>
             
-            <a class="next" rel="next" href="/2022/03/27/220327/">关于强迫症的硬盘分区</a>
+            
+            <a class="next" rel="next" href="/2019/07/26/190726/">自用应用</a>
             
         </section>
 

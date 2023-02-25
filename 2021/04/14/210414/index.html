@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="庭院深深深几许">
+
+
+
+<title>Linux常用指令 | 游园不值</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">游园不值</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">游园不值</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Linux常用指令</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2021-04-14&nbsp;&nbsp;22:29:33</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="目录操作命令"><a href="#目录操作命令" class="headerlink" title="目录操作命令"></a>目录操作命令</h3><h4 id="切换工作目录和显示目录内容的命令"><a href="#切换工作目录和显示目录内容的命令" class="headerlink" title="切换工作目录和显示目录内容的命令"></a>切换工作目录和显示目录内容的命令</h4><h5 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h5><p>格式：cd [目的目录]</p>
+<p>说明：用于切换工作目录到目的目录，前提是用户拥有进入目的目录的权限。其中目的目录可以是绝对路径或相对路径，若目录名称省略，则切换至使用者的主目录</p>
+<p>示例1：切换至/home/user目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd /home/user</span><br></pre></td></tr></table></figure>
+
+<p>示例2：切换至根目录与切换至家目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd /</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~</span><br></pre></td></tr></table></figure>
+
+<p>示例3：切换至上级目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd ..</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h5><p>格式：pwd</p>
+<p>说明：该指令不带任何选项和参数，用于查看当前工作目录的完整路径</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pwd</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h5><p>格式：ls [选项]… [文件或目录]…</p>
+<p>说明：用于列出目录的内容，包括文件和子目录的名称</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a或--all</td>
+<td>列出目录下所有的文件和目录，包含隐藏文件</td>
+</tr>
+<tr>
+<td>-A或--almost-all</td>
+<td>列出除“.”(当前目录)以及“..”(上级目录)外的任何的文件和目录</td>
+</tr>
+<tr>
+<td>-b或--escape</td>
+<td>把文件名中不可输出的字符用反斜杠加字符编号的形式列出</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>输出文件的ctime（文件最后更改的时间），并根据ctime排序</td>
+</tr>
+<tr>
+<td>-C</td>
+<td>分成多列显示文件和目录</td>
+</tr>
+<tr>
+<td>-d或--dictionary</td>
+<td>将目录像文件一样显示，而不是显示其下的文件</td>
+</tr>
+<tr>
+<td>-F或--classify</td>
+<td>加上文件类型的指示符号，其中“*”表示可执行的普通文件；“/”表示目录；“@”表示符号链接；“l”表示管道文件；“=”表示套接字</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>列出文件详细信息，具体如下表</td>
+</tr>
+</tbody></table>
+<p>示例1：显示/home/user/usr下的文件和目录的详细信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l /home/user/usr</span><br></pre></td></tr></table></figure>
+
+<p>示例2：显示/home/user/usr下的所有文件，包含隐藏文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -a /home/user/usr</span><br></pre></td></tr></table></figure>
+
+<p>示例3：以多列形式显示目录/home/user/usr下的内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -C /home/user/usr</span><br></pre></td></tr></table></figure>
+
+<p>示例4：显示目录/home/user/usr下的所有以test命名的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -a test.*</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="文件详细信息字段表"><a href="#文件详细信息字段表" class="headerlink" title="文件详细信息字段表"></a>文件详细信息字段表</h5><p>使用指令“ls -l”命令输出的信息分成7个字段（每段下划线算一段）列表，示例拆分后如下</p>
+<p><u>drwx r-x r-x</u> <u>2</u> <u>zhao</u> <u>student</u> <u>48</u>  <u>Sept 05 16:39</u> <u>test</u></p>
+<p>第 1 字段：表示文件类型及访问权限，由10个字符组成，第一字母表示文件类型，具体如下</p>
+<ul>
+<li><p>- 该文件是普通文件</p>
+</li>
+<li><p>d 该文件是目录</p>
+</li>
+<li><p>c 该文件是字符设备文件</p>
+</li>
+<li><p>b 该文件是块设备文件</p>
+</li>
+<li><p>p 该文件是管道文件</p>
+</li>
+<li><p>l 该文件是符号链接文件</p>
+</li>
+<li><p>该文件是套接字</p>
+<p>后面的9个字符表示文件的访问权限，将在“存取文件权限部分展开</p>
+</li>
+</ul>
+<p>第 2 字段：文件链接数字段。表示文件硬链接数或目录子目录数</p>
+<p>第 3 字段：文件属主字段。表示文件所有者</p>
+<p>第 4 字段：文件所属用户组字段。表示该文件所属的用户组</p>
+<p>第 5 字段：文件大小字段。表示该文件的大小，以字节为单位</p>
+<p>第 6 字段：最后修改时间字段。表示该文件最后修改时间</p>
+<p>第 7 字段：文件名字段。表示该文件的文件名，如果是符号链接，”-&gt;“箭头符号后面跟一个它指向的文件</p>
+<h4 id="创建和删除目录命令"><a href="#创建和删除目录命令" class="headerlink" title="创建和删除目录命令"></a>创建和删除目录命令</h4><h5 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h5><p>格式：mkdir [选项]… 目录名</p>
+<p>说明：用于创建由目录名命名的目录，同时设置该目录的权限。要求创建目录的用户在当前目录中具有读写权限，并且目录名不能是当前目录中已有的目录或文件名称</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-m或--mode=MODE</td>
+<td>对新建目录设置存取权限</td>
+</tr>
+<tr>
+<td>-p或--parents</td>
+<td>若所建目录的上层目录不存在，则一并建立</td>
+</tr>
+</tbody></table>
+<p>示例1：在当前目录下建立子目录mktest，并且只有该目录主人有读写和执行权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir -m 700 mktest</span><br></pre></td></tr></table></figure>
+
+<p>示例2：在当前目录下建立子目录parentdir/mktest，如果parentdir没有，则一并建立</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir -p ./parentdir/mktest</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="rmdir"><a href="#rmdir" class="headerlink" title="rmdir"></a>rmdir</h5><p>格式：rmdir [选项]… 目录名…</p>
+<p>说明：用于从一个目录中删除一个或多个目录。删除目录时，必须对该目录的父目录具有写权限，目录被删除前应该是空目录</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-p或--parents</td>
+<td>删除指定目录后，若该目录的上层目录已变成空目录，则一并删除</td>
+</tr>
+</tbody></table>
+<p>示例：删除当前目录下名为test的目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rmdir test</span><br></pre></td></tr></table></figure>
+
+<p>示例：删除当前目录下名为mktest的目录，若其上层目录变成空目录，则一并删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rmdir -p mktest</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="文件操作命令"><a href="#文件操作命令" class="headerlink" title="文件操作命令"></a>文件操作命令</h3><h4 id="复制、删除和移动文件命令"><a href="#复制、删除和移动文件命令" class="headerlink" title="复制、删除和移动文件命令"></a>复制、删除和移动文件命令</h4><h5 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h5><p>格式：cp [选项] 源文件或目录 目标文件或目录</p>
+<p>说明：用于完成文件的复制</p>
+<ul>
+<li>如果源是普通文件，该命令把源文件复制成指定的目标文件或复制到指定的目标目录中</li>
+<li>如果源是目录，目标是一已存在的目录，该命令把源目录下的所有文件和子目录都复制到目标目录中</li>
+<li>如果源是目录，目标不是一已存在的目录，出现错误信息</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a或-archive</td>
+<td>等同于-dpR</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>复制符号链接时，把目标文件或目录也建立为符号链接，并指向与源文件或目录链接的原始文件或目录</td>
+</tr>
+<tr>
+<td>-f或--force</td>
+<td>强行复制文件或目录，不论目标文件或目录是否已存在</td>
+</tr>
+<tr>
+<td>-i或--interactive</td>
+<td>覆盖目标文件前需要确认</td>
+</tr>
+<tr>
+<td>-n或--no-clobber</td>
+<td>不覆盖已存在的目标文件</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>复制源文件或目录内容的同时也复制文件属性</td>
+</tr>
+<tr>
+<td>-R，-r或-recursive</td>
+<td>递归复制目录，将源目录下所有文件及子目录都复制到目标位置</td>
+</tr>
+</tbody></table>
+<p>示例1：将当前目录下源文件samp1复制成目标文件samp2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp samp1 samp2</span><br></pre></td></tr></table></figure>
+
+<p>示例2：将当前目标下源文件samp1和samp2复制到目录/home/user/usr下（如果目录不存在，提示错误信息）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp samp1 samp2 /home/user/usr</span><br></pre></td></tr></table></figure>
+
+<p>示例3：将/home/user/usr目录及目录下所有文件及其子目录复制到/home/user/usr1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp -r /home/user/usr /home/user/usr1</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h5><p>格式：rm [选项] …文件或目录…</p>
+<p>说明：用于删除文件或目录，删除目录需要加“-r”选项。对于链接文件，知识删除链接文件，原有文件保持不变</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-f或--force</td>
+<td>强制删除文件或目录</td>
+</tr>
+<tr>
+<td>-i或--interactive</td>
+<td>删除文件或目录前提示用户确认</td>
+</tr>
+<tr>
+<td>-r，-R或--recursive</td>
+<td>递归删除指定目录下及其下属各级子目录和相应的文件</td>
+</tr>
+</tbody></table>
+<p>示例1：删除当前目录下文件testf1、testf2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm testf1 testf2</span><br></pre></td></tr></table></figure>
+
+<p>示例2：删除当前目录下文件testf，删除前提示用户确认</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm -i testf</span><br></pre></td></tr></table></figure>
+
+<p>示例3：删除目录/home/user/usr1及下属的各级子目录和相应的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm -r /home/user/usr1</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h5><p>格式：mv [选项] 源文件或目录 目标文件或目录</p>
+<p>说明：用于移动文件或目录，也用于改变文件或目录的名称</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-i或--interactive</td>
+<td>覆盖文件前需要确认</td>
+</tr>
+<tr>
+<td>-f或--force</td>
+<td>若目标文件或目录已存在，直接覆盖</td>
+</tr>
+<tr>
+<td>-n或--no-clobber</td>
+<td>不覆盖已存在的文件</td>
+</tr>
+<tr>
+<td>-u或--update</td>
+<td>移动或更改文件名时，若目标文件已存在，且文件日期比源文件新，则不覆盖目标文件</td>
+</tr>
+</tbody></table>
+<p>示例1：将当前目录下文件testf1改名为testnew</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv testf1 testnew</span><br></pre></td></tr></table></figure>
+
+<p>示例2：将当前目录下文件testf1和testf2移动到目录/home/user/usr下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv testf1 testf2 /home/user/usr</span><br></pre></td></tr></table></figure>
+
+<p>示例3：将目录/home/user/usr1移动到目录/home/user/usr下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv /home/user/usr1 /home/user/usr</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="显示文件命令"><a href="#显示文件命令" class="headerlink" title="显示文件命令"></a>显示文件命令</h4><h5 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h5><p>格式：cat [选项] …[文件]…</p>
+<p>说明：用于把多个文件连接后输出到标准输出或加“&gt;文件名”输出到另一个文件中</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-b或--number-noblank</td>
+<td>从1开始对所有非空输出进行编号</td>
+</tr>
+<tr>
+<td>-n或--number</td>
+<td>从1开始对所有输出行编号</td>
+</tr>
+<tr>
+<td>-s或--squeeze-blank</td>
+<td>将连续两行以上的空白行合并成一行空白行</td>
+</tr>
+</tbody></table>
+<p>示例1：同时显示当前目录下testf1和testf2内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat testf1 testf1</span><br></pre></td></tr></table></figure>
+
+<p>示例2：将当前目录下testf1和testf2内容合并，并通过重定向符“&gt;”输出到文件testf3中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat testf1 testf1 &gt;testf3</span><br></pre></td></tr></table></figure>
+
+<p>示例3：从键盘输入信息到当前目录下的文件inputfile中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat &gt; inputfile</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="more"><a href="#more" class="headerlink" title="more"></a>more</h5><p>格式：more [选项] [文件]</p>
+<p>说明：用于显示文本文件的内容，一次显示一屏，满屏后停下来，但可通过如下键继续</p>
+<ul>
+<li>Space：默认显示文本的下一屏内容</li>
+<li>Enter：默认显示文本的下一行内容</li>
+<li>d键或Ctrl+D：向下显示文本半屏，默认为11行</li>
+<li>b键或Ctrl+B：默认显示文本的上一屏内容</li>
+<li>q或Q或Interrupt：退出more命令</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-num</td>
+<td>指定一个整数，表示一屏显示多少行</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>在每屏底部显示提示信息，包括当前显示的百分比，按键提示等</td>
+</tr>
+<tr>
+<td>-c或-p</td>
+<td>不滚屏，在显示下一行之前先清屏</td>
+</tr>
+<tr>
+<td>+num</td>
+<td>从行号num开始显示</td>
+</tr>
+<tr>
+<td>+/pattern</td>
+<td>定义一字符串，在文件中查找该字符串，从该字符串后开始显示</td>
+</tr>
+</tbody></table>
+<p>示例1：从22行开始显示当前目录下testf文件的内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ more +22 testf</span><br></pre></td></tr></table></figure>
+
+<p>示例2：显示当前目录下testf文件的内容，每屏10行，每屏底部显示提示信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ more -d -10 testf</span><br></pre></td></tr></table></figure>
+
+<p>示例3：从当前目录下testf文件内容中查找字符串”Hello“，并从该字符串后显示且每屏显示五行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ more -5 +/Hello</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="less"><a href="#less" class="headerlink" title="less"></a>less</h5><p>格式：less [选项] [文件]…</p>
+<p>说明：与more类似，分屏显示文件内容。less命令允许向前（PageUp）或向后（PageDown）浏览文件。在less命令提示符下按q键退出</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-i或--ignore-case</td>
+<td>搜索时忽略大小写，除非搜索串中包含大写字母</td>
+</tr>
+<tr>
+<td>-I或--IGNORE-CASE</td>
+<td>搜索时忽略大小写</td>
+</tr>
+<tr>
+<td>-m或--long-prompt</td>
+<td>显示读取文件的百分比</td>
+</tr>
+<tr>
+<td>-M或--LONG-PROMPT</td>
+<td>显示读取文件的百分比、行号及总行数</td>
+</tr>
+<tr>
+<td>-N或--LINE-NUMBERS</td>
+<td>在每行前输出行号</td>
+</tr>
+<tr>
+<td>-p pattern或--pattern=pattern</td>
+<td>定义一字符串，在文件中查找该字符串，从该字符串后开始显示</td>
+</tr>
+</tbody></table>
+<p>示例1：用less命令显示/etc/testf文件的内容，在每行前输出行号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ less -N /etc/testf</span><br></pre></td></tr></table></figure>
+
+<p>示例2：用less命令从/etc/testf文件中查找字符串”Hello“，并从该字符串后显示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ less -p Hello /etc/testf</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="head"><a href="#head" class="headerlink" title="head"></a>head</h5><p>格式：head  [选项] …[文件]…</p>
+<p>说明：用于查看一个文本文件的开头部分，行数由参数决值定，默认值是10</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-c或--bytes=num</td>
+<td>显示文件前面num个字节</td>
+</tr>
+<tr>
+<td>-n或--lines=num</td>
+<td>显示文件前面num行，不指定此参数显示前10行</td>
+</tr>
+</tbody></table>
+<p>示例1：显示当前目录下testf文件前10个字节内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ head -c10 testf</span><br></pre></td></tr></table></figure>
+
+<p>示例2：显示当前目录下testf文件前5行内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ head -n5 testf</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h5><p>格式：tail [选项] …[文件]…</p>
+<p>说明：用于查看文本文件的末尾若干行，行数由参数决值定，默认值是10；若给定的文件不止一个，则在显示的每个文件前面加一个文件名标题</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-c或--bytes=num</td>
+<td>显示文件最后面num个字节</td>
+</tr>
+<tr>
+<td>-n或--lines=num</td>
+<td>显示文件最后面num行，不指定此参数显示10行</td>
+</tr>
+</tbody></table>
+<p>示例1：显示当前目录下testf文件后10个字节内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tail -c10 testf</span><br></pre></td></tr></table></figure>
+
+<p>示例2：显示当前目录下testf文件最后5行内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tail -n5 testf</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="搜索、排序、及去掉重复内容命令"><a href="#搜索、排序、及去掉重复内容命令" class="headerlink" title="搜索、排序、及去掉重复内容命令"></a>搜索、排序、及去掉重复内容命令</h4><h5 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h5><p>格式：grep [选项] 查找模式 [文件…]</p>
+<p>说明：用于在文本文件中查找指定模式的词或短语，并打印匹配的行。如果没有指定文件名，grep命令会搜索标准输入</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-b或--byte-offset</td>
+<td>在显示符合匹配字符串行前，标识该行第一个字符的位编号</td>
+</tr>
+<tr>
+<td>-c或--count</td>
+<td>计算符合匹配字符串的行数</td>
+</tr>
+<tr>
+<td>-E</td>
+<td>将查找模式解释成拓展的正则表达式，相当于egrep</td>
+</tr>
+<tr>
+<td>-F</td>
+<td>将查找模式解释成单纯的字符串，相当于fgrep</td>
+</tr>
+<tr>
+<td>-i或--ignore-case</td>
+<td>忽略字符大小写</td>
+</tr>
+<tr>
+<td>-n或--line-number</td>
+<td>在显示包含匹配字符串的行之前，标示出该行的行号</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>反转查找，显示不包含匹配字符串的文本行</td>
+</tr>
+<tr>
+<td>-V</td>
+<td>显示版本信息</td>
+</tr>
+<tr>
+<td>-x或--line-regexp</td>
+<td>只显示全行都严格匹配的行</td>
+</tr>
+</tbody></table>
+<p><strong>greb正则表达式元字符集</strong></p>
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>^</td>
+<td>行首定位，指定行的头部</td>
+<td>‘^apple’匹配所有以apple开头的字符串</td>
+</tr>
+<tr>
+<td>$</td>
+<td>行尾定位，指定行的尾部</td>
+<td>‘apple$’匹配所有以apple结尾的字符串</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配任意一个字符</td>
+<td>‘app.e’匹配apple、appoe或其他</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配0个或多个前导字符</td>
+<td><code>NULL</code></td>
+</tr>
+<tr>
+<td>[]</td>
+<td>匹配[]中任意一个字符</td>
+<td>‘app[lo]e’会匹配apple或appoe</td>
+</tr>
+<tr>
+<td>\&lt;</td>
+<td>从匹配正则表达式的行开始</td>
+<td><code>NULL</code></td>
+</tr>
+<tr>
+<td>&gt;\</td>
+<td>到匹配正则表达式的行结束</td>
+<td><code>NULL</code></td>
+</tr>
+<tr>
+<td>x\{m,n}</td>
+<td>m代表前导字符数量的下限，n代表上限</td>
+<td><code>NULL</code></td>
+</tr>
+</tbody></table>
+<p>示例1：从当前目录下fruit文件中查找包含apple的行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep apple fruit</span><br></pre></td></tr></table></figure>
+
+<p>示例2：从当前目录下fruit文件中查找包含apple的行，且不区分大小写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep -i apple fruit</span><br></pre></td></tr></table></figure>
+
+<p>示例3：显示当前目录下fruit文件中所有以t结尾的行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep t$ fruit</span><br></pre></td></tr></table></figure>
+
+<p>示例4：显示当前目录下fruit文件中所有包含至少有6个连续小写字符的字符串的行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep &#x27;[a-z]\&#123;6\&#125;&#x27; fruit</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h5><p>格式：sort [选项] …[文件]…</p>
+<p>说明：用于对指定文件中所有的行排序，将结果显示在标准输出上。如不指定输入文件或使用”-“，表示排序的内容来自标准输入</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-m或--merge</td>
+<td>若给定文件已排好序，合并文件</td>
+</tr>
+<tr>
+<td>-c或--check</td>
+<td>检查给定文件是否排序，未排序打印出错信息，以状态值1退出</td>
+</tr>
+<tr>
+<td>-u或--unique</td>
+<td>对排序后相同的行只保留其中一行</td>
+</tr>
+<tr>
+<td>-o 文件名</td>
+<td>将排序输出写到输出文件中而不是标准输出</td>
+</tr>
+<tr>
+<td>-d或-dictionary-order</td>
+<td>按字典顺序排序</td>
+</tr>
+<tr>
+<td>-f或--ignore-case</td>
+<td>忽略字母大小写</td>
+</tr>
+<tr>
+<td>-r或--reverse</td>
+<td>按逆序输出排序结果，默认排序输出时按升序</td>
+</tr>
+<tr>
+<td>+pos1-pos2</td>
+<td>指定一个或几个字段作为排序关键字，字段位置从pos1开始，到pos2为止（包含pos1，不含pos2），如不指定pos2，则关键字为从pos1到行尾。字段和字符的位置从0开始</td>
+</tr>
+</tbody></table>
+<p>示例1：将当前目录下fruits文件按逆序后输出到文件fruitsort中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sort -r -o fruitsort fruits</span><br></pre></td></tr></table></figure>
+
+<p>示例2：将当前目录下fruit文件按第一列和第二列排序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sort +1 -3 fruits</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h5><p>格式：uniq [选项]… [输入文件 [输出文件]]</p>
+<p>说明：检查及删除文本文件中重复出现的行。该命令读入输入文件检查和删除相邻重复出现的行，加工后的结果写到输出文件中。如果输入文件用”-“表示，则从标准输入读取。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-c或--count</td>
+<td>显示输出中，在每行行首加上本行在文件中出现的次数</td>
+</tr>
+<tr>
+<td>-d或--repeated</td>
+<td>只显示文件中的各重复行</td>
+</tr>
+<tr>
+<td>-u或--unique</td>
+<td>只显示文件中不重复的各行</td>
+</tr>
+</tbody></table>
+<p>示例1：去掉当前目录下testf文件中相邻的重复的行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ uniq testf</span><br></pre></td></tr></table></figure>
+
+<p>示例2：去掉当前目录下testf文件中相邻的重复的行，并在行首显示该行在文件中出现的次数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ uniq -c testf</span><br></pre></td></tr></table></figure>
+
+<p>示例3：去掉当前目录下testf文件中相邻的重复的行，并将结果输出到文件neat中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ uniq testf neat</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="比较文件内容命令"><a href="#比较文件内容命令" class="headerlink" title="比较文件内容命令"></a>比较文件内容命令</h4><h5 id="comm"><a href="#comm" class="headerlink" title="comm"></a>comm</h5><p>格式：comm [选项]… 文件1 文件2</p>
+<p>说明：用于对两个已经排序好的文件进行比较，comm从文件1和文件2中读取正文进行比较，生成三行输出</p>
+<ul>
+<li>在两个文件中都出现的行</li>
+<li>仅在文件1中出现的行</li>
+<li>仅在文件2中出现的行</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-123</td>
+<td>选项1、2、3分别表示不显示common输出中的第一列、第二列和第三列</td>
+</tr>
+</tbody></table>
+<p>示例：比较当前目录下的samp1和samp2</p>
+<p>先对两个文件排序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sort -o samp1 samp1</span><br><span class="line">$ sort -o samp2 samp2</span><br></pre></td></tr></table></figure>
+
+<p>比较两个文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ comm samp1 samp2</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="diff"><a href="#diff" class="headerlink" title="diff"></a>diff</h5><p>格式：diff [选项]… 文件列表</p>
+<p>说明：用于比较文本文件，并找出它们的不同。diff命令功能比comm命令更强大，不要求文件预先排序。如果两个文件完全一样，该命令不显示任何输出。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-b或--ignore-space-change</td>
+<td>忽略空格造成的不同</td>
+</tr>
+<tr>
+<td>-B或--ignore-blank-lines</td>
+<td>忽略空行造成的不同</td>
+</tr>
+<tr>
+<td>-i或--ignore-case</td>
+<td>忽略大小写的不同</td>
+</tr>
+<tr>
+<td>-r或-recursive</td>
+<td>当比较的文件都是目录时，递归比较子目录中的文件</td>
+</tr>
+</tbody></table>
+<p>示例：比较当前目录下的samp1和samp2的差异</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ diff samp1 samp2</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="文件内容统计命令"><a href="#文件内容统计命令" class="headerlink" title="文件内容统计命令"></a>文件内容统计命令</h4><h5 id="wc"><a href="#wc" class="headerlink" title="wc"></a>wc</h5><p>格式：wc [选项] …[文件]…</p>
+<p>说明：用于统计给定文件中的字节数、字数、行数。其中字是由空格字符区分开的最大字符串。wc命令同时也给出所有指定文件的总统计数。如果没有给出文件名，则从标准输入读取</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-c或--bytes</td>
+<td>统计字节数</td>
+</tr>
+<tr>
+<td>-m或--chars</td>
+<td>统计字符数</td>
+</tr>
+<tr>
+<td>-l或--lines</td>
+<td>统计行数</td>
+</tr>
+<tr>
+<td>-w或--words</td>
+<td>统计字数</td>
+</tr>
+</tbody></table>
+<p>示例1：统计当前目录下testf文件的行数、字数、字节数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wc -cwl testf</span><br></pre></td></tr></table></figure>
+
+<p>示例2：统计当前目录下testf1和testf2的字符数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wc -m testf1 testf2</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="查找文件命令"><a href="#查找文件命令" class="headerlink" title="查找文件命令"></a>查找文件命令</h4><h5 id="find"><a href="#find" class="headerlink" title="find"></a>find</h5><p>格式：find [路径名…] [表达式]</p>
+<p>说明：用于查找符合条件的文件和目录。路径名是用空格隔开的要搜索文件的目录名清单，表达式包含要寻找的文件的匹配规范或说明。表达式是从左向右求值的，只要表达式中的测试结果为真，进行下一个测试。如果测试结果不符合，则当前文件的处理结束，检查下一个文件</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-amin n</td>
+<td>查找系统中最后n分钟被访问过的文件或目录</td>
+</tr>
+<tr>
+<td>-anewer&lt;参考文件或目录&gt;</td>
+<td>查找其存取时间较指定文件或目录的存取时间更接近现在的文件或目录</td>
+</tr>
+<tr>
+<td>-atime n</td>
+<td>查找系统中最后n*24小时被访问过的文件或目录</td>
+</tr>
+<tr>
+<td>-cmin n</td>
+<td>查找系统最后n分钟被更改的文件或目录</td>
+</tr>
+<tr>
+<td>-cnewer&lt;参考文件或目录&gt;</td>
+<td>查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录</td>
+</tr>
+<tr>
+<td>-ctime n</td>
+<td>查找系统中最后n*24小时被改变状态的文件</td>
+</tr>
+<tr>
+<td>-depth</td>
+<td>从指定目录下最深层的子目录开始查找</td>
+</tr>
+<tr>
+<td>-daystart</td>
+<td>从本日开始计算时间</td>
+</tr>
+<tr>
+<td>-exec&lt;执行指令&gt;</td>
+<td>假设find指令的回传值为True，就执行该指令</td>
+</tr>
+<tr>
+<td>-fstype&lt;文件系统类型&gt;</td>
+<td>只寻找该文件系统类型下的文件或目录</td>
+</tr>
+<tr>
+<td>-gid&lt;群组识别码&gt;</td>
+<td>查找符合指定群组识别码的文件或目录</td>
+</tr>
+<tr>
+<td>-group&lt;群组名称&gt;</td>
+<td>查找符合指定群组名的文件或目录</td>
+</tr>
+<tr>
+<td>-inum&lt;inode编号&gt;</td>
+<td>查找符合指定的inode编号的文件或目录</td>
+</tr>
+<tr>
+<td>-mmin n</td>
+<td>查找在n分钟内曾被更改过的文件或目录</td>
+</tr>
+<tr>
+<td>-mtime n</td>
+<td>查找在n天内曾被更改过的文件或目录</td>
+</tr>
+<tr>
+<td>-name&lt;范本样式&gt;</td>
+<td>指定字符串作为寻找文件或目录的范本样式</td>
+</tr>
+<tr>
+<td>-path&lt;范本样式&gt;</td>
+<td>指定字符串作为寻找目录的范本样式</td>
+</tr>
+<tr>
+<td>-perm&lt;权限数值&gt;</td>
+<td>查找符合指定的权限数值的文件或目录</td>
+</tr>
+<tr>
+<td>-print</td>
+<td>假设find指令的回传值为True，就将文件或目录名称列出到标准输出。格式为每列一个名称，每个名称之前皆有“./”字符串</td>
+</tr>
+<tr>
+<td>-prune</td>
+<td>不寻找字符串作为寻找文件或目录的范本样式</td>
+</tr>
+<tr>
+<td>-size&lt;文件大小&gt;</td>
+<td>查找符合指定的文件大小的文件</td>
+</tr>
+<tr>
+<td>-type&lt;文件类型&gt;</td>
+<td>只寻找符合指定的文件类型的文件。b-块设备文件；d-目录；c-字符设备文件；p-管道文件；l-符号链接文件；f-普通文件</td>
+</tr>
+<tr>
+<td>-uid&lt;用户识别码&gt;</td>
+<td>查找符合指定的用户识别码的文件或目录</td>
+</tr>
+<tr>
+<td>-user&lt;拥有者名称&gt;</td>
+<td>查找符合指定的拥有者名称的文件或目录</td>
+</tr>
+</tbody></table>
+<p>示例1：查找当前用户主目录下的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find ~ -print</span><br></pre></td></tr></table></figure>
+
+<p>示例2：查找当前用户主目录下最近3天内存取过的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find ~ atime 3 -print</span><br></pre></td></tr></table></figure>
+
+<p>示例3：查找当前目录下类型是目录的文件并排序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find . -type d |sort</span><br></pre></td></tr></table></figure>
+
+<p>示例4：查找当前目录下拓展名为md的文件并显示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find . -name &quot;*.md&quot; -print</span><br></pre></td></tr></table></figure>
+
+<p>示例5：查找当前目录下权限为755的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find . -perm 755 -print</span><br></pre></td></tr></table></figure>
+
+<p>示例6：查找当前目录下属主为stu的文件并显示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find . -user stu -print</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="文件的压缩和备份"><a href="#文件的压缩和备份" class="headerlink" title="文件的压缩和备份"></a>文件的压缩和备份</h4><h5 id="bzip2"><a href="#bzip2" class="headerlink" title="bzip2"></a>bzip2</h5><p>格式：bzip2 [选项] [要压缩的文件]</p>
+<p>说明：用于压缩文件，压缩完后产生.bz2的压缩文件，<strong>并删除原始文件</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-c或--stdout</td>
+<td>将压缩或解压缩的结果送到标准输出</td>
+</tr>
+<tr>
+<td>-d或--decompress</td>
+<td>执行解压缩</td>
+</tr>
+<tr>
+<td>-f或--force</td>
+<td>压缩或解压缩时，若输出文件与现有文件同名，覆盖现有文件</td>
+</tr>
+<tr>
+<td>-k或--keep</td>
+<td>在压缩或解压缩后，保留原始文件</td>
+</tr>
+</tbody></table>
+<p>示例1：压缩当前目录下的testf文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bzip2 testf</span><br></pre></td></tr></table></figure>
+
+<p>示例2：解压缩当前目录下的testf.bz2，并保留原始文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bzip2 -d -k testf.bz2</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h5><p>格式：gzip [选项] [文件…]</p>
+<p>说明：用于压缩文件，压缩后产生.gz的压缩文件，<strong>并删除原始文件</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-c或--stdout或--to-stuout</td>
+<td>压缩后文件输出到标准输出设备，不改变原始文件</td>
+</tr>
+<tr>
+<td>-d或--decompress或--uncompress</td>
+<td>执行解压缩</td>
+</tr>
+<tr>
+<td>-f或--force</td>
+<td>强行压缩文件</td>
+</tr>
+<tr>
+<td>-n或--no-name</td>
+<td>压缩文件时，不保存原来的文件名称及时间戳记</td>
+</tr>
+<tr>
+<td>-N或--name</td>
+<td>压缩文件时，保存原来的文件名称及时间戳记</td>
+</tr>
+<tr>
+<td>-r或--recursive</td>
+<td>递归处理，将指定目录下的所有文件及子目录一并处理</td>
+</tr>
+</tbody></table>
+<p>示例1：压缩当前目录下的testf文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gzip testf</span><br></pre></td></tr></table></figure>
+
+<p>示例2：解压缩当前目录下的testf.gz</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gzip -d testf.gz</span><br></pre></td></tr></table></figure>
+
+<p>示例3：压缩当前目录下tdir目录中的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gzip -r tdir</span><br></pre></td></tr></table></figure>
+
+<p>示例4：压缩当前目录下testf文件到samp.gz中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gzip -c testf &gt; samp.gz</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="tar-tape-achieve"><a href="#tar-tape-achieve" class="headerlink" title="tar (tape achieve)"></a>tar (tape achieve)</h5><p>格式：tar [选项…] [文件或目录]</p>
+<p>说明：用于建立、还原备份，可以加入、解开备份文件内的文件</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-A或--catenate</td>
+<td>新增tar文件到已存在的备份文件</td>
+</tr>
+<tr>
+<td>-c或--create</td>
+<td>建立新的备份文件</td>
+</tr>
+<tr>
+<td>-f&lt;备份文件&gt;或--file=&lt;备份文件&gt;</td>
+<td>指定备份文件</td>
+</tr>
+<tr>
+<td>-t或--list</td>
+<td>列出备份文件的内容</td>
+</tr>
+<tr>
+<td>-v或--verbose</td>
+<td>显示指令执行过程</td>
+</tr>
+<tr>
+<td>-x或--extract或--get</td>
+<td>从备份文件中还原文件</td>
+</tr>
+<tr>
+<td>-delete</td>
+<td>从备份文件中删除指定的文件</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>将文件追加到备份文件包里</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>通过gzip指令处理备份文件</td>
+</tr>
+<tr>
+<td>-j</td>
+<td>通过bzip2指令处理备份文件</td>
+</tr>
+</tbody></table>
+<p>示例1：将目录下的bakf1、bakf2、bakf3备份到文件bak.tar中，并显示备份指令执行过程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -cvf bak.tar bakf1 bakf2 bakf3</span><br></pre></td></tr></table></figure>
+
+<p>示例2：将当前目录下的备份文件bak.tar还原</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvf bak.tar</span><br></pre></td></tr></table></figure>
+
+<p>示例3：将当前目录下的文件bakf0备份到bak0.tar中，并新增bak0.tar到已存在的备份文件bak.tar中（可使用”tar -tvf *.tar“列出tar包内内容）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ tar -cvf bak0.tar bakf0</span><br><span class="line">$ tar -Avf bak.tar bak0.tar</span><br></pre></td></tr></table></figure>
+
+<p>示例3u：直接添加bak0到bak.tar中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -rvf bak.tar bak0</span><br></pre></td></tr></table></figure>
+
+<p>示例4：用bzip2命令将备份文件bak.tar压缩</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bzip2 bak.tar</span><br></pre></td></tr></table></figure>
+
+<p>示例5：用gzip命令将备份文件bak.tar压缩</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gzip bak.tar</span><br></pre></td></tr></table></figure>
+
+<p>示例6：在当前目录下，创建并压缩备份目录xxx为xxx.tar.bz2，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -jcvf xxx</span><br></pre></td></tr></table></figure>
+
+<p>示例7：在当前目录下，创建并压缩备份目录xxx为xxx.tar.gz</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -zcvf xxx.tar.gz xxx</span><br></pre></td></tr></table></figure>
+
+<p>示例7r：在当前目录下，将xxx.tar.gz解压缩并还原</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvf xxx.tar.gz</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h5><ul>
+<li>gzip只能压缩文件 , 不能压缩目录 , 而且不保留原文件。解压使用gzip –d或者 gunzip</li>
+<li>bzip2压缩文件,压缩文件后缀为.bz2；选项“-k”产生压缩文件后保留原文件。解压使用bzip2 –d或者 bunzip2</li>
+<li>zip压缩文件,压缩文件后缀为.zip；选项“-r”用来压缩目录。解压使用unzip</li>
+<li>执行“tar -zcvf(-jcvf) [源文件]”；产生.gz(.bz2)文件</li>
+<li>执行“tar -xvf(-jxvf/-zxvf) [*.gz(*.bz2)]”用以解包还原文件</li>
+</ul>
+<h3 id="改变文件或存取权限的命令"><a href="#改变文件或存取权限的命令" class="headerlink" title="改变文件或存取权限的命令"></a>改变文件或存取权限的命令</h3><h5 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h5><p>存取权限是用来确定谁可以通过何种方式对文件和目录进行访问，Linux下规定3种访问文件和目录的方式</p>
+<ul>
+<li>读(r)：对文件表示只允许指定用户读取该文件内容，禁止做任何更改操作；对目录表示可以列出存储在该目录下的文件</li>
+<li>写(w)：对文件表示允许指定用户打开并修改该文件；对目录表示允许从该目录中删除或添加新文件</li>
+<li>执行(x)：对文件表示允许指定用户执行该文件；对目录表示允许在该目录中进行查找，能用cd命令将工作目录改为该目录</li>
+</ul>
+<p>对于”ls -l“显示的文件或目录详细信息的第1字段</p>
+<p>示例：- rwx rwx -–</p>
+<p>第1个字符表示该文件为普通文件，第2至第4字符表示该文件的文件主具有的权限，示例中可读、可写、可执行或可查询；</p>
+<p>第5至第7字符表示该文件组用户的权限，示例中可读、可写、可执行或可查询；</p>
+<p>第8至第10字符表示其他用户对该文件的权限，示例中其他用户对此文件无操作权限</p>
+<h5 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h5><h6 id="方式1：字符设定法"><a href="#方式1：字符设定法" class="headerlink" title="方式1：字符设定法"></a>方式1：字符设定法</h6><p>格式：chmod [who] [opt] [mode] 文件名或目录名…</p>
+<p>说明：用于改变文件或目录的访问权限，其中</p>
+<p>who表示对象，是以下字母中的一个或多个的组合</p>
+<ul>
+<li>u：表示文件的所有者</li>
+<li>g：表示同组用户</li>
+<li>o：表示其他用户</li>
+<li>a：表示所有用户</li>
+</ul>
+<p>opt：表示操作</p>
+<ul>
+<li>+：添加某个权限</li>
+<li>-：取消某个权限</li>
+<li>=：赋予给定的权限，并取消原有权限</li>
+</ul>
+<p>mode：表示权限，是以下字母一个或多个的组合</p>
+<ul>
+<li>r：可读</li>
+<li>w：可写</li>
+<li>x：可执行</li>
+</ul>
+<p>示例1：为当前目录下test.txt文件的主人同组用户增加读写权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chmod g+rw test.txt</span><br></pre></td></tr></table></figure>
+
+<p>示例2：将当前目录下test.txt文件的权限改变为文件主可以读和写，同组用户可以执行，其他用户无权访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chmod u=rw,g=x test.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="方式2：数字设定法"><a href="#方式2：数字设定法" class="headerlink" title="方式2：数字设定法"></a>方式2：数字设定法</h6><p>格式：chmod [mode] 文件名或目录名…</p>
+<p>说明：将rwx看成二进制数，如果该位有权限，用1表示，该位没有权限，用0表示。例如，rwx r-x r-- 可以表示位111 101 100，再将其每三位数转换成一位八进制数，就是754。常见权限数字表示如下</p>
+<table>
+<thead>
+<tr>
+<th>权限</th>
+<th>对应二进制</th>
+<th>八进制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rwx rw- rw-</td>
+<td>111 110 110</td>
+<td>766</td>
+</tr>
+<tr>
+<td>rw- r-- r--</td>
+<td>110 100 100</td>
+<td>644</td>
+</tr>
+<tr>
+<td>rwx r-x r-x</td>
+<td>111 101 101</td>
+<td>755</td>
+</tr>
+<tr>
+<td>r-- -– -–</td>
+<td>100 000 000</td>
+<td>400</td>
+</tr>
+<tr>
+<td>r-x r-- r--</td>
+<td>101 100 000</td>
+<td>540</td>
+</tr>
+</tbody></table>
+<p>示例：将当前目录下test.txt文件的权限设为文件主可读写，同组用户可读写，其他用户只读</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chmod 664 test.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="改变用户组和文件主的命令"><a href="#改变用户组和文件主的命令" class="headerlink" title="改变用户组和文件主的命令"></a>改变用户组和文件主的命令</h3><h5 id="chgrp"><a href="#chgrp" class="headerlink" title="chgrp"></a>chgrp</h5><p>格式：chgrp [选项]… 所属组 文件或目录…</p>
+<p>说明：用于改变指定文件所属的用户组，其中所属组可以是用户组的ID，也可以是用户组的组名。文件时是以空格分开的要改变属组的文件列表，支持通配符。在Linux下一般只有超级用户才能改变该文件的属组。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-R或--recursive</td>
+<td>递归式地改变指定目录及其下的所有子目录和文件的属组</td>
+</tr>
+</tbody></table>
+<p>示例1：将当前目录下文件test.txt的用户组改为teacher</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chgrp teacher test.txt</span><br></pre></td></tr></table></figure>
+
+<p>示例2：将目录/home/user/usr及其子目录下的所有文件的用户组改为teacher</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chgrp -R teacher /home/user/usr</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="chown"><a href="#chown" class="headerlink" title="chown"></a>chown</h5><p>格式：chown [选项]… [用户][:[组]] 文件…</p>
+<p>说明：用于将指定文件的拥有者改为指定的用户或组。用户可以是用户名或用户ID。组可以是组名或组ID。文件是以空格分开的要改变权限的文件列表，支持通配符。在Linux下一般只有超级用户才可以使用该命令。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-R或--recursive</td>
+<td>递归式改变指定目录及其下的所有子目录和文件的拥有者</td>
+</tr>
+</tbody></table>
+<p>示例1：将当前目录下test.txt文件的所有者改为root</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chown root test.txt</span><br></pre></td></tr></table></figure>
+
+<p>示例2：将目录/home/user/usr及其下所有文件和目录的所有者改为root</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chown -R root /home/user/usr</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="链接文件的命令"><a href="#链接文件的命令" class="headerlink" title="链接文件的命令"></a>链接文件的命令</h3><h5 id="ln"><a href="#ln" class="headerlink" title="ln"></a>ln</h5><p>ln不带参数默认创建硬链接</p>
+<p>硬链接文件有两个限制：</p>
+<ol>
+<li>不允许给目录创建硬链接</li>
+<li>只有在同一文件系统中的文件之间才能创建硬链接</li>
+</ol>
+<p>格式：ln [选项]… 源文件或目录 目标文件或目录</p>
+<p>说明：用于链接文件或目录，如同时指定两个以上的文件或目录，且最后的目的地是一个已经存在的目录，则会把前面指定的所有文件或目录复制到该目录中。若同时指定多个文件或目录，且最后的目的地并非是一个已存在的目录，则会出现错误信息</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-s</td>
+<td>对源文件建立软链接（符号链接），而非硬链接</td>
+</tr>
+</tbody></table>
+<p>示例1：为当前目录下的文件testf文件建立硬链接，名为testHARD</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ln testf testfHARD</span><br></pre></td></tr></table></figure>
+
+<p>示例2：为当前目录下的文件testf文件建立软链接，名为testSYMBOL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s testf testSYMBOL</span><br></pre></td></tr></table></figure>
+
+<p>区别：</p>
+<ol>
+<li>硬链接的原文件和链接文件共用一个inode号，说明它们是同一个文件；而软链接的原文件和链接文件有不同的inode号，表明他们是两个不同的文件；</li>
+<li>硬链接在文件属性上体现不出来，其表示文件类型的字符处为“-”(普通文件)，因为在本质上硬链接文件和原文件是完全平等关系；而软链接明确标识是链接文件，其类型的字符处为“l”；</li>
+<li>硬链接的链接数目要增加；软链接的链接数目不会增加；</li>
+<li>硬链接文件大小跟原文件完全相同；软链接文件大小与原文件不同；</li>
+<li>硬链接有自己的文件名；而软链接的文件名通常是指向其链接的原文件。</li>
+</ol>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag:</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">Back</a>
+                <span>· </span>
+                <a href="/">Home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/04/29/210429/">Arch的安装</a>
+            
+            
+            <a class="next" rel="next" href="/2021/02/18/210218/">公元纪年与天干地支的换算</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>🙄 
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/fireworks.js"></script>

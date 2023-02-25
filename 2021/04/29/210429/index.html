@@ -10,7 +10,7 @@
 
 
 
-<title>归档: 2023 | 游园不值</title>
+<title>Arch的安装 | 游园不值</title>
 
 
 
@@ -99,22 +99,97 @@
     }
 </script>
         <div class="main">
-            <div class="post-wrap archive">
+            <div class="container">
     
     
-        
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Arch的安装</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2021-04-29&nbsp;&nbsp;14:53:49</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p><del>👴乱写的东西……在虚拟机下的安装，实机安装不要忘了WiFi（笔记本）</del></p>
+<p><strong>硬盘分区</strong></p>
+<p><code>cfdisk /dev/sda</code></p>
+<p>选gpt</p>
+<p>efi空间分100~200M（EFI System）</p>
+<p>余下分根分区（Linux root （x86-64））</p>
+<p>不要忘了type后write一下</p>
+<p><strong>分区格式化及确认</strong></p>
+<p><code>mkfs.fat /dev/sda1</code></p>
+<p><code>mkfs.ext4 /dev/sda2</code></p>
+<p><code>lsblk</code></p>
+<p><strong>挂载分区及确认</strong></p>
+<p><code>mount /dev/sda2 /mnt</code></p>
+<p><code>mkdir -p /mnt/boot/EFI</code></p>
+<p><code>mount /dev/sda1 /mnt/boot/EFI</code></p>
+<p><code>lsblk</code></p>
+<p><strong>安装系统（需要联网）</strong></p>
+<p><code>pacstrap /mnt base linux linux-firmware dhcpcd vim</code></p>
+<p><strong>生成 fstab 文件</strong></p>
+<p><code>genfstab -U /mnt &gt;&gt;/mnt/etc/fstab</code></p>
+<p><code>cat /mnt/etc/fstab</code></p>
+<p><strong>切换新安装的系统</strong></p>
+<p><code>arch-chroot /mnt</code></p>
+<p><code>passwd</code></p>
+<p><strong>添加普通用户</strong></p>
+<p><code>useradd -m -G wheel -s /bin/bash *username*</code></p>
+<p><code>passwd *username*</code></p>
+<p><strong>Grub引导</strong></p>
+<p><code>pacman -S grub efibootmgr</code></p>
+<p><code>grub-install --target=x86_64-efi --efi-directory=/boot/EFI</code></p>
+<p><code>grub-mkconfig -o /boot/grub/grub.cfg</code></p>
+<p><strong>退出并进入系统</strong></p>
+<p><code>exit</code></p>
+<p><code>reboot</code></p>
+
+        </div>
 
         
-            <h3>2023</h3>
-        
+        <section class="post-tags">
+            <div>
+                <span>Tag:</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">Back</a>
+                <span>· </span>
+                <a href="/">Home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/04/30/210430/">Arch的配置</a>
+            
+            
+            <a class="next" rel="next" href="/2021/04/14/210414/">Linux常用指令</a>
+            
+        </section>
 
-        <article class="archive-item">
-            <a class="archive-item-link" href="/2023/01/01/221024/">Tips</a>
-            <span class="archive-item-date">2023-01-01</span>
-        </article>
-    
-    
+
+    </article>
 </div>
+
         </div>
         <footer id="footer" class="footer">
     <div class="copyright">
