@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="庭院深深深几许">
+
+
+
+<title>装机设置 | 游园不值</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">游园不值</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">游园不值</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">装机设置</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2023-06-20&nbsp;&nbsp;14:00:12</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>最TM烦装系统了，不知道从什么时候开始。</p>
+<p>高二高三竟然对此乐此不疲，班里的电脑最多同时存在了三个系统且无缝切换……</p>
+<p>趁着两次卸载掉三哥牌的Chromium，那每个月的累计更新就是更新不上，0x800f081f，错误代码我都会背了，从三月卸载掉Edge到杭州的累计更新更不上，一气之下屏蔽掉更新回去Win10，再后来装22H1，我以为就万事大吉，结果还是不行。后来在哪看到那个错误代码是缺少什么🐦组件，思来想去我只卸掉的所谓不能卸载的三哥牌Chromium。今天无事就再装一遍。</p>
+<p>本着前人栽树后人乘凉的原则，其实我早就想写一个清单，每次装完系统手忙脚乱的配置，这次干脆就把个人操作的流程记录一下，后面就不用东拼西凑了，直接看这里就好。</p>
+<h3 id="高级格式化前"><a href="#高级格式化前" class="headerlink" title="高级格式化前"></a>高级格式化前</h3><ul>
+<li><p>备份C盘用户目录下各种文件(包括不限于微信聊天记录以及git配置等)</p>
+</li>
+<li><p>备份控制面板卸载程序页所有程序</p>
+</li>
+<li><p>备份桌面及磁贴(W11已经取消这里延续叫法)布局</p>
+</li>
+<li><p>有一个目标系统的镜像(必要时有一个Office镜像以及MS运行库)</p>
+</li>
+</ul>
+<h3 id="装机"><a href="#装机" class="headerlink" title="装机"></a>装机</h3><ul>
+<li>这里不写，爱怎么装怎么装</li>
+</ul>
+<h3 id="开机后设置"><a href="#开机后设置" class="headerlink" title="开机后设置"></a>开机后设置</h3><ul>
+<li>过oobe(这里不想签字登录邮箱就写<a href="mailto:&#49;&#64;&#x31;&#46;&#99;&#111;&#x6d;">&#49;&#64;&#x31;&#46;&#99;&#111;&#x6d;</a>密码随便)</li>
+<li>开机卸载应用，有时候可能需要卸载两次(重启之后又rm回来了！)<br>以下都在W1x系设置里配置</li>
+<li>设置屏幕缩放125%(个人习惯以及显示器问题)</li>
+<li>杀掉麦克风(从来没用过)</li>
+<li>设置屏幕和睡眠</li>
+<li>开启剪贴板历史记录</li>
+<li>设置鼠标指针</li>
+<li>设置触摸板</li>
+<li>配置开始页以及任务栏</li>
+<li>设置开机PIN</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>下面是个人习惯，不想系统保留空间太大且不用的情况下释放掉空间，都需要管理员权限运行</p>
+<ul>
+<li>关闭休眠&ensp;<br>通过<code>powercfg /h</code>关闭，后通过电源设置里关闭快速启动以及睡眠</li>
+<li>关闭系统还原(似乎默认就是关闭状态，这里保险起见个人还是去控制面板里确认一下)</li>
+<li>关闭保留空间</li>
+</ul>
+<p><code>dism.exe /Online /Set-ReservedStorageState /State:Disabled</code></p>
+<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;BaseHardReserveSize&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</code></p>
+<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;BaseSoftReserveSize&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</code></p>
+<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;HardReserveAdjustment&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</code></p>
+<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;MinDiskSize&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</code></p>
+<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;ShippedWithReserves&quot; /t REG_DWORD /d &quot;0&quot; &gt;nul</code></p>
+<ul>
+<li>装上Office三件套</li>
+<li>使用Dism++调教其他非外显设置</li>
+<li>根据备份单装回软件<br><del>装translucentTB，W11还要额外配置个什么东西才透明啊md，参<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv22300526">https://www.bilibili.com/read/cv22300526</a></del><br><del>开QuickLook</del><br><del>开WallpaperEngine(可选，22H2上只要开了就掉帧什么意思)</del><br><del>还原磁贴，还原经典记事本、画图以及创建Aria</del><br><del>装Hexo:npm install -g hexo-cli</del><br><del>还原C盘用户目录下各种文件(包括不限于微信聊天记录以及git配置等)</del><br><del>WindowsUpdate安装更新</del><br><del>Kclener调教一遍</del><br><del>WiseCare调教两遍</del><br><del>CCClener调教三遍</del><br>如是……</li>
+</ul>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag:</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">Back</a>
+                <span>· </span>
+                <a href="/">Home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2023/05/13/230513/">合 群</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>🙄 
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/fireworks.js"></script>
