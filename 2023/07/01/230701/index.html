@@ -10,7 +10,7 @@
 
 
 
-<title>装机设置 | 游园不值</title>
+<title>魔法传递 | 游园不值</title>
 
 
 
@@ -168,14 +168,14 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">装机设置</h1>
+            <h1 class="post-title">魔法传递</h1>
             
                 <div class="post-meta">
                     
 
                     
                         <span class="post-time">
-                        Date: <a href="#">2023-06-20&nbsp;&nbsp;14:00:12</a>
+                        Date: <a href="#">2023-07-01&nbsp;&nbsp;8:34:02</a>
                         </span>
                     
                     
@@ -184,52 +184,17 @@
         </header>
 
         <div class="post-content">
-            <p>最TM烦装系统了，不知道从什么时候开始。</p>
-<p>高二高三竟然对此乐此不疲，班里的电脑最多同时存在了三个系统且无缝切换……</p>
-<p>趁着两次卸载掉三哥牌的Chromium，那每个月的累计更新就是更新不上，0x800f081f，错误代码我都会背了，从三月卸载掉Edge到杭州的累计更新更不上，一气之下屏蔽掉更新回去Win10，再后来装22H1，我以为就万事大吉，结果还是不行。后来在哪看到那个错误代码是缺少什么🐦组件，思来想去我只卸掉的所谓不能卸载的三哥牌Chromium。今天无事就再装一遍。</p>
-<p>本着前人栽树后人乘凉的原则，其实我早就想写一个清单，每次装完系统手忙脚乱，为了以后能够流畅些(是TMD真的烦装系统)，这次干脆就把个人操作的流程记录一下，后面就不用东拼西凑了，直接看这里就好。</p>
-<h3 id="高级格式化前"><a href="#高级格式化前" class="headerlink" title="高级格式化前"></a>高级格式化前</h3><ul>
-<li><p>备份C盘用户目录下各种文件(包括不限于微信聊天记录以及git配置等)</p>
-</li>
-<li><p>备份控制面板卸载程序页所有程序</p>
-</li>
-<li><p>备份桌面及磁贴(W11已经取消这里延续叫法)布局</p>
-</li>
-<li><p>有一个目标系统的镜像(必要时有一个Office镜像以及MS运行库)</p>
-</li>
-</ul>
-<h3 id="装机"><a href="#装机" class="headerlink" title="装机"></a>装机</h3><ul>
-<li>这里不写，爱怎么装怎么装</li>
-</ul>
-<h3 id="开机后设置"><a href="#开机后设置" class="headerlink" title="开机后设置"></a>开机后设置</h3><ul>
-<li>过oobe(这里不想签字登录邮箱就写<a href="mailto:&#x31;&#x40;&#x31;&#46;&#x63;&#x6f;&#109;">&#x31;&#x40;&#x31;&#46;&#x63;&#x6f;&#109;</a>密码随便)</li>
-<li>开机卸载应用，有时候可能需要卸载两次(重启之后又rm回来了！)<br>以下都在W1x系设置里配置</li>
-<li>设置屏幕缩放125%(个人习惯以及显示器问题)</li>
-<li>杀掉麦克风(从来没用过)</li>
-<li>设置屏幕和睡眠</li>
-<li>开启剪贴板历史记录</li>
-<li>设置鼠标指针</li>
-<li>设置触摸板</li>
-<li>配置开始页以及任务栏</li>
-<li>设置开机PIN</li>
-</ul>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>下面是个人习惯，不想系统保留空间太大且不用的情况下释放掉空间，都需要管理员权限运行</p>
-<ul>
-<li>关闭休眠&ensp;<br>通过<code>powercfg /h</code>关闭，之后还要通过电源设置里关闭快速启动以及睡眠</li>
-<li>关闭系统还原(似乎默认就是关闭状态，这里保险起见个人还是去控制面板里确认一下)</li>
-<li>关闭保留空间</li>
-</ul>
-<p><code>dism.exe /Online /Set-ReservedStorageState /State:Disabled</code></p>
-<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;BaseHardReserveSize&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</code></p>
-<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;BaseSoftReserveSize&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</code></p>
-<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;HardReserveAdjustment&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</code></p>
-<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;MinDiskSize&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</code></p>
-<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;ShippedWithReserves&quot; /t REG_DWORD /d &quot;0&quot; &gt;nul</code></p>
-<ul>
-<li>装上Office三件套</li>
-<li>使用Dism++调教其他非外显设置</li>
-<li>根据备份单装回软件，必要时恢复环境<br><del>装translucentTB，W11还要额外配置个什么东西才透明啊md，参<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv22300526">https://www.bilibili.com/read/cv22300526</a></del><br><del>开QuickLook，开WallpaperEngine(可选，22H2上只要开了就掉帧什么意思)</del><br><del>还原磁贴，还原经典记事本、画图以及创建Aria</del><br><del>装Hexo:npm install -g hexo-cli</del><br><del>还原C盘用户目录下各种文件(包括不限于微信聊天记录以及git配置等)</del><br><del>WindowsUpdate安装更新</del><br><del>Kclener调教一遍</del><br><del>WiseCare调教两遍</del><br><del>CCClener调教三遍</del><br>如是……最想想起什么再补充什么，或者什么时候装系统觉得不合适再增删……<br>PS：一个月内装了三次系统才想起来写，惭愧……</li>
-</ul>
+            <h3 id="楔子"><a href="#楔子" class="headerlink" title="楔子"></a>楔子</h3><p>本文讲述通过使用代理的PC开启热点将魔法传递到其他设备。<br>（本文灵感来源于iPhone5设备IOS版本过低无法安装使用各种魔法而想的投机取巧方法，本来还想写一个iPhone5从10降级到8再安装8+6双系统过程，鉴于网上教程已经很完善了这里就不再开篇）</p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>由于手机或者其他设备通过电脑的热点连接是直接转发到电脑网卡的，无法经过代理，所以需<br>要在手机或其他设备上进行代理设置，让它们通过代理端口。</p>
+<p>这里就以Clash为例，V2ray及SSR实测依然可行，方法大同小异。</p>
+<ol>
+<li>确定电脑可以通过Clash进行正常连接，即无限制的访问互联网</li>
+<li>开启Clash的<strong>Allow Lan</strong> ，这使得Clash允许来自局域网连接(在V2ray及SSR中，勾选允许来自局域网的连接)</li>
+<li>查看本机ipv4地址(ipconfig)，这里假设为<code>192.168.0.8</code></li>
+<li>查看Clash的端口号，新版本Clash的socks端口及http端口合并在一起了<code>首页即可看到</code>，这里使用的是http端口；在V2ray中http端口号为<code>socks端口号 + 1</code>；在SSR中，是看<code>本地端口</code>；这里假设为<code>7890</code></li>
+<li>手机或其它设备先连接上PC共享的热点，进入对应WiFi的详细设置界面</li>
+<li>将代理选项从无改成手动，选项主机名及端口分别设置为上面查看到的信息，即地址填入<code>192.168.0.8</code>，选项代理服务器端口改为<code>7890</code>，确认等待重新连接即可</li>
+</ol>
 
         </div>
 
@@ -253,10 +218,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2023/06/27/230627/">BingAI tags</a>
             
-            
-            <a class="next" rel="next" href="/2023/05/13/230513/">合 群</a>
+            <a class="next" rel="next" href="/2023/06/27/230627/">BingAI tags</a>
             
         </section>
 
