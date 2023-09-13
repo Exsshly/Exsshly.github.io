@@ -190,6 +190,7 @@
 
 <p>上述合起来即：<code>python train.py --weights yolov5s.pt --cfg ~path~\yolov5s.yaml --data ~path~\data.yaml --batch-size 8 --epoch 50 --device cpu</code></p>
 <h3 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python detect.py</span><br><span class="line">	--source ~path~</span><br><span class="line">	指定检测的数据目录，可以说目录、单张图片或视频</span><br><span class="line">	</span><br><span class="line">	--weights ~path~\runs\train\exp(n)\weights\best.pt</span><br><span class="line">	指定使用的模型，路径如上，~path~为代码根目录，n取决于训练完成后给出的文件夹；</span><br><span class="line">	其中best是最好的模型，last为最后训练的模型</span><br></pre></td></tr></table></figure>
+<div style="text-align: right"> PoweredBy Qlittle (https://qlittlo.github.io/) </div>
         </div>
 
         
