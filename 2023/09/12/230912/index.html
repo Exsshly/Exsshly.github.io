@@ -10,7 +10,7 @@
 
 
 
-<title>装机配置 | 游园不值</title>
+<title>yolov5之模型训练 | 游园不值</title>
 
 
 
@@ -168,14 +168,14 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">装机配置</h1>
+            <h1 class="post-title">yolov5之模型训练</h1>
             
                 <div class="post-meta">
                     
 
                     
                         <span class="post-time">
-                        Date: <a href="#">2023-06-20&nbsp;&nbsp;14:00:12</a>
+                        Date: <a href="#">2023-09-12&nbsp;&nbsp;22:19:40</a>
                         </span>
                     
                     
@@ -184,53 +184,12 @@
         </header>
 
         <div class="post-content">
-            <p>最TM烦装系统了，不知道从什么时候开始。</p>
-<p>高二高三竟然对此乐此不疲，班里的电脑最多同时存在了三个系统且无缝切换……</p>
-<p>趁着两次卸载掉三哥牌的Chromium，那每个月的累计更新就是更新不上，0x800f081f，错误代码我都会背了，从三月卸载掉Edge到杭州的累计更新更不上，一气之下屏蔽掉更新回去Win10，再后来装22H1，我以为就万事大吉，结果还是不行。后来在哪看到那个错误代码是缺少什么🐦组件，思来想去我只卸掉的所谓不能卸载的三哥牌Chromium。今天无事就再装一遍。</p>
-<p>本着前人栽树后人乘凉的原则，其实我早就想写一个清单，每次装完系统手忙脚乱，为了以后能够流畅些(是TMD真的烦装系统)，这次干脆就把个人操作的流程记录一下，后面就不用东拼西凑了，直接看这里就好。</p>
-<h3 id="高级格式化前"><a href="#高级格式化前" class="headerlink" title="高级格式化前"></a>高级格式化前</h3><ul>
-<li><p>备份C盘用户目录下各种文件(包括不限于微信聊天记录以及git配置等)</p>
-</li>
-<li><p>备份控制面板卸载程序页所有程序</p>
-</li>
-<li><p>备份桌面及磁贴(W11已经取消这里延续叫法)布局</p>
-</li>
-<li><p>有一个目标系统的镜像(必要时有一个Office镜像以及MS运行库)</p>
-</li>
-</ul>
-<h3 id="装机"><a href="#装机" class="headerlink" title="装机"></a>装机</h3><ul>
-<li>这里不写，爱怎么装怎么装</li>
-</ul>
-<h3 id="开机后设置"><a href="#开机后设置" class="headerlink" title="开机后设置"></a>开机后设置</h3><ul>
-<li>过oobe(这里不想签字登录邮箱就写<a href="mailto:&#49;&#64;&#49;&#x2e;&#99;&#x6f;&#109;">&#49;&#64;&#49;&#x2e;&#99;&#x6f;&#109;</a>密码随便)</li>
-<li>开机卸载应用，有时候可能需要卸载两次(重启之后又rm回来了！)<br>以下都在W1x系设置里配置</li>
-<li>设置屏幕缩放125%(个人习惯以及显示器问题)</li>
-<li>杀掉麦克风(从来没用过)</li>
-<li>设置屏幕和睡眠</li>
-<li>开启剪贴板历史记录</li>
-<li>设置鼠标指针</li>
-<li>设置触摸板</li>
-<li>配置开始页以及任务栏</li>
-<li>设置开机PIN</li>
-</ul>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>下面是个人习惯，不想系统保留空间太大且不用的情况下释放掉空间，都需要管理员权限运行</p>
-<ul>
-<li>关闭休眠&ensp;<br>通过<code>powercfg /h</code>关闭，之后还要通过电源设置里关闭快速启动以及睡眠</li>
-<li>关闭系统还原(似乎默认就是关闭状态，这里保险起见个人还是去控制面板里确认一下)</li>
-<li>关闭保留空间</li>
-</ul>
-<p><code>dism.exe /Online /Set-ReservedStorageState /State:Disabled</code></p>
-<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;BaseHardReserveSize&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</code></p>
-<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;BaseSoftReserveSize&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</code></p>
-<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;HardReserveAdjustment&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</code></p>
-<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;MinDiskSize&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</code></p>
-<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;ShippedWithReserves&quot; /t REG_DWORD /d &quot;0&quot; &gt;nul</code></p>
-<ul>
-<li>装上Office三件套</li>
-<li>使用Dism++调教其他非外显设置</li>
-<li>根据备份单装回软件，必要时恢复环境<br><del>装translucentTB，W11还要额外配置个什么东西才透明啊md，参<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv22300526">https://www.bilibili.com/read/cv22300526</a></del><br><del>开QuickLook，开WallpaperEngine(可选，22H2上只要开了就掉帧什么意思)</del><br><del>还原磁贴，还原经典记事本、画图以及创建Aria</del><br><del>装Hexo:npm install -g hexo-cli</del><br><del>还原C盘用户目录下各种文件(包括不限于微信聊天记录以及git配置等)</del><br><del>WindowsUpdate安装更新</del><br><del>Kclener调教一遍</del><br><del>WiseCare调教两遍</del><br><del>CCClener调教三遍</del><br>如是……最想想起什么再补充什么，或者什么时候装系统觉得不合适再增删……<br>PS：一个月内装了三次系统才想起来写，惭愧……</li>
-</ul>
+            <p>可以通过改变代码来直接执行，这里通过更改参数而不去动原代码<br>参数有很多，可以看官方文档或代码中的相应字段，这里只列出目前使用到的参数</p>
+<h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><p><del>path</del>为自己指定的目录，下同</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">python train.py</span><br><span class="line">	--weights yolov5s.pt</span><br><span class="line">	此字段使用预设模型，或可使用指定路径的.pt文件开始训练</span><br><span class="line">	</span><br><span class="line">	--cfg ~path~\yolov5s.yaml</span><br><span class="line">	若使用预设模型，则需在代码文件夹models中复制一份对应的.yaml文件，并修改文件中nc值</span><br><span class="line">	</span><br><span class="line">	--data ~path~\data.yaml</span><br><span class="line">	指向数据集的.yaml文件，该文件内需要修改数据集路径和分类</span><br><span class="line">	</span><br><span class="line">	--batch-size 8</span><br><span class="line">	单次训练数据批次大小，越大越快，但是会导致资源不够用，一般为8</span><br><span class="line">	</span><br><span class="line">	--epoch 50</span><br><span class="line">	训练轮数，越多训练效果拟合越好，太多会过拟合</span><br><span class="line">	</span><br><span class="line">	--device cpu</span><br><span class="line">	选择cpu或gpu训练，参数0使用gpu</span><br></pre></td></tr></table></figure>
 
+<p>上述合起来即：<code>python train.py --weights yolov5s.pt --cfg ~path~\yolov5s.yaml --data ~path~\data.yaml --batch-size 8 --epoch 50 --device cpu</code></p>
+<h3 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python detect.py</span><br><span class="line">	--source ~path~</span><br><span class="line">	指定检测的数据目录，可以说目录、单张图片或视频</span><br><span class="line">	</span><br><span class="line">	--weights ~path~\runs\train\exp(n)\weights\best.pt</span><br><span class="line">	指定使用的模型，路径如上，~path~为代码根目录，n取决于训练完成后给出的文件夹；</span><br><span class="line">	其中best是最好的模型，last为最后训练的模型</span><br></pre></td></tr></table></figure>
         </div>
 
         
@@ -253,10 +212,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2023/06/27/230627/">BingAI tags</a>
+                <a class="prev" rel="prev" href="/2023/09/13/230913/">yolov5之断点训练</a>
             
             
-            <a class="next" rel="next" href="/2023/05/13/230513/">合 群</a>
+            <a class="next" rel="next" href="/2023/09/11/230911/">yolov5之准备工作</a>
             
         </section>
 
