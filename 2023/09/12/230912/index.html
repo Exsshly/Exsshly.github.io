@@ -10,7 +10,7 @@
 
 
 
-<title>yolov5之模型训练 | 游园不值</title>
+<title>yolov5-2 | 游园不值</title>
 
 
 
@@ -47,7 +47,7 @@
         <header>
     <nav class="navbar">
         <div class="container">
-            <div class="navbar-header header-logo"><a href="/">游园不值</a></div>
+            <div class="navbar-header header-logo"><a href="/">🏠游园不值</a></div>
             <div class="menu navbar-right">
                 
                     <a class="menu-item" href="/archives">Posts</a>
@@ -68,7 +68,7 @@
         <div class="container">
             <div class="navbar-header">
                 <div>
-                    <a href="/">游园不值</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                    <a href="/">🏠游园不值</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
                 </div>
                 <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
             </div>
@@ -168,7 +168,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">yolov5之模型训练</h1>
+            <h1 class="post-title">yolov5-2</h1>
             
                 <div class="post-meta">
                     
@@ -186,8 +186,8 @@
         <div class="post-content">
             <p>致谢：<a target="_blank" rel="noopener" href="https://qlittlo.github.io/">Qlittle</a></p>
 <p>可以通过改变代码来直接执行，这里通过更改参数而不去动原代码<br>参数有很多，可以看官方文档或代码中的相应字段，这里只列出目前使用到的参数</p>
-<h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><p><del>path</del>为自己指定的目录，下同</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">python train.py</span><br><span class="line">	--weights yolov5s.pt</span><br><span class="line">	此字段使用预设模型，或可使用指定路径的.pt文件开始训练</span><br><span class="line">	</span><br><span class="line">	--cfg ~path~\yolov5s.yaml</span><br><span class="line">	若使用预设模型，则需在代码文件夹models中复制一份对应的.yaml文件，并修改文件中nc值</span><br><span class="line">	</span><br><span class="line">	--data ~path~\data.yaml</span><br><span class="line">	指向数据集的.yaml文件，该文件内需要修改数据集路径和分类</span><br><span class="line">	</span><br><span class="line">	--batch-size 8</span><br><span class="line">	单次训练数据批次大小，越大越快，但是会导致资源不够用，一般为8</span><br><span class="line">	</span><br><span class="line">	--epoch 50</span><br><span class="line">	训练轮数，越多训练效果拟合越好，太多会过拟合</span><br><span class="line">	</span><br><span class="line">	--device cpu</span><br><span class="line">	选择cpu或gpu训练，参数0使用gpu</span><br></pre></td></tr></table></figure>
+<h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><p><code>~path~</code>为自己指定的目录，下同</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">python train.py</span><br><span class="line">	--weights yolov5s.pt</span><br><span class="line">	此字段使用预设模型，或可使用指定路径的.pt文件开始训练</span><br><span class="line">	</span><br><span class="line">	--cfg ~path~\yolov5s.yaml</span><br><span class="line">	若使用预设模型，则需在代码文件夹models中复制一份对应的.yaml文件，并修改文件中nc值</span><br><span class="line">	</span><br><span class="line">	--data ~path~\data.yaml</span><br><span class="line">	指向数据集的.yaml文件，该文件内需要修改数据集路径和分类</span><br><span class="line">	</span><br><span class="line">	--batch-size 8</span><br><span class="line">	单次训练数据批次大小，越大越快，但是会导致资源不够用，一般选择2~8，值为-1时由系统确定</span><br><span class="line">	</span><br><span class="line">	--epoch 50</span><br><span class="line">	训练轮数，越多训练效果拟合越好，太多会过拟合</span><br><span class="line">	</span><br><span class="line">	--device cpu</span><br><span class="line">	选择cpu或gpu训练，参数0使用gpu</span><br></pre></td></tr></table></figure>
 
 <p>上述即：<code>python train.py --weights yolov5s.pt --cfg ~path~\yolov5s.yaml --data ~path~\data.yaml --batch-size 8 --epoch 50 --device cpu</code></p>
 <h3 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python detect.py</span><br><span class="line">	--source ~path~</span><br><span class="line">	指定检测的数据目录，可以说目录、单张图片或视频</span><br><span class="line">	</span><br><span class="line">	--weights ~path~\runs\train\exp(n)\weights\best.pt</span><br><span class="line">	指定使用的模型，路径如上，~path~为代码根目录，n取决于训练完成后给出的文件夹；</span><br><span class="line">	其中best是最好的模型；或者指定路径以使用从第三方获得的更好的模型</span><br></pre></td></tr></table></figure>
@@ -223,7 +223,7 @@
         <section class="post-nav">
             
             
-            <a class="next" rel="next" href="/2023/09/11/230911/">yolov5之准备工作</a>
+            <a class="next" rel="next" href="/2023/09/11/230911/">yolov5-1</a>
             
         </section>
 

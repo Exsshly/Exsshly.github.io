@@ -164,9 +164,9 @@ html::-webkit-scrollbar-thumb:hover {
   background-color: #ddd;
 }
 body {
-  font-size: 11pt;
+  font-size: 14pt;
   font-weight: normal;
-  line-height: 2em;
+  line-height: 1.75em;
   background-color: #fff;
   color: #161209;
   transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease;
@@ -606,7 +606,7 @@ header label {
 .post-wrap {
   position: relative;
   width: 100%;
-  max-width: 780px;
+  max-width: 1000px;
   margin: 0 auto;
   padding-top: 2rem;
 }
