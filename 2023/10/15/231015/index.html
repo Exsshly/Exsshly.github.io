@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="庭院深深深几许">
+
+
+
+<title>黛月 | 游园不值</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">游园不值</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">游园不值</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">黛月</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2023-10-15&nbsp;&nbsp;18:49:29</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本程序使用的是tenorRT对预处理后的焊缝图像进行缺陷检测。</p>
+<p><a href="#MFC%E4%B8%8Epython%E7%A8%8B%E5%BA%8F%E6%B7%B7%E5%90%88%E4%BD%BF%E7%94%A8"><strong>如果不能集成TensorRT。作为替代，也有python和c++独立运行的版本</strong></a></p>
+<p>TOOLKITS文件中保存依赖项</p>
+<h1 id="软件相关"><a href="#软件相关" class="headerlink" title="软件相关"></a>软件相关</h1><ul>
+<li>Anaconda3</li>
+<li>pycharm</li>
+<li>visual studio 2022</li>
+<li>nvidia cuda</li>
+<li>nvidia cuDNN</li>
+</ul>
+<h1 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h1><h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><p><strong>Python的依赖可以在配置YOLOX时安装</strong></p>
+<ul>
+<li>虚拟环境 python=3.7</li>
+<li>numpy</li>
+<li>cupy</li>
+<li>YOLOX-requirments.txt<ul>
+<li>pytorch&gt;=1.7</li>
+<li>opencv_python</li>
+<li>loguru</li>
+<li>scikit-image</li>
+<li>tqdm</li>
+<li>torchvision</li>
+<li>Pillow</li>
+<li>thop</li>
+<li>ninja</li>
+<li>tabulate</li>
+<li>tensorboard</li>
+<li>onnx==1.8.1</li>
+<li>onnxruntime==1.8.0</li>
+<li>onnx-simplifier==0.3.5</li>
+</ul>
+</li>
+</ul>
+<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><ul>
+<li>DCMTK</li>
+<li>OPENCV-4.5.5</li>
+<li>CUDA 11.7 （可修改，适配cuDNN版本即可）</li>
+<li>cuDNN 8.x （可修改，适配CUDA版本即可）</li>
+<li>Protobuf 3.11.4 （不可修改，使用提供的包）</li>
+<li>TensorRT 8.4.3.1 （可修改)</li>
+</ul>
+<h1 id="软件-amp-依赖安装"><a href="#软件-amp-依赖安装" class="headerlink" title="软件 &amp; 依赖安装"></a>软件 &amp; 依赖安装</h1><h2 id="安装Anaconda3-amp-pycharm"><a href="#安装Anaconda3-amp-pycharm" class="headerlink" title="安装Anaconda3 &amp; pycharm"></a>安装Anaconda3 &amp; pycharm</h2><p><a href="Anaconda3-2021.11-Windows-x86_64.exe">安装程序:Anaconda3-2021.11-Windows-x86_64.exe</a></p>
+<p><strong>Anaconda3的版本不做要求</strong></p>
+<p>双击安装程序安装</p>
+<p><a target="_blank" rel="noopener" href="https://www.jetbrains.com/pycharm/">安装pycharm社区版</a></p>
+<p>下载安装程序后安装</p>
+<h2 id="安装VS2022-amp-MFC"><a href="#安装VS2022-amp-MFC" class="headerlink" title="安装VS2022 &amp; MFC"></a>安装VS2022 &amp; MFC</h2><p>点击<a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030&passive=false">安装程序</a>，自动开始下载</p>
+<ul>
+<li>勾选使用<strong>C++桌面开发</strong></li>
+</ul>
+<p><img src="vs%E5%AE%89%E8%A3%85.png"></p>
+<ul>
+<li>点击单个组件，搜索MFC，选择“适用于最新v143生成工具的C++MFC（x86和x64)”</li>
+</ul>
+<p><img src="MFC%E5%AE%89%E8%A3%85.png"></p>
+<h2 id="安装NVIDIA-CUDA-11-7"><a href="#安装NVIDIA-CUDA-11-7" class="headerlink" title="安装NVIDIA CUDA 11.7"></a>安装NVIDIA CUDA 11.7</h2><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">下载链接</a></p>
+<ul>
+<li><p>选择CUDA 11.7.0</p>
+</li>
+<li><p>根据系统和软件版本选择下载的类型，<strong>Installer Type</strong>选择<strong>local</strong></p>
+</li>
+<li><p>安装时<strong>选择默认位置安装</strong>，安装类型<strong>选择完整安装</strong></p>
+</li>
+<li><p>整个安装只需要点击下一步即可</p>
+</li>
+</ul>
+<p><strong>推荐使用默认位置安装！！！</strong></p>
+<h2 id="安装NVIDIA-cuDNN"><a href="#安装NVIDIA-cuDNN" class="headerlink" title="安装NVIDIA cuDNN"></a>安装NVIDIA cuDNN</h2><p>cuDNN是英伟达开发的专用于神经网络计算的模块，在Windows下，只要将文件解压到CUDA安装位置的指定文件夹下。本程序使用的cudnn-8.5.0.96版本。<strong>理论上cuDNN的版本可以修改，只要支持CUDA工具箱的版本即可</strong></p>
+<p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-download">下载链接</a></p>
+<p>将bin中的文件放到[cuda 11.7安装位置的bin目录下](C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7\bin)</p>
+<p>将include中的文件放到[cuda 11.7安装位置的include目录下](C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7\include)</p>
+<p>将lib中的文件放到[cuda 11.7安装位置的lib目录下](C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7\lib)</p>
+<p>将<strong>zlibwapi.dll</strong>拷贝到[cuda 11.7安装位置的bin目录下](C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7\bin)</p>
+<h2 id="安装TensorRT-amp-protobuf"><a href="#安装TensorRT-amp-protobuf" class="headerlink" title="安装TensorRT &amp; protobuf"></a>安装TensorRT &amp; protobuf</h2><p>对应的文件<strong>已经集成在项目中</strong>，压缩包仅作备份使用。</p>
+<p>文件在项目的TOOLKIT文件夹下</p>
+<h2 id="安装OPENCV-amp-DCMTK"><a href="#安装OPENCV-amp-DCMTK" class="headerlink" title="安装OPENCV &amp; DCMTK"></a>安装OPENCV &amp; DCMTK</h2><p>对应的文件<strong>已经集成在项目中</strong></p>
+<p>文件在项目的TOOLKIT文件夹下</p>
+<p>将 .\opencv\build\x64\vc15\bin目录下的<strong>opencv_world455d.dll</strong>拷贝到<a href="C:\Windows\System32">System32</a>下</p>
+<ul>
+<li>如果系统环境变量中已经配置过opencv等依赖项，会优先调用系统环境变量中的opencv</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43312117/article/details/120509626">opencv配置环境参考博客</a></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45445740/article/details/121538759">Dcmtk安装参考博客链接</a></p>
+<p>使用DCMTK的DicomImage需要额外步骤：</p>
+<p>① 添加依赖项</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">netapi32.lib</span><br><span class="line">wsock32.lib</span><br><span class="line">ofstd.lib</span><br><span class="line">oflog.lib</span><br><span class="line">dcmimgle.lib</span><br><span class="line">ijg8.lib</span><br><span class="line">ijg12.lib</span><br><span class="line">ijg16.lib</span><br><span class="line">dcmdata.lib</span><br><span class="line">dcmimage.lib</span><br><span class="line">dcmnet.lib</span><br></pre></td></tr></table></figure>
+
+<p>②复制对应的lib文件到exe文件夹下</p>
+<h2 id="Python安装依赖"><a href="#Python安装依赖" class="headerlink" title="Python安装依赖"></a>Python安装依赖</h2><p>python中的依赖安装推荐使用<strong>anaconda prompt</strong>，使用anaconda prompt时，不要使用VPN</p>
+<h2 id="安装示例（以cupy为例子）"><a href="#安装示例（以cupy为例子）" class="headerlink" title="安装示例（以cupy为例子）"></a>安装示例（以cupy为例子）</h2><p><strong>cupy安装需要指定cuda版本，所以作为特例介绍</strong>。cupy的源地址详见：<a target="_blank" rel="noopener" href="https://github.com/cupy/cupy">https://github.com/cupy/cupy</a></p>
+<p>打开anaconda prompt，会自动弹出信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(base) C:\Users\PKL&gt;</span><br></pre></td></tr></table></figure>
+
+<p>括号中的base指的是安装的环境，base指的是真实环境。</p>
+<p>anaconda也可以创建多个虚拟环境，保证不同的包之间不会产生冲突</p>
+<p>使用命令创建环境：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n py37 python=3.7</span><br></pre></td></tr></table></figure>
+
+<p>-n 后方为创建的虚拟环境的名称，python==3.7代表的是python版本</p>
+<p>经过等待后，出现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Proceed ([y]/n)?_</span><br></pre></td></tr></table></figure>
+
+<p>输入y后点击回车安装</p>
+<p>创建完成后，激活环境：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate py37</span><br></pre></td></tr></table></figure>
+
+<p>进入环境后输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install cupy-cuda11x</span><br></pre></td></tr></table></figure>
+
+<p>经过等待以后就可以完成安装。</p>
+<p>同样的，安装其他包时只需要修改名字即可。</p>
+<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p>如果使用默认位置安装则不需要额外的环境配置</p>
+<p>修改了cuda的安装位置则需要修改属性表tensorRT中对应的项</p>
+<h2 id="修改Visual-Studio属性表——以CUDA为例"><a href="#修改Visual-Studio属性表——以CUDA为例" class="headerlink" title="修改Visual Studio属性表——以CUDA为例"></a>修改Visual Studio属性表——以CUDA为例</h2><p>所有的Visual Studio的外部依赖都需要配置属性表，推荐不同的依赖使用单独的属性表便于管理。本项目都已经集成的对应的依赖项，以下仅以CUDA作为案例说明。其他诸如OpenCV，DCMTK等依赖项的配置，烦请读者举一反三，和参考已经配置完成的属性表。修改都在<strong>包含目录，库目录和附加依赖项</strong></p>
+<h2 id="添加属性表"><a href="#添加属性表" class="headerlink" title="添加属性表"></a>添加属性表</h2><p><img src="vs%E5%B1%9E%E6%80%A7%E8%A1%A8%E9%85%8D%E7%BD%AE_1.png"></p>
+<p>选择<strong>添加新项目属性表</strong></p>
+<p><img src="vs%E5%B1%9E%E6%80%A7%E8%A1%A8%E9%85%8D%E7%BD%AE_2.png"></p>
+<p>命名为cuda，点击确定</p>
+<h2 id="配置属性表"><a href="#配置属性表" class="headerlink" title="配置属性表"></a>配置属性表</h2><p><img src="vs%E5%B1%9E%E6%80%A7%E8%A1%A8%E9%85%8D%E7%BD%AE_3.png"></p>
+<p>选择包含目录，包含目录选择cuda安装目录下的include文件夹</p>
+<p>选择库目录，库目录选择cuda安装目录下的lib文件夹</p>
+<p><strong>如果cuda安装的是默认地址则不需要修改</strong></p>
+<p><img src="vs%E5%B1%9E%E6%80%A7%E8%A1%A8%E9%85%8D%E7%BD%AE_4.png"></p>
+<p>选择<strong>链接器-输入-附加依赖项</strong>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvinfer_plugin.lib</span><br></pre></td></tr></table></figure>
+
+<h1 id="程序解释"><a href="#程序解释" class="headerlink" title="程序解释"></a>程序解释</h1><p>本程序实现了将dcm格式的文件转换为bmp格式，并且在经过相应的预处理后进行缺陷检测的过程。</p>
+<h2 id="提取DICOM图片信息，并转换为8bit"><a href="#提取DICOM图片信息，并转换为8bit" class="headerlink" title="提取DICOM图片信息，并转换为8bit"></a>提取DICOM图片信息，并转换为8bit</h2><p>DCM格式是常用于X射线的影片格式，DCM格式的图片会有100字节左右的<strong>头文件</strong>和<strong>像素文件</strong>。其中，头文件中包含了图像的<strong>窗宽，窗位和图像尺寸</strong>等用于图像显示的信息以及<strong>图像名，编号</strong>等其他信息。</p>
+<p>DCM格式的头文件部分和像素文件的部分我们使用DCMTK中的<strong>DicomImage</strong>类读取</p>
+<ul>
+<li><p>nWidth保存图像的宽</p>
+</li>
+<li><p>nHeight保存图像的高</p>
+</li>
+<li><p>windowWidth保存dicom图像的窗宽</p>
+</li>
+<li><p>windowCenter保存dicom图像的窗位</p>
+</li>
+<li><p>pixelData保存图像的像素文件，保存在16bit的mat文件dst16U中</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> nWidth, nHeight, windowWidth = <span class="number">0</span>, windowCenter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">OFString dcmElement;   <span class="comment">// 接收返回的读取状态</span></span><br><span class="line"></span><br><span class="line">DicomImage* dcmimg = <span class="keyword">new</span> <span class="built_in">DicomImage</span>(STDStr.<span class="built_in">c_str</span>());<span class="comment">// 用于读取对象</span></span><br><span class="line">DcmFileFormat df;<span class="comment">//用于读取图片其他信息</span></span><br><span class="line"></span><br><span class="line">OFCondition status = df.<span class="built_in">loadFile</span>(STDStr.<span class="built_in">c_str</span>());</span><br><span class="line">status = df.<span class="built_in">getDataset</span>()-&gt;<span class="built_in">findAndGetOFString</span>(DCM_WindowCenter, dcmElement);</span><br><span class="line"><span class="keyword">if</span> (status.<span class="built_in">good</span>()) &#123;</span><br><span class="line">	windowCenter = <span class="built_in">stoi</span>(dcmElement.<span class="built_in">data</span>());</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;读取窗位错误：&quot;</span> &lt;&lt; status.<span class="built_in">text</span>() &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">status = df.<span class="built_in">getDataset</span>()-&gt;<span class="built_in">findAndGetOFString</span>(DCM_WindowWidth, dcmElement);</span><br><span class="line"><span class="keyword">if</span> (status.<span class="built_in">good</span>()) &#123;</span><br><span class="line">	windowWidth = <span class="built_in">stoi</span>(dcmElement.<span class="built_in">data</span>());</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;读取窗宽错误：&quot;</span> &lt;&lt; status.<span class="built_in">text</span>() &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">nWidth = dcmimg-&gt;<span class="built_in">getWidth</span>();</span><br><span class="line">nHeight = dcmimg-&gt;<span class="built_in">getHeight</span>();</span><br><span class="line"></span><br><span class="line">Uint16* pixelData = (Uint16*)(dcmimg-&gt;<span class="built_in">getOutputData</span>(<span class="number">16</span>));</span><br><span class="line"><span class="function">Mat <span class="title">dst16U</span><span class="params">(nHeight, nWidth, CV_16U, pixelData)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>Dicom图像的原图数据为16bit，而传统的图像主要为8bit，所以要用以下的代码将16bit图像转换为8bit图像。其中高于阈值的像素值置为255，低于阈值的像素值置为0。</p>
+<p><strong>16bit转换为8bit会损失大量信息，利用窗位和窗宽可以最大程度上保留关键信息。</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nHeight; i++) &#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; nWidth; j++) &#123;</span><br><span class="line">			<span class="keyword">double</span> temp = dst16U.at&lt;Uint16&gt;(i, j);</span><br><span class="line">	<span class="keyword">if</span> (temp &gt; (windowCenter + windowWidth / <span class="number">2</span>)) &#123;</span><br><span class="line">				dst8U.at&lt;uchar&gt;(i, j) = <span class="number">255</span>;</span><br><span class="line">			&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (temp &lt; (windowCenter - windowWidth / <span class="number">2</span>)) &#123;</span><br><span class="line">			dst8U.at&lt;uchar&gt;(i, j) = <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">double</span> output;</span><br><span class="line">		output = (temp - (windowCenter - windowWidth / <span class="number">2</span>)) * <span class="number">255</span> / windowWidth;</span><br><span class="line">				dst8U.at&lt;uchar&gt;(i, j) = (<span class="keyword">int</span>)output;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="将16bit图像转化为8bit的梯度图"><a href="#将16bit图像转化为8bit的梯度图" class="headerlink" title="将16bit图像转化为8bit的梯度图"></a>将16bit图像转化为8bit的梯度图</h2><p>利用窗位和窗宽将图像转换成可以用显示器显示的图像虽然最大程度地保留了关键信息，但是难免还有部分的信息损失。我们观察发现，虽然图像的像素值远大于0-255的范围，但是它们的梯度往往都在0-255的范围内，所以将图像转化为梯度图可以变相地完整显示图像。</p>
+<p>转换为梯度图的方法有很多，但是经过测试，使用x方向的sobel算子可以最大限度地保留图像的信息。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Sobel</span>(dst16U, sobel8U, CV_16U, <span class="number">1</span>, <span class="number">0</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<p>参数一：输入图像</p>
+<p>参数二：输出图像</p>
+<p>参数三：输入图像的深度</p>
+<p>参数四：dx方向</p>
+<p>参数五：dy方向</p>
+<p>参数六：卷积核大小</p>
+<h2 id="将梯度图转化为纹理图"><a href="#将梯度图转化为纹理图" class="headerlink" title="将梯度图转化为纹理图"></a>将梯度图转化为纹理图</h2><p>纹理图可以进一步地增强梯度图的缺陷特征。我们的处理步骤如下：</p>
+<ul>
+<li>读取图像并获得图像长宽</li>
+<li>生成两个频域内的高斯滤波器，sigma1 = 240，sigma2 = 25</li>
+<li>将两个梯度图进行傅里叶变换得到频域图</li>
+<li>利用频域图和掩膜进行卷积</li>
+<li>反傅里叶变换</li>
+<li>将图像转换为8bit图并保存</li>
+</ul>
+<p>由于python中有专用于矩阵运算的numpy库和使用cuda加速的cupy库，所以本项目使用c++调用python进行处理</p>
+<p>python代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成滤波核的代码，速度较慢，但是对一种图像尺寸只用生成一个滤波核</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gengaussfilter</span>(<span class="params">height, width, fliter, sigma1=<span class="number">25</span>, sigma2=<span class="number">240</span></span>):</span></span><br><span class="line">    <span class="comment"># 开始时间戳</span></span><br><span class="line">    t1 = time.perf_counter()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># fliter = cp.zeros((height,width))</span></span><br><span class="line">    <span class="comment"># 根据图像大小生成对应的高斯带通滤波器</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">            temp1 = (np.exp(-((i - (height - <span class="number">1</span>) / <span class="number">2</span>) ** <span class="number">2</span> + (j - (width - <span class="number">1</span>) / <span class="number">2</span>) ** <span class="number">2</span>) / <span class="number">2</span> / sigma1 ** <span class="number">2</span>))</span><br><span class="line">            temp2 = (np.exp(-((i - (height - <span class="number">1</span>) / <span class="number">2</span>) ** <span class="number">2</span> + (j - (width - <span class="number">1</span>) / <span class="number">2</span>) ** <span class="number">2</span>) / <span class="number">2</span> / sigma2 ** <span class="number">2</span>))</span><br><span class="line">            fliter[i, j] = temp1 - temp2</span><br><span class="line">    <span class="comment"># 结束时间戳</span></span><br><span class="line">    t2 = time.perf_counter()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;滤波核心生成完毕，用时：&#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>((t2 - t1))</span><br><span class="line">    np.save(<span class="string">&#x27;fliter.npy&#x27;</span>, fliter)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 滤波并保存图像的代码</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">GaussianBandFrequencyFilter</span>(<span class="params">src, dst</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;start function&#x27;</span>)</span><br><span class="line">    <span class="comment"># 开始时间戳</span></span><br><span class="line">    t1 = time.perf_counter()</span><br><span class="line">    <span class="comment"># 读取图片</span></span><br><span class="line">    im = cv2.imread(src, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将Numpy矩阵转换为Cupy矩阵</span></span><br><span class="line">    imarr = cp.array(im)</span><br><span class="line">    <span class="comment"># 将生成的滤波器转换为Cupy矩阵</span></span><br><span class="line">    fliter = np.load(<span class="string">&#x27;fliter.npy&#x27;</span>)</span><br><span class="line">    fliter = cp.array(fliter)</span><br><span class="line">    <span class="comment"># cupy接口，转换为频域图</span></span><br><span class="line">    fft = cp.fft.fft2(imarr)</span><br><span class="line">    fft = cp.fft.fftshift(fft)</span><br><span class="line">    <span class="comment"># 滤波器矩阵和频域图相乘，卷积操作（矩阵乘法</span></span><br><span class="line">    fft = cp.multiply(fft, fliter)</span><br><span class="line">    <span class="comment"># 逆变换</span></span><br><span class="line">    fft = cp.fft.ifftshift(fft)</span><br><span class="line">    ifft = cp.fft.ifft2(fft)</span><br><span class="line">    <span class="comment"># 保留图像实部</span></span><br><span class="line">    ifft = cp.real(ifft)</span><br><span class="line">    <span class="comment"># 读取图像最大最小值，用于重映射</span></span><br><span class="line">    <span class="built_in">max</span> = cp.<span class="built_in">max</span>(ifft)</span><br><span class="line">    <span class="built_in">min</span> = cp.<span class="built_in">min</span>(ifft)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 图像像素值重映射，参数都是矩阵</span></span><br><span class="line">    res = <span class="number">255</span> * (ifft - <span class="built_in">min</span>) / (<span class="built_in">max</span> - <span class="built_in">min</span>)</span><br><span class="line">    <span class="comment"># 上述式子的效果等效于下方双重for循环</span></span><br><span class="line">    <span class="comment"># for i in range(height):</span></span><br><span class="line">    <span class="comment">#     for j in range(width):</span></span><br><span class="line">    <span class="comment">#         res[i, j] = 255 * (ifft[i, j] - min) / (max - min)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># cupy矩阵转换为numpy矩阵</span></span><br><span class="line">    res = cp.asnumpy(res)</span><br><span class="line">    <span class="comment"># 通过opencv写图像</span></span><br><span class="line">    <span class="comment"># cv2.GaussianBlur(res,(3,3),3,3)</span></span><br><span class="line">    cv2.imwrite(dst, res)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;writed&#x27;</span>)</span><br><span class="line">    <span class="comment"># 结束时间戳</span></span><br><span class="line">    t2 = time.perf_counter()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;滤波完毕，用时：&#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>((t2 - t1))</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，纹理图的滤波核心只对一种图片的尺寸有效，如果图像的输入尺寸产生了变化，需要重新生成对应的滤波核心。对于每张输入的图片，我们会对图像的边缘进行裁切后保存。</p>
+<h2 id="利用tensorRT部署YOLOX进行缺陷检测"><a href="#利用tensorRT部署YOLOX进行缺陷检测" class="headerlink" title="利用tensorRT部署YOLOX进行缺陷检测"></a>利用tensorRT部署YOLOX进行缺陷检测</h2><p>tensorRT使用文档：<a target="_blank" rel="noopener" href="https://github.com/shouxieai/tensorRT_Pro">https://github.com/shouxieai/tensorRT_Pro</a></p>
+<p><strong>注意，修改结构以后的yolox网络不能进行训练！！</strong></p>
+<p>使用tensorRT需要有预训练好的权重和导出的onnx文件，<a href="#%E8%AE%AD%E7%BB%83YOLOX%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AF%BC%E5%87%BAONNX%E6%96%87%E4%BB%B6">训练和导出方法</a></p>
+<ul>
+<li>检查是否已经存在编译好的trt文件<ul>
+<li>如果不存在，就自动编译trt文件</li>
+<li>trt文件需要对每台设备单独配置，更换显卡以后需要删除trt文件重新编译，否则会出现空引擎错误。</li>
+</ul>
+</li>
+<li>使用tensorRT进行推导，返回的是检测结果</li>
+<li>绘制结果并保存图像</li>
+</ul>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">initLibNvInferPlugins</span>(<span class="literal">nullptr</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">string enginname = <span class="string">&quot;yolox_l.FP32.trtmodel&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (!<span class="built_in">PathFileExistsA</span>(enginname.<span class="built_in">c_str</span>())) &#123;</span><br><span class="line">	SimpleYolo::<span class="built_in">compile</span>(</span><br><span class="line">		SimpleYolo::Mode::FP32, SimpleYolo::Type::X,</span><br><span class="line">		<span class="number">16</span>,            </span><br><span class="line">		<span class="string">&quot;yolox_l.onnx&quot;</span>,           </span><br><span class="line">		enginname,             </span><br><span class="line">		<span class="number">1</span> &lt;&lt; <span class="number">30</span>,</span><br><span class="line">		<span class="string">&quot;inference&quot;</span></span><br><span class="line">	);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">auto</span> engine = SimpleYolo::<span class="built_in">create_infer</span>(enginname, SimpleYolo::Type::X, <span class="number">0</span>, <span class="number">0.05f</span>, <span class="number">0.5f</span>);</span><br><span class="line"></span><br><span class="line">Mat wenli = <span class="built_in">imread</span>(<span class="string">&quot;images/wenli.bmp&quot;</span>);</span><br><span class="line">Mat origin = <span class="built_in">imread</span>(<span class="string">&quot;images/&quot;</span> + name + <span class="string">&quot;_origin.bmp&quot;</span>);</span><br><span class="line"><span class="keyword">auto</span> box = engine-&gt;<span class="built_in">commit</span>(wenli).<span class="built_in">get</span>();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span>&amp; obj : box) &#123;</span><br><span class="line">	<span class="keyword">uint8_t</span> b = <span class="number">0</span>, g = <span class="number">0</span>, r = <span class="number">255</span>;</span><br><span class="line"></span><br><span class="line">	cv::<span class="built_in">rectangle</span>(origin, cv::<span class="built_in">Point</span>(obj.left, obj.top), cv::<span class="built_in">Point</span>(obj.right, obj.bottom), cv::<span class="built_in">Scalar</span>(b, g, r), <span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">cv::<span class="built_in">imwrite</span>(<span class="string">&quot;images/wenli.bmp&quot;</span>, wenli);</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-中使用Python代码"><a href="#C-中使用Python代码" class="headerlink" title="C++中使用Python代码"></a>C++中使用Python代码</h2><p>C++代码中执行python代码的原理是：</p>
+<ul>
+<li>设置python.exe的地址，在C++程序中创建Python解释器</li>
+<li>加载相关依赖</li>
+<li>加载代码</li>
+<li>执行程序</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PyObject* pModule = <span class="literal">NULL</span>;</span><br><span class="line">PyObject* pFunc1 = <span class="literal">NULL</span>;</span><br><span class="line">PyObject* pFunc2 = <span class="literal">NULL</span>;</span><br><span class="line"><span class="built_in">Py_SetPythonHome</span>(<span class="string">L&quot;D:\\CodeTools\\Anaconda3\\envs\\py397&quot;</span>);</span><br><span class="line"><span class="built_in">Py_Initialize</span>();</span><br><span class="line"><span class="built_in">PyRun_SimpleString</span>(<span class="string">&quot;import os,sys&quot;</span>);</span><br><span class="line"><span class="built_in">PyRun_SimpleString</span>(<span class="string">&quot;import numpy as np&quot;</span>);</span><br><span class="line"><span class="built_in">PyRun_SimpleString</span>(<span class="string">&quot;import cupy as cp&quot;</span>);</span><br><span class="line"><span class="built_in">PyRun_SimpleString</span>(<span class="string">&quot;import cv2&quot;</span>);</span><br><span class="line"><span class="built_in">PyRun_SimpleString</span>(<span class="string">&quot;sys.path.append(&#x27;./&#x27;)&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>Py_SetPythonHome</strong>设置的是python解释器python.exe的路径，这里创建了一个py397的虚拟环境专供解释器使用。</p>
+<p><strong>PyRun_SimpleString</strong>的作用是执行一条python代码，此处用于导入待执行python代码的相关依赖。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pModule = <span class="built_in">PyImport_ImportModule</span>(<span class="string">&quot;Python_code&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>PyImport_ImportModule</strong>的作用是读取本地的*.py文件。也可以在*.py文件中import代码的相关依赖，但是如果导入失败或者无法导入相关的依赖，pModule会返回一个NULL，并且不返回任何错误信息，所以不建议用这种方法导入依赖。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pFunc1 = <span class="built_in">PyObject_GetAttrString</span>(pModule, <span class="string">&quot;GaussianBandFrequencyFilter&quot;</span>);</span><br><span class="line"><span class="keyword">if</span> (!pFunc1 || !<span class="built_in">PyCallable_Check</span>(pFunc1)) &#123;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;not found func&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line">	<span class="comment">//传入参数</span></span><br><span class="line">PyObject* args1 = <span class="built_in">Py_BuildValue</span>(<span class="string">&quot;ss&quot;</span>, <span class="string">&quot;images/tidu.bmp&quot;</span>, <span class="string">&quot;images/wenli.bmp&quot;</span>);</span><br><span class="line">	<span class="comment">//调用</span></span><br><span class="line"><span class="built_in">PyObject_CallObject</span>(pFunc1, args1);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="训练YOLOX神经网络和导出ONNX文件"><a href="#训练YOLOX神经网络和导出ONNX文件" class="headerlink" title="训练YOLOX神经网络和导出ONNX文件"></a>训练YOLOX神经网络和导出ONNX文件</h1><p><a target="_blank" rel="noopener" href="https://wanghao.blog.csdn.net/article/details/120682143">环境配置参考链接</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Megvii-BaseDetection/YOLOX">yolox下载地址</a></p>
+<p><a href="YOLOX-main.zip">yolox文件</a></p>
+<p><strong>导出onnx前需要对神经网络和导出文件进行修改</strong></p>
+<p>修改代码</p>
+<ul>
+<li>这是保证int8能够顺利编译和性能提升的关键，否则提示<code>Missing scale and zero-point for tensor (Unnamed Layer* 686)</code></li>
+<li>这是保证模型推理正常顺利的关键，虽然部分情况不修改也可以执行</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yolox/models/yolo_head.py的206行forward函数，替换为下面代码</span></span><br><span class="line"><span class="comment"># self.hw = [x.shape[-2:] for x in outputs]</span></span><br><span class="line">self.hw = [<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, x.shape[-<span class="number">2</span>:])) <span class="keyword">for</span> x <span class="keyword">in</span> outputs]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># yolox/models/yolo_head.py的208行forward函数，替换为下面代码</span></span><br><span class="line"><span class="comment"># [batch, n_anchors_all, 85]</span></span><br><span class="line"><span class="comment"># outputs = torch.cat(</span></span><br><span class="line"><span class="comment">#     [x.flatten(start_dim=2) for x in outputs], dim=2</span></span><br><span class="line"><span class="comment"># ).permute(0, 2, 1)</span></span><br><span class="line">proc_view = <span class="keyword">lambda</span> x: x.view(-<span class="number">1</span>, <span class="built_in">int</span>(x.size(<span class="number">1</span>)), <span class="built_in">int</span>(x.size(<span class="number">2</span>) * x.size(<span class="number">3</span>)))</span><br><span class="line">outputs = torch.cat(</span><br><span class="line">    [proc_view(x) <span class="keyword">for</span> x <span class="keyword">in</span> outputs], dim=<span class="number">2</span></span><br><span class="line">).permute(<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># yolox/models/yolo_head.py的253行decode_outputs函数，替换为下面代码</span></span><br><span class="line"><span class="comment">#outputs[..., :2] = (outputs[..., :2] + grids) * strides</span></span><br><span class="line"><span class="comment">#outputs[..., 2:4] = torch.exp(outputs[..., 2:4]) * strides</span></span><br><span class="line"><span class="comment">#return outputs</span></span><br><span class="line">xy = (outputs[..., :<span class="number">2</span>] + grids) * strides</span><br><span class="line">wh = torch.exp(outputs[..., <span class="number">2</span>:<span class="number">4</span>]) * strides</span><br><span class="line"><span class="keyword">return</span> torch.cat((xy, wh, outputs[..., <span class="number">4</span>:]), dim=-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># tools/export_onnx.py的81行</span></span><br><span class="line">model.head.decode_in_inference = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>导出onnx模型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载模型，或许你需要翻墙</span></span><br><span class="line"><span class="comment"># 导出模型</span></span><br><span class="line"><span class="built_in">export</span> PYTHONPATH=<span class="variable">$PYTHONPATH</span>:.</span><br><span class="line">python tools/export_onnx.py -c yolox_m.pth -f exps/default/yolox_m.py --output-name=yolox_m.onnx --dynamic --no-onnxsim</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="MFC与python程序混合使用"><a href="#MFC与python程序混合使用" class="headerlink" title="MFC与python程序混合使用"></a>MFC与python程序混合使用</h1><p>使用方式：先运行python程序（forevDetect.py）再正常使用MFC程序</p>
+<p>原理：MFC先将要检测的图片放入yolox检测的文件夹内并给python程序一个信号，python检测到信号后开始检测，检测结果存放后返回MFC一个信号，MFC检测到信号后读取检测结果并显示</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag:</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">Back</a>
+                <span>· </span>
+                <a href="/">Home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2023/10/12/231012/">米系默认启用4G</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>🙄 
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/fireworks.js"></script>
