@@ -10,7 +10,7 @@
 
 
 
-<title>利用Excel提取身份证号中的信息 | 游园不值</title>
+<title>Excel的两个小用法 | 游园不值</title>
 
 
 
@@ -102,11 +102,73 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">利用Excel提取身份证号中的信息</h1>
+            <h1 class="post-title">Excel的两个小用法</h1>
             
                 <div class="post-meta">
                     
@@ -122,7 +184,7 @@
         </header>
 
         <div class="post-content">
-            <p>表格中空第一行或第一行写名备注信息(可见本例图)<br>数据为杜撰，如有雷同，纯属巧合</p>
+            <h2 id="提取身份证中的信息"><a href="#提取身份证中的信息" class="headerlink" title="提取身份证中的信息"></a>提取身份证中的信息</h2><p>表格中空第一行或第一行写名备注信息(可见本例图)<br>数据为杜撰，如有雷同，纯属巧合</p>
 <p>A2开始该列为姓名<br>B2开始该列为身份证号</p>
 <p><code>B列单元格格式改为文本</code><br><code>D列单元格格式改为日期</code><br><code>填完一个后剩余的填充柄填充</code></p>
 <ul>
@@ -146,7 +208,11 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=LOOKUP(--TEXT(D2,&quot;mdd&quot;),&#123;101,&quot;摩羯座&quot;;120,&quot;水瓶座&quot;;219,&quot;双鱼座&quot;;321,&quot;白羊座&quot;;420,&quot;金牛座&quot;;521,&quot;双子座&quot;;621,&quot;巨蟹座&quot;;723,&quot;狮子座&quot;;823,&quot;处女座&quot;;923,&quot;天秤座&quot;;1023,&quot;天蝎座&quot;;1122,&quot;射手座&quot;;1222,&quot;摩羯座&quot;&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>效果见图(数据为杜撰)😄</p>
-<img src="180621.png" width = "600" />
+<img src="img/180621.png" width = "500" />
+
+
+<h2 id="两列数据对比"><a href="#两列数据对比" class="headerlink" title="两列数据对比"></a>两列数据对比</h2><p>假设A列是1列数据，C列是另一列数据。在B列插入公式=VLOOKUP(A1,C:C,1,0)  公式下拉，显示#N/A就是C列数据没有的</p>
+
         </div>
 
         
@@ -169,7 +235,7 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2019/03/21/190321/">再启程</a>
+                <a class="prev" rel="prev" href="/2019/01/01/2019/">2019enxi</a>
             
             
         </section>
