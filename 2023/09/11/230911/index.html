@@ -10,7 +10,7 @@
 
 
 
-<title>YOLOV5的安装记录 | 游园不值</title>
+<title>YOLOV5实战教程 | 游园不值</title>
 
 
 
@@ -168,7 +168,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">YOLOV5的安装记录</h1>
+            <h1 class="post-title">YOLOV5实战教程</h1>
             
                 <div class="post-meta">
                     
@@ -185,9 +185,9 @@
 
         <div class="post-content">
             <p>致谢：<a target="_blank" rel="noopener" href="https://qlittlo.github.io/">Qlittle</a></p>
-<h3 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h3><p>安装python（这里要勾选添加到Path）</p>
+<h3 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h3><p>安装python（这里要勾选添加到Path，其实不一定非要使用Anoconda，毕竟体量太大，还不如需要什么自己pip什么来的实在）</p>
 <p>下载yolov5代码，解压到你的工作目录</p>
-<p>终端cd到yolov5源码根目录下，准备创建虚拟环境（这里虚拟环境在哪其实无所谓，只要以后的依赖不与base冲突即可）</p>
+<p>终端cd到yolov5源码根目录下，准备创建虚拟环境（这里虚拟环境在哪其实无所谓，只要以后的依赖不与base冲突即可，其实个人更喜欢环境和代码分开，有时候需要“环境复用”）</p>
 <h3 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h3><p>上一步已经cd至代码目录下（如之前所说，可以装在别的地方，这里仍装在代码下演示），执行</p>
 <p><code>python -m venv yolovenv</code></p>
 <p>以创建虚拟环境，其中最后yolovenv为虚拟环境名称，可自定义</p>
@@ -202,7 +202,21 @@
 <p>至此环境安装完成</p>
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>这里使用VsCode进行测试</p>
 <p><strong>更改解释器</strong>，打开IDE，打开源码文件夹，右下角更改解释器，这时上面会出现刚才自己创造的虚拟环境，选择即可。运行左侧detect.py，若有错误，根据报错信息修改；若正常运行，最后会提示结果保存在~/runs/detect/exp文件夹中，打开文件夹出现图片就算成功。</p>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>以上安装基于CPU，而未安装带有GPU设备的版本，GPU版本的安装较之复杂一些，关于显卡驱动、cuda以及其他相关加速程序这里没有提及一点，特此说明。</p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>以上安装基于CPU，而未安装带有GPU设备的版本，GPU版本的安装较之复杂一些（无非也就是Cuda的选择和安装以及cudnn的文件拷贝），关于显卡驱动、cuda以及其他相关加速程序这里没有提及一点，特此说明。</p>
+<p>可以通过改变代码来直接执行，这里选择传参执行而不去改动原代码<br>参数有很多，可以看官方文档或代码中的相应字段，这里只列出目前使用到的参数</p>
+<h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><p><code>~path~</code>为自己指定的目录，下同</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">python train.py</span><br><span class="line">	--weights yolov5s.pt</span><br><span class="line">	此字段使用预设模型，或可使用指定路径的.pt文件开始训练</span><br><span class="line">	</span><br><span class="line">	--cfg ~path~\yolov5s.yaml</span><br><span class="line">	若使用预设模型，则需在代码文件夹models中复制一份对应的.yaml文件，并修改文件中nc值</span><br><span class="line">	</span><br><span class="line">	--data ~path~\data.yaml</span><br><span class="line">	指向数据集的.yaml文件，该文件内需要修改数据集路径和分类</span><br><span class="line">	</span><br><span class="line">	--batch-size 8</span><br><span class="line">	单次训练数据批次大小，越大越快，但是会导致资源不够用，一般选择2~8，值为-1时由系统确定</span><br><span class="line">	</span><br><span class="line">	--epoch 50</span><br><span class="line">	训练轮数，越多训练效果拟合越好，太多会过拟合</span><br><span class="line">	</span><br><span class="line">	--device cpu</span><br><span class="line">	选择cpu或gpu训练，参数0使用gpu</span><br></pre></td></tr></table></figure>
+
+<p>上述即：<code>python train.py --weights yolov5s.pt --cfg ~path~\yolov5s.yaml --data ~path~\data.yaml --batch-size 8 --epoch 50 --device cpu</code></p>
+<h3 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python detect.py</span><br><span class="line">	--source ~path~</span><br><span class="line">	指定检测的数据目录，可以说目录、单张图片或视频</span><br><span class="line">	</span><br><span class="line">	--weights ~path~\runs\train\exp(n)\weights\best.pt</span><br><span class="line">	指定使用的模型，路径如上，~path~为代码根目录，n取决于训练完成后给出的文件夹；</span><br><span class="line">	其中best是最好的模型；或者指定路径以使用从第三方获得的更好的模型</span><br></pre></td></tr></table></figure>
+
+<p>上述即：<code>python detect.py --weights ~path~\runs\train\exp(n)\weights\best.pt --source ~path~</code></p>
+<h3 id="断点训练"><a href="#断点训练" class="headerlink" title="断点训练"></a>断点训练</h3><p>用以解决由于突发情况训练过程突然中断，而重新训练费时的问题</p>
+<ol>
+<li>在train.py文件中找到函数<code>parse_opt</code>，修改-–resume的default参数为Ture</li>
+<li>确认上一次运行的exp(n)文件夹中有<code>last.pt</code>这个最后的权重文件，重新使用指令加载即可</li>
+<li>以下指令中的权重文件不再是<strong>yolov5s.pt</strong>，而应换成<strong>last.pt</strong>，其余保持不变。<br><code>python train.py --weights yolov5s.pt --cfg ~path~\yolov5s.yaml --data ~path~\data.yaml --batch-size 8 --epoch 50 --device cpu</code></li>
+</ol>
 
         </div>
 
@@ -226,7 +240,7 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2023/09/12/230912/">YOLOV5的简单使用</a>
+                <a class="prev" rel="prev" href="/2023/10/12/231012/">米系切换4G</a>
             
             
             <a class="next" rel="next" href="/2023/09/10/230910/">OpenCV简易图像处理</a>
