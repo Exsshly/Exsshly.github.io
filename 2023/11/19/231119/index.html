@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="庭院深深深几许">
+
+
+
+<title>Anomalib安装和使用 | 游园不值</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">游园不值</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">游园不值</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Anomalib安装和使用</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2023-11-19&nbsp;&nbsp;15:21:37</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>和yolov5类似，但是在数据集不平衡的情况下进行缺陷检测。</p>
+<h3 id="下载和环境安装"><a href="#下载和环境安装" class="headerlink" title="下载和环境安装"></a>下载和环境安装</h3><p>去GitHub上下载Anomalib的代码，解压到任意文件夹里，文件名默认是anomalib-main，虚拟环境可以单独在别的地方也可以在该文件夹下</p>
+<p>对于虚拟环境的安装，这里不使用anaconda，尽管很多人推荐</p>
+<p>因为没有conda来创建不同版本的python环境，所以这里的python要求3.10或者以下版本，这一点很重要，过高的版本会有依赖不支持导致安装失败。</p>
+<p>在终端cd到你想要创建虚拟环境的目录下，执行</p>
+<p><code>python -m venv anomalibenv</code></p>
+<p>其中anomalibenv是虚拟环境名称，可自定义</p>
+<p>创建完成后，执行虚拟环境目录下的 <code>/Scripts/activate</code> 以激活虚拟环境</p>
+<p>最后cd到下载的anomalib-main文件夹下，执行</p>
+<p><code>pip install -e .</code></p>
+<p>以安装依赖，最后有个点也不要漏打</p>
+<p>然后还要额外安装两个包，分别执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install openvino</span><br><span class="line">pip install wandb</span><br><span class="line">pip install onnx</span><br></pre></td></tr></table></figure>
+
+<p>另外，默认下载的依赖中torch是不带cuda的，如果需要使用GPU资源，需要自行去pytorch官网下载合适的版本。</p>
+<h3 id="pip问题"><a href="#pip问题" class="headerlink" title="pip问题"></a>pip问题</h3><p>pip下载使用默认源速度很慢的话可以参考下面的方法：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/kantin_y/article/details/121087117">pip更换国内源以及官方源-CSDN博客</a></p>
+<p>这里建议使用方法4:win永久换源</p>
+<h3 id="内置数据集"><a href="#内置数据集" class="headerlink" title="内置数据集"></a>内置数据集</h3><p>执行</p>
+<p><code>python tools/train.py</code></p>
+<p>以运行自带数据集，但这里并不推荐，因此这一步直接不做</p>
+<p>不像yolo的coco128数据集，这里自带的数据集需要下载高达5G+的数据，所以直接进入下一步，自制数据集，其实也就是使用方法</p>
+<h3 id="制作自定义数据集"><a href="#制作自定义数据集" class="headerlink" title="制作自定义数据集"></a>制作自定义数据集</h3><p>下面的图片直接借用实验室师兄的图 <del>绝不是因为懒自己不截</del></p>
+<p>进入<code>anomalib-main\datasets</code>下创建用于放置自制数据集的文件夹，这里以<code>LeatherSet</code>为例。</p>
+<p><img src="231119-1.png"></p>
+<p>然后在<code>LeatherSet</code>文件夹内创建三个子文件，<code>abnormal</code>（用于放置负样本，即异常样本）、<code>normal</code>（用于放置正样本，即正常样本，注意正样本必须至少10张图片，不然会报错）、<code>patchcore</code>（该文件夹用于放置config配置文件，其实放在哪都可以，叫什么名字也可以，只是为了方便）。下面文件夹中正负样本已经处理完毕（忽略名为123的图片）。</p>
+<p><img src="231119-2.png"></p>
+<p><img src="231119-3.png"></p>
+<p><img src="231119-4.png"></p>
+<p><img src="231119-5.png"></p>
+<p>上图中的<code>config.yaml</code>配置文件不是凭空而来的。</p>
+<p>基于Anomalib中已经有的配置文件，只需要在它原有的基础上修改即可。</p>
+<p>修改过程可以不按图操作，我在配置的时候发现和自带的配置文件差别还是有点大的，这里会<strong>附在最下面</strong></p>
+<p>因此下面的过程<strong>作为介绍使用</strong></p>
+<p>去复制<code>anomalib-main\src\anomalib\models\patchcore\config.yaml</code>到该路径下</p>
+<p>原config.yaml中的内容如下：</p>
+<p><img src="231119-6.png"></p>
+<p><strong>dataset</strong>部分修改如下，其中task很关键，它决定了是异常分类还是异常分割，两种模式所需要的配置也不同</p>
+<p><img src="231119-7.png"></p>
+<p><strong>metrics</strong>部分注释掉中间的pixel</p>
+<p><img src="231119-8.png"></p>
+<p><strong>optimization</strong>部分将export_mode设置为onnx，这步就是将训练后将这些框架的模型统一转为ONNX存储</p>
+<p><img src="231119-9.png"></p>
+<p>最后保存</p>
+<p>config.yaml文件全文如下，直接粘贴可用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">111</span><br><span class="line"></span><br><span class="line">222</span><br><span class="line"></span><br><span class="line">333</span><br><span class="line"></span><br><span class="line">444</span><br><span class="line"></span><br><span class="line">555</span><br><span class="line"></span><br><span class="line">666</span><br><span class="line"></span><br><span class="line">777</span><br><span class="line"></span><br><span class="line">888</span><br><span class="line"></span><br><span class="line">999</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行前准备"><a href="#运行前准备" class="headerlink" title="运行前准备"></a>运行前准备</h3><p>为了更好的进行调试，这里安装jupyter notebook，在这里看<del>报错</del>比较方便。</p>
+<p>在虚拟环境执行</p>
+<p><code>pip install jupyte</code></p>
+<p>等待安装完成后再执行</p>
+<p><code>jupyter notebook</code></p>
+<p>（这里你需要提前在虚拟环境中cd到代码目录，jupyter notebook打开的目录就是你当前的工作目录，如果你的虚拟环境就在代码文件中就无所谓了）</p>
+<p>就会在你的Browser中打开如下界面，然后我们新建一个NoteBook</p>
+<p><img src="231119-10.png"></p>
+<p><img src="231119-11.png"></p>
+<p>先把包导进去，输入，Shift + Enter可以执行当前代码块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">%load_ext autoreload</span><br><span class="line">%autoreload 2</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+
+<p><img src="231119-12.png"></p>
+<p>再输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import collections</span><br><span class="line">import shutil</span><br><span class="line">import tempfile</span><br><span class="line">import zipfile</span><br><span class="line">from pathlib import Path</span><br><span class="line">from typing import Tuple</span><br><span class="line"></span><br><span class="line">import cv2</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">from anomalib.config import get_configurable_parameters</span><br><span class="line">from anomalib.data import get_datamodule</span><br><span class="line">from anomalib.data.inference import InferenceDataset</span><br><span class="line">from anomalib.models import get_model</span><br><span class="line">from anomalib.models.patchcore.lightning_model import PatchcoreLightning</span><br><span class="line">from anomalib.post_processing.post_process import compute_mask</span><br><span class="line">from anomalib.utils.callbacks import get_callbacks</span><br><span class="line">from anomalib.utils.loggers import get_experiment_logger</span><br><span class="line">from pytorch_lightning import Trainer, seed_everything</span><br><span class="line">from skimage.morphology import dilation</span><br><span class="line">from skimage.segmentation import find_boundaries</span><br><span class="line">from torch.utils.data import DataLoader</span><br></pre></td></tr></table></figure>
+
+<p><img src="231119-13.png"></p>
+<p>这个图中显示一些包没有安装，但是为了方便起见在这之前已经把包的安装提前到最前面去了，所以这里不用管（注意：如果要在jupyter notebook中使用pip命令需要在最前面加一个感叹号）</p>
+<p>然后配置一下config的路径（你如果自己指定这里的值就需要修改了）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATCHCORE_CONFIG_PATH = &quot;datasets/LeatherSet/patchcore/config.yaml&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="231119-14.png"></p>
+<p>再进行一下基本配置，warning不必理会</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">config = get_configurable_parameters(</span><br><span class="line">    model_name=&quot;patchcore&quot;, config_path=PATCHCORE_CONFIG_PATH</span><br><span class="line">)</span><br><span class="line">if config.project.seed:</span><br><span class="line">    seed_everything(config.project.seed)</span><br><span class="line"></span><br><span class="line">datamodule = get_datamodule(config)</span><br><span class="line">model = get_model(config)</span><br><span class="line">experiment_logger = get_experiment_logger(config)</span><br><span class="line">callbacks = get_callbacks(config)</span><br></pre></td></tr></table></figure>
+
+<p><img src="231119-15.png"></p>
+<p>最后就可以开始训练了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">trainer = Trainer(**config.trainer, logger=experiment_logger, callbacks=callbacks)</span><br><span class="line">trainer.fit(model=model, datamodule=datamodule)</span><br></pre></td></tr></table></figure>
+
+<p><img src="231119-16.png"></p>
+<h3 id="推理"><a href="#推理" class="headerlink" title="推理"></a>推理</h3><p>训练完成后，在对应数据集的run/weight文件夹下应该有下面两个文件夹，而在oonx文件夹下又应该又下面两个文件，分别见图</p>
+<p><img src="231119-17.png"></p>
+<p><img src="231119-18.png"></p>
+<p>回到数据集文件夹，新建一个test文件夹，里面放入需要推理的图片</p>
+<p><img src="231119-19.png"></p>
+<p>然后回到终端，Ctrl+C退出jupyter notebook模式，执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python tools/inference/openvino_inference.py --weights results/patchcore/LeatherSet/run/weights/onnx/model.onnx --metadata results/patchcore/LeatherSet/run/weights/onnx/metadata.json  --input datasets/LeatherSet/test/  --output results/patchcore/LeatherSet/run/images --task classification</span><br></pre></td></tr></table></figure>
+
+<p>以进行推理，运行完后的结果会在<code>anomalib-main\results\patchcore\LeatherSet\run\images\test</code>文件夹中</p>
+<p><img src="231119-20.png"></p>
+<p><img src="231119-21.png"></p>
+<p>正样本数量越大效果越好，这个结果还并不是十分完美，最右边两张图是异常图，训练出来的模型也察觉到一点异常，但还是分类为正常。</p>
+<p>也可以使用命令（和上面比只多了最后一个参数）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python tools/inference/openvino_inference.py --weights results/patchcore/LeatherSet/run/weights/onnx/model.onnx --metadata results/patchcore/LeatherSet/run/weights/onnx/metadata.json  --input datasets/LeatherSet/test/  --output results/patchcore/LeatherSet/run/images --task classification --visualization_mode full</span><br></pre></td></tr></table></figure>
+
+<p>这样会显示三个图，包括原图、预测热度图以及预测结果图。</p>
+<p><img src="231119-22.png"></p>
+<br>
+
+<p>End…</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag:</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">Back</a>
+                <span>· </span>
+                <a href="/">Home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2023/10/12/231012/">米系切换4G</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>🙄 
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/fireworks.js"></script>
