@@ -184,28 +184,28 @@
         </header>
 
         <div class="post-content">
-            <p>现在最烦的就是重装系统了，不知道从什么时候开始的。</p>
-<p>高二高三时却对此乐此不疲，班里的电脑最多同时存在了三个系统并且全盘无冲……</p>
-<p>趁着两次卸载掉三哥牌的Chromium，那每个月的累计更新就是更新不上，0x800f081f，错误代码我都会背了，从三月卸载掉Edge到杭州的累计更新更不上，一气之下屏蔽掉更新回去Win10，再后来装22H1，我以为就万事大吉，结果还是不行。后来在哪看到那个错误代码是缺少什么🐦组件，思来想去我只卸掉的所谓不能卸载的三哥牌Chromium。今天无事就再装一遍。</p>
-<p>本着前人栽树后人乘凉的原则，其实我早就想写一个清单，每次装完系统手忙脚乱，为了以后能够流畅些(是TMD真的烦装系统)，这次干脆就把个人操作的流程记录一下，后面就不用东拼西凑了，直接看这里就好。</p>
-<h3 id="高级格式化前"><a href="#高级格式化前" class="headerlink" title="高级格式化前"></a>高级格式化前</h3><ul>
-<li><p>备份C盘用户目录下各种文件(包括不限于微信聊天记录以及git配置等)</p>
+            <h3 id="高级格式化前"><a href="#高级格式化前" class="headerlink" title="高级格式化前"></a>高级格式化前</h3><ul>
+<li><p>备份用户目录下各种文件(包括不限于微信聊天记录以及git.ssh.pip配置等)</p>
 </li>
-<li><p>备份控制面板卸载程序页所有程序</p>
+<li><p>备份控制面板程序页程序</p>
 </li>
-<li><p>备份桌面及磁贴(W11已经取消这里延续叫法)布局</p>
+<li><p>备份桌面及磁贴布局</p>
 </li>
-<li><p>有一个目标系统的镜像(必要时有一个Office镜像以及MS运行库)</p>
+<li><p>有一个目标系统的镜像</p>
+</li>
+<li><p>可选Office镜像以及MS运行库</p>
 </li>
 </ul>
 <h3 id="装机"><a href="#装机" class="headerlink" title="装机"></a>装机</h3><ul>
-<li>这里不写，爱怎么装怎么装</li>
+<li>null</li>
 </ul>
 <h3 id="开机后设置"><a href="#开机后设置" class="headerlink" title="开机后设置"></a>开机后设置</h3><ul>
-<li>过oobe(这里不想签字登录邮箱就写<a href="mailto:&#x31;&#64;&#x31;&#46;&#99;&#x6f;&#109;">&#x31;&#64;&#x31;&#46;&#99;&#x6f;&#109;</a>密码随便)</li>
-<li>开机卸载应用，有时候可能需要卸载两次(重启之后又rm回来了！)<br>以下都在W1x系设置里配置</li>
-<li>设置屏幕缩放125%(个人习惯以及显示器问题)</li>
-<li>杀掉麦克风(从来没用过)</li>
+<li>过oobe(这里不想签字登录邮箱就写<a href="mailto:&#49;&#x40;&#49;&#46;&#99;&#x6f;&#109;">&#49;&#x40;&#49;&#46;&#99;&#x6f;&#109;</a>密码随便)</li>
+<li>开机卸载应用，有时候可能需要卸载两次(重启之后又被安装回来)</li>
+</ul>
+<ul>
+<li>设置屏幕缩放</li>
+<li>关掉麦克风(从来没用过)</li>
 <li>设置屏幕和睡眠</li>
 <li>开启剪贴板历史记录</li>
 <li>设置鼠标指针</li>
@@ -213,23 +213,35 @@
 <li>配置开始页以及任务栏</li>
 <li>设置开机PIN</li>
 </ul>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>下面是个人习惯，不想系统保留空间太大且不用的情况下释放掉空间，都需要管理员权限运行</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>清理掉不必要的文件（需要管理员权限运行）</p>
 <ul>
-<li>关闭休眠&ensp;<br>通过<code>powercfg -h off</code>关闭，之后还要通过电源设置里关闭快速启动以及睡眠</li>
-<li>关闭系统还原(似乎默认就是关闭状态，这里保险起见个人还是去控制面板里确认一下)</li>
-<li>关闭保留空间</li>
+<li><p>关闭休眠<br>  在终端使用通过<code>powercfg -h off</code>关闭，之后还要通过电源设置里关闭快速启动以及睡眠</p>
+</li>
+<li><p>关闭系统还原(似乎默认就是关闭状态，保险起见个人还是去控制面板里确认)</p>
+</li>
+<li><p>关闭保留空间（分条执行）</p>
+</li>
 </ul>
-<p><code>dism.exe /Online /Set-ReservedStorageState /State:Disabled</code></p>
-<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;BaseHardReserveSize&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</code></p>
-<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;BaseSoftReserveSize&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</code></p>
-<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;HardReserveAdjustment&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</code></p>
-<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;MinDiskSize&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</code></p>
-<p><code>reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;ShippedWithReserves&quot; /t REG_DWORD /d &quot;0&quot; &gt;nul</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dism.exe /Online /Set-ReservedStorageState /State:Disabled</span><br><span class="line"></span><br><span class="line">reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;BaseHardReserveSize&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</span><br><span class="line"></span><br><span class="line">reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;BaseSoftReserveSize&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</span><br><span class="line"></span><br><span class="line">reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;HardReserveAdjustment&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</span><br><span class="line"></span><br><span class="line">reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;MinDiskSize&quot; /t REG_QWord /d &quot;0&quot; &gt;nul</span><br><span class="line"></span><br><span class="line">reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager&quot; /f /v &quot;ShippedWithReserves&quot; /t REG_DWORD /d &quot;0&quot; &gt;nul</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>装上Office三件套</li>
-<li>使用Dism++调教其他非外显设置</li>
-<li>根据备份单装回软件，必要时恢复环境<br><del>装translucentTB，W11还要额外配置个什么东西才透明啊md，参<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv22300526">https://www.bilibili.com/read/cv22300526</a></del><br><del>开QuickLook，开WallpaperEngine(可选，22H2上只要开了就掉帧什么意思)</del><br><del>还原磁贴，还原经典记事本、画图以及创建Aria</del><br><del>装Hexo:npm install -g hexo-cli</del><br><del>还原C盘用户目录下各种文件(包括不限于微信聊天记录以及git配置等)</del><br><del>WindowsUpdate安装更新</del><br><del>Kclener调教一遍</del><br><del>WiseCare调教两遍</del><br><del>CCClener调教三遍</del><br>如是……最想想起什么再补充什么，或者什么时候装系统觉得不合适再增删……<br>PS：一个月内装了三次系统才想起来写，惭愧……</li>
+<li><p>安装Office</p>
+</li>
+<li><p>Dism++调教其他非外显设置</p>
+</li>
+<li><p>根据备份安装软件，甚至恢复环境变量</p>
+</li>
+<li><p>还原磁贴及桌面布局</p>
+</li>
+<li><p>还原用户目录文件</p>
+</li>
+<li><p>推荐软件<br>  translucentTB，QuickLook</p>
+</li>
+<li><p>下面就是我自己的了，不必复现<br>  npm install -g hexo-cli<br>  Kclener+WiseCare+CCClener</p>
+</li>
 </ul>
+<p>最后想起来什么再补充，就这样</p>
+<p>PS：一个月装了三次系统才想起来写，惭愧……</p>
 
         </div>
 
@@ -253,7 +265,7 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2023/06/27/230627/">Bing的标签</a>
+                <a class="prev" rel="prev" href="/2023/06/27/230627/">新必应标签</a>
             
             
             <a class="next" rel="next" href="/2022/06/25/220626/">毕业寄语</a>

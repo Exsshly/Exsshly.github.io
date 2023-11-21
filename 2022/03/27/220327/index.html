@@ -10,7 +10,7 @@
 
 
 
-<title>强迫症的硬盘分区 | 游园不值</title>
+<title>硬盘分区大小对齐 | 游园不值</title>
 
 
 
@@ -106,7 +106,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">强迫症的硬盘分区</h1>
+            <h1 class="post-title">硬盘分区大小对齐</h1>
             
                 <div class="post-meta">
                     
@@ -122,9 +122,10 @@
         </header>
 
         <div class="post-content">
-            <p>磁盘分区分的确实是80x1024=81920</p>
-<p>结果显示的也确实是79.9G</p>
-<p>然后答案应该确实是：</p>
+            <p>对于一个强迫症来说，这是一个悲伤且困扰我两年半的事情：</p>
+<p>如果分区需要80G，确定后写80x1024=81920MB然后分区的话</p>
+<p>最终在Windows的资源管理器中显示的却是79.9G</p>
+<p>然后怎么计算呢？</p>
 <ul>
 <li><p>硬盘一般有255磁头，63扇区，故每柱面大小为：</p>
 </li>
@@ -134,14 +135,11 @@
 </li>
 <li><p>8225280÷1024÷1024＝7.84423828125 MB；</p>
 </li>
-<li><p>上述计算出来的数，是准确数。</p>
+<li><p>上面计算出来的数，是准确数。</p>
 </li>
-</ul>
-<hr>
-<ul>
-<li><p>下面我们讲讲如何进行整数分区</p>
+<li><p>下面我们讲如何进行整数分区</p>
 </li>
-<li><p>举例说明，若分40GB，有1024MB=1GB，那么40G换算成MB实际数为：</p>
+<li><p>举例说明，欲分40GB，有1024MB=1GB，那么40G换算成MB实际数为：</p>
 </li>
 <li><p>40×1024MB=40960MB；</p>
 </li>
@@ -149,7 +147,7 @@
 </li>
 <li><p>40960÷7.84423828125=5221.66；</p>
 </li>
-<li><p>注意，柱面是不能有小数的，因此，上述数字无条件进位取整，得到5222，也就是说，40GB的容量，需要占用到的柱面数为5222个，而5222个柱面的实际容量换算成MB应当是：</p>
+<li><p>注意，柱面是不能有小数的，因此，<strong>上述数字无条件进位取整</strong>，得到5222，也就是说，40GB的容量，需要占用到的柱面数为5222个，而5222个柱面的实际容量换算成MB应当是：</p>
 </li>
 <li><p>5222×7.84423828125=40962.6123046875MB；</p>
 </li>
@@ -158,11 +156,11 @@
 </ul>
 <hr>
 <p>最后这里提供了“利用EXCEL自带的函数表格对整数G进行计算”</p>
-<p><strong>在A1单元格中输入我们需要分出的整数G分区的数值，在B1单元格中输入下列公式：</strong></p>
-<p>=ROUNDUP(ROUNDUP(A1*1024/7.84423828125,0)*7.84423828125,0)</p>
-<hr>
-<p>最后附上一张<del>常用表</del>，或者点<a target="_blank" rel="noopener" href="https://tool.lu/partition/index.html">这里</a>去自定义计算。</p>
-<p>G    M<br>1&ensp;&ensp;&ensp;1028<br>2&ensp;&ensp;&ensp;2056<br>3&ensp;&ensp;&ensp;3075<br>4&ensp;&ensp;&ensp;4103<br>5&ensp;&ensp;&ensp;5123<br>6&ensp;&ensp;&ensp;6150<br>7&ensp;&ensp;&ensp;7170<br>8&ensp;&ensp;&ensp;8198<br>9&ensp;&ensp;&ensp;9217<br>10&ensp;&ensp;10245<br>20&ensp;&ensp;20482<br>30&ensp;&ensp;30726<br>40&ensp;&ensp;40963<br>50&ensp;&ensp;51208<br>60&ensp;&ensp;61444<br>70&ensp;&ensp;71681<br>80&ensp;&ensp;81926<br>90&ensp;&ensp;92162<br>100&ensp;102407<br>110&ensp;112644<br>120&ensp;122888<br>150&ensp;153606<br>160&ensp;163843<br>180&ensp;184324<br>200&ensp;204806<br>256&ensp;262147<br>500&ensp;512002<br>512&ensp;524294<br>1000    1024003<br>1024    1048579</p>
+<p><strong>在A1单元格中输入我们需要分出的整数GB分区的数值，然后在B1单元格中输入下列公式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=ROUNDUP(ROUNDUP(A1\*1024/7.84423828125,0)*7.84423828125,0)</span><br></pre></td></tr></table></figure>
+
+<p>最后直接给出一些对应数据，或者点<a target="_blank" rel="noopener" href="https://tool.lu/partition/index.html">这里</a>去自定义计算。</p>
+<p>GB&ensp;&ensp;&ensp;MB<br>1&ensp;&ensp;&ensp;&ensp;1028<br>2&ensp;&ensp;&ensp;&ensp;2056<br>3&ensp;&ensp;&ensp;&ensp;3075<br>4&ensp;&ensp;&ensp;&ensp;4103<br>5&ensp;&ensp;&ensp;&ensp;5123<br>6&ensp;&ensp;&ensp;&ensp;6150<br>7&ensp;&ensp;&ensp;&ensp;7170<br>8&ensp;&ensp;&ensp;&ensp;8198<br>9&ensp;&ensp;&ensp;&ensp;9217<br>10&ensp;&ensp;&ensp;10245<br>20&ensp;&ensp;&ensp;20482<br>30&ensp;&ensp;&ensp;30726<br>40&ensp;&ensp;&ensp;40963<br>50&ensp;&ensp;&ensp;51208<br>60&ensp;&ensp;&ensp;61444<br>70&ensp;&ensp;&ensp;71681<br>80&ensp;&ensp;&ensp;81926<br>90&ensp;&ensp;&ensp;92162<br>100&ensp;&ensp;102407<br>110&ensp;&ensp;112644<br>120&ensp;&ensp;122888<br>150&ensp;&ensp;153606<br>160&ensp;&ensp;163843<br>180&ensp;&ensp;184324<br>200&ensp;&ensp;204806<br>256&ensp;&ensp;262147<br>500&ensp;&ensp;512002<br>512&ensp;&ensp;524294<br>1000&ensp;1024003<br>1024&ensp;1048579</p>
 
         </div>
 

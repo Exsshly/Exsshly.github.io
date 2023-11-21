@@ -102,68 +102,6 @@
             <div class="container">
     
     
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    document.ready(
-        function () {
-            tocbot.init({
-                tocSelector: '.tocbot-list',
-                contentSelector: '.post-content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 1,
-                orderedList: false,
-                scrollSmooth: true,
-            })
-        }
-    )
-
-    function expand_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 6,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "collapse_toc()");
-        b.innerHTML = "Collapse all"
-    }
-
-    function collapse_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 1,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "expand_toc()");
-        b.innerHTML = "Expand all"
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-</script>
-    
 
     
     <article class="post-wrap">
@@ -184,16 +122,24 @@
         </header>
 
         <div class="post-content">
-            <h3 id="楔子"><a href="#楔子" class="headerlink" title="楔子"></a>楔子</h3><p>本文讲述通过使用代理的PC开启热点将魔法传递到其他设备。<br>（本文灵感来源于iPhone5设备IOS版本过低无法安装使用各种魔法而想的投机取巧方法，本来还想写一个iPhone5从10降级到8再安装8+6双系统过程，鉴于网上教程已经很完善了这里就不再开篇）</p>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>由于手机或者其他设备通过电脑的热点连接是直接转发到电脑网卡的，无法经过代理，所以需<br>要在手机或其他设备上进行代理设置，让它们通过代理端口。</p>
-<p>这里就以Clash为例，V2ray及SSR实测依然可行，方法大同小异。</p>
+            <p>讲述通过开启代理的PC通过热点将魔法传递到其他设备。</p>
+<p>由于手机或者其他设备通过电脑的热点连接是直接转发到电脑网卡的，无法经过代理，所以需要在手机或其他设备上进行代理设置，让它们通过代理端口。</p>
+<p>Clash系、V2ray以及SSR实测可行，方法大同小异。</p>
 <ol>
-<li>确定电脑可以通过Clash进行正常连接，即无限制的访问互联网</li>
-<li>开启Clash的<strong>Allow Lan</strong> ，这使得Clash允许来自局域网连接(在V2ray及SSR中，勾选允许来自局域网的连接)</li>
-<li>查看本机ipv4地址(ipconfig)，这里假设为<code>192.168.0.8</code></li>
-<li>查看Clash的端口号，新版本Clash的socks端口及http端口合并在一起了<code>首页即可看到</code>，这里使用的是http端口；在V2ray中http端口号为<code>socks端口号 + 1</code>；在SSR中，是看<code>本地端口</code>；这里假设为<code>7890</code></li>
-<li>手机或其它设备先连接上PC共享的热点，进入对应WiFi的详细设置界面</li>
-<li>将代理选项从无改成手动，选项主机名及端口分别设置为上面查看到的信息，即地址填入<code>192.168.0.8</code>，选项代理服务器端口改为<code>7890</code>，确认等待重新连接即可</li>
+<li><p>确定PC可以通过代理软件进行正常连接，即无限制访问互联网</p>
+</li>
+<li><p>开启代理的软件中的“Allow Lan”、“局域网连接”或“允许局域网”等类似的字眼(如在V2ray及SSR中，勾选允许来自局域网的连接，找不到就在设置哪里的一定有)，这使得代理软件允许来自局域网连接代理流量</p>
+</li>
+<li><p>查看本机ipv4地址(ipconfig)，这里假设为<code>192.168.1.256</code>(我知道没有256，但我就是想用)</p>
+</li>
+<li><p>查看代理软件的端口号，如Clash的socks端口及http端口合并在一起，其<code>首页</code>即可看到(默认7890)，这里使用的是http端口；在V2ray中http端口号为<code>socks端口号 + 1</code>(找到socks端口+1即可)；在SSR中，取决于<code>本地端口</code>是多少</p>
+</li>
+<li><p>这里假设端口是<code>7890</code></p>
+</li>
+<li><p>需要魔法的设备先连接上PC共享的热点，进入对应WiFi的详细设置界面</p>
+</li>
+<li><p>将代理选项从无改成手动，选项主机名及端口分别设置为上面查看到的信息，即地址填入<code>192.168.1.256</code>，选项代理服务器端口改为<code>7890</code>，确认等待重新连接即可</p>
+</li>
 </ol>
 
         </div>
@@ -221,7 +167,7 @@
                 <a class="prev" rel="prev" href="/2023/07/11/230711/">暗淡蓝点</a>
             
             
-            <a class="next" rel="next" href="/2023/06/27/230627/">Bing的标签</a>
+            <a class="next" rel="next" href="/2023/06/27/230627/">新必应标签</a>
             
         </section>
 
