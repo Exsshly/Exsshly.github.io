@@ -190,6 +190,8 @@
 <p><code>https://pypi.python.org/simple</code></p>
 <p>清华源(完全度和速度都很好，是一个不错的选择)：</p>
 <p><code>https://pypi.tuna.tsinghua.edu.cn/simple/</code></p>
+<p>北外源(有人给我推荐，但是没用过，就也写在这里)：</p>
+<p><code>https://mirrors.bfsu.edu.cn/pypi/web/simple/</code></p>
 <p>阿里云(完全度和速度较好，但不如清华源)：</p>
 <p><code>http://mirrors.aliyun.com/pypi/simple/</code></p>
 <p>豆瓣源(速度较快，但是完全度有限)：</p>
@@ -203,7 +205,7 @@
 <p><code>https://mirrors.huaweicloud.com/repository/pypi/simple/</code></p>
 <p>腾讯云(速度一般，完全度也一般)：</p>
 <p><code>https://mirrors.cloud.tencent.com/pypi/simple/</code></p>
-<p>查看当前源的指令：</p>
+<p>查看当前源则执行：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip config list</span><br></pre></td></tr></table></figure>
 
 <h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><h3 id="方案〇"><a href="#方案〇" class="headerlink" title="方案〇"></a>方案〇</h3><p>此方案为临时解决方案，下面方案一、二是永久方案。</p>
@@ -244,7 +246,7 @@
 <p>END.</p>
 <h3 id="方案二-1"><a href="#方案二-1" class="headerlink" title="方案二"></a>方案二</h3><p>同Windows方案二。</p>
 <p>END.</p>
-<h2 id="添加多个源"><a href="#添加多个源" class="headerlink" title="添加多个源"></a>添加多个源</h2><p>添加多个源就不是一条指令能解决的了，因此看到这里的默认你已经很了解配置文件的问题。</p>
+<h2 id="添加多个源"><a href="#添加多个源" class="headerlink" title="添加多个源"></a>添加多个源</h2><p>添加多个源不能只靠一条命令了，因此看到这里的默认你已经很了解配置文件的问题。</p>
 <p>如果不是，还是建议使用上面配置永久源+使用-i字段临时使用官方源的方案。</p>
 <p>添加多个源在使用pip安装时可以依次轮训各个源，下面是添加多个源的记录。</p>
 <p>Linux需要修改pip.conf文件，Windows中你需要定位到是用户目录下（C:\Users\usr\pip）还是系统目录下（C:\Users\Fx\AppData\Roaming\pip）的配置文件，然后像下面修改ini文件，下面提供两种写法，任选一种</p>
@@ -253,6 +255,19 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url=https://pypi.tuna.tsinghua.edu.cn/simple/</span><br><span class="line">extra-index-url=http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">extra-index-url=http://pypi.douban.com/simple</span><br><span class="line">extra-index-url=http://pypi.mirrors.ustc.edu.cn/simple/</span><br><span class="line"></span><br><span class="line">[install]</span><br><span class="line">trusted-host=pypi.tuna.tsinghua.edu.cn</span><br><span class="line">trusted-host=mirrors.aliyun.com</span><br><span class="line">trusted-host=pypi.douban.com</span><br><span class="line">trusted-host=pypi.mirrors.ustc.edu.cn</span><br></pre></td></tr></table></figure>
 
 <p>END.</p>
+<h2 id="番外"><a href="#番外" class="headerlink" title="番外"></a>番外</h2><p>在使用pip安装Python库时，如果之前已经下载过该库，pip会默认使用缓存来安装库，而不是重新从网络上下载。</p>
+<p>但是时间久了不清理缓存就会很大，而且旧版本的库以后再也不会派上用场，何况现在网速如此之快，为什么不重新下载呢？</p>
+<p>所以这里提供清除pip缓存的方法。</p>
+<p>对于Linux，缓存在 <code>~/.cache/pip</code> 目录下；</p>
+<p>对于Windows，缓存则在 <code>C:\Users\usr\AppData\Local\pip\Cache</code> 目录下</p>
+<p>可以直接手动删除这两个文件夹，当然也可以通过终端执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip cache purge</span><br></pre></td></tr></table></figure>
+
+<p>来删除，<strong>这个命令会清除所有缓存，包括已下载但未安装的软件包和已安装但未被使用的缓存</strong>。</p>
+<p>或者可以通过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip cache remove package-name</span><br></pre></td></tr></table></figure>
+
+<p>来删除指定软件包的缓存，其中 <code>package-name</code> 是想要清除缓存的软件包的名称。</p>
 
         </div>
 
