@@ -156,7 +156,7 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2023/06/20/230620/">装机配置</a>
+                <a class="prev" rel="prev" href="/2023/06/27/230627/">必应标签备查</a>
             
             
             <a class="next" rel="next" href="/2022/05/28/220528/">大多数</a>
@@ -175,6 +175,25 @@
 </footer>
 
     </div>
+
+    <!-- 一言API -->
+    <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+    <!--End-->
+    <script>
+        fetch('https://v1.hitokoto.cn')
+            .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto = document.getElementById('hitokoto');
+                hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+            })
+            .catch(function (err) {
+                console.error(err);
+            })
+    </script>
+
 </body>
 </html>
 

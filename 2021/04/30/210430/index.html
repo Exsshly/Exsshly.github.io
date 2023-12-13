@@ -372,8 +372,6 @@
 </li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yaourt -S pkgename – 从AUR安装软件包</span><br><span class="line">yaourt -Ss password – 使用关键字搜索软件包</span><br><span class="line">yaourt -Syu –aur – 从AUR升级本地软件数据库并安装更新</span><br><span class="line">yaourt -Si pkgname – 列出软件包信息</span><br><span class="line">yaourt -Sc – 从缓存中清楚旧的软件包</span><br><span class="line">yaourt -Su – 安装AUR中的更新软件包</span><br><span class="line">yaourt -Sy – 获取最新的AUR软件包数据库</span><br><span class="line">yaourt -Cd – 清楚AUR软件包数据库</span><br><span class="line">yaourt -R pkgname – 删除软件包</span><br></pre></td></tr></table></figure>
-
-
         </div>
 
         
@@ -415,6 +413,25 @@
 </footer>
 
     </div>
+
+    <!-- 一言API -->
+    <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+    <!--End-->
+    <script>
+        fetch('https://v1.hitokoto.cn')
+            .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto = document.getElementById('hitokoto');
+                hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+            })
+            .catch(function (err) {
+                console.error(err);
+            })
+    </script>
+
 </body>
 </html>
 

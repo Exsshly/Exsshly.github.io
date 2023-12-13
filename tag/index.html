@@ -107,9 +107,9 @@
 
             <div class="tag-cloud-tags">
                 
-                    <a href="/tags/%E7%83%82%E8%AF%97/">烂诗<small>(5)</small></a>
+                    <a href="/tags/%E6%8A%80%E5%B7%A7/">技巧<small>(9)</small></a>
                 
-                    <a href="/tags/%E6%8A%80%E5%B7%A7/">技巧<small>(11)</small></a>
+                    <a href="/tags/%E7%83%82%E8%AF%97/">烂诗<small>(5)</small></a>
                 
                     <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记<small>(9)</small></a>
                 
@@ -134,6 +134,25 @@
 </footer>
 
     </div>
+
+    <!-- 一言API -->
+    <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+    <!--End-->
+    <script>
+        fetch('https://v1.hitokoto.cn')
+            .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto = document.getElementById('hitokoto');
+                hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+            })
+            .catch(function (err) {
+                console.error(err);
+            })
+    </script>
+
 </body>
 </html>
 

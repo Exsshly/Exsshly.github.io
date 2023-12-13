@@ -116,7 +116,7 @@
         
 
         <article class="archive-item">
-            <a class="archive-item-link" href="/2023/11/19/231119/">Anomalib安装和使用</a>
+            <a class="archive-item-link" href="/2023/11/19/231119/">anomalib备查</a>
             <span class="archive-item-date">2023-11-19</span>
         </article>
     
@@ -125,7 +125,7 @@
         
 
         <article class="archive-item">
-            <a class="archive-item-link" href="/2023/09/18/230918/">Python备查</a>
+            <a class="archive-item-link" href="/2023/09/18/230918/">Python语法备查</a>
             <span class="archive-item-date">2023-09-18</span>
         </article>
     
@@ -134,7 +134,7 @@
         
 
         <article class="archive-item">
-            <a class="archive-item-link" href="/2023/09/11/230911/">YOLOV5安装和使用</a>
+            <a class="archive-item-link" href="/2023/09/11/230911/">yolov5备查</a>
             <span class="archive-item-date">2023-09-11</span>
         </article>
     
@@ -143,7 +143,7 @@
         
 
         <article class="archive-item">
-            <a class="archive-item-link" href="/2023/09/10/230910/">OpenCV备查</a>
+            <a class="archive-item-link" href="/2023/09/10/230910/">OpenCV基本函数备查</a>
             <span class="archive-item-date">2023-09-10</span>
         </article>
     
@@ -208,6 +208,25 @@
 </footer>
 
     </div>
+
+    <!-- 一言API -->
+    <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+    <!--End-->
+    <script>
+        fetch('https://v1.hitokoto.cn')
+            .then(function (res){
+                return res.json();
+            })
+            .then(function (data) {
+                var hitokoto = document.getElementById('hitokoto');
+                hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+            })
+            .catch(function (err) {
+                console.error(err);
+            })
+    </script>
+
 </body>
 </html>
 
