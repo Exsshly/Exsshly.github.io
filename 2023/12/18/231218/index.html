@@ -10,7 +10,7 @@
 
 
 
-<title>U盘换个图标 | 游园不值</title>
+<title>自定义盘符图标 | 游园不值</title>
 
 
 
@@ -168,7 +168,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">U盘换个图标</h1>
+            <h1 class="post-title">自定义盘符图标</h1>
             
                 <div class="post-meta">
                     
@@ -184,45 +184,46 @@
         </header>
 
         <div class="post-content">
-            <p>钱塘下了一天雨了，比较烦</p>
-<p>学不了一点习，就水点东西：</p>
-<p>给自己的U盘自定义一个图标</p>
+            <p>钱塘雨，些许浮躁</p>
+<p>习学不了一点，水点东西：</p>
+<p>《给移动硬盘自定义一个图标》</p>
+<p>只在U盘上做了，硬盘按道理也适用</p>
 <h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>如果不需要准备图标，直接跳过，转到正文</p>
-<p>图标需要ico格式，分辨率建议512x512，毕竟清楚一些</p>
-<p>如果没有格式工厂，那么<a target="_blank" rel="noopener" href="https://www.ico51.cn/">这个网站</a>就足够转换了</p>
-<p>如果你还需要200w的logo效果，那么<a target="_blank" rel="noopener" href="https://www.pcccp.cn/yj/">这里</a>也能直接修改</p>
-<p>那么现在手上就有一个ico格式的图标了</p>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>在你的U盘里新建一个txt文件（只要是流式文本文件就可以，不带拓展名也行）</p>
-<p>然后用记事本或者别的文字编辑器，在里面加入以下内容</p>
+<p>图标需要ico格式，分辨率建议512x512，毕竟高清</p>
+<p>如果没有格式工厂，那么<a target="_blank" rel="noopener" href="https://www.ico51.cn/">这里</a>就够用</p>
+<p>如果你还需要200w的圆角效果，那么<a target="_blank" rel="noopener" href="https://www.pcccp.cn/yj/">这里</a>也够用</p>
+<p>所以现在手上就有一个ico格式的图标了</p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>在要换logo的设备里里新建一个txt文件（只要是流式文本文件就可以，不带拓展名也可以）</p>
+<p>然后用记事本或者别的文本编辑器打开，在里面加入以下内容</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Autorun]</span><br><span class="line">icon=favicon.ico</span><br></pre></td></tr></table></figure>
 
-<p>其中icon后面的文件名是上面手上的ico文件的名字，不管叫什么，两个地方统一就可以</p>
+<p>其中icon后面的文件名是上面手上的ico文件的名字，不管叫什么，两个地方统一即可</p>
 <p>然后保存</p>
 <p>出来之后把这个文件改名为 <code>autorun.inf</code></p>
 <p>记得拓展名是 <strong>inf</strong></p>
-<p>然后把ico图标也拖到U盘根目录，和这个inf文件一起</p>
+<p>然后把ico图标和这个inf文件放在一起</p>
 <p>然后弹出U盘重新插入，那么就得到了换过图标的U盘了，效果大概像下面那样，<strong>据说配合名字食用效果更佳</strong></p>
 <p><img src="231218.png"></p>
-<h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><p>还记得那两个ico和inf文件吗，直接在根目录下略显格格不入</p>
-<p>或者失手删了就没用了</p>
-<p>那么就可以选中他俩，然后右键-属性-隐藏-确定</p>
-<h3 id="进阶Plus"><a href="#进阶Plus" class="headerlink" title="进阶Plus"></a>进阶Plus</h3><p>还有一种情况就是电脑默认显示隐藏文件，那么上面的方法就显得鸡肋了</p>
+<h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><p>还记得那两个ico和inf文件吗，直接在根目录下显得格格不入</p>
+<p>或者手滑删掉就gg了</p>
+<p>这里就可以选中这两个文件，然后右键-属性-隐藏-确定</p>
+<h3 id="进阶Plus"><a href="#进阶Plus" class="headerlink" title="进阶Plus"></a>进阶Plus</h3><p>还有一种情况就是电脑默认显示隐藏文件，那么上面的方法也有可能gg</p>
 <p>所以这里要把文件改为系统级的隐藏（这个也可以通过文件夹选项设置出显示出来，默认系统保护的隐藏文件不会显示）</p>
 <p>所以就需要再进一步，我们需要一条命令 <code>attrib</code></p>
 <p>这里默认你有一定的关于路径的常识，你cd到或者不cd到U盘路径下都行</p>
 <p>反正都是一种用法，你要做的就是进入cmd或终端</p>
-<p>如果工作目录就是U盘根目录，那么只需要分别执行</p>
+<p>如果工作目录就是当前设备根目录，那么只需要分别执行</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">attrib .\favicon.ico +s +h</span><br><span class="line">attrib .\autorun.inf +s +h</span><br></pre></td></tr></table></figure>
 
 <p>就结束了，<strong>如果分不清工作目录在哪，那么直接就是下面这样</strong></p>
-<p>工作目录不在U盘的，且假设你的U盘盘符是 <code>F</code>，这个盘符很重要，就是C、D、E盘的那个盘符，这样的话就执行</p>
+<p>工作目录不在指定设备的，且假设你的设备盘符是 <code>F</code>，是哪个就改成哪个，这个盘符很重要，就是C、D、E盘的那个盘符，这样的话就执行</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">attrib F:\favicon.ico +s +h</span><br><span class="line">attrib F:\autorun.inf +s +h</span><br></pre></td></tr></table></figure>
 
 <p>这样也就结束了</p>
 <p>end,</p>
 <h3 id="PS："><a href="#PS：" class="headerlink" title="PS："></a>PS：</h3><p>你以为隐藏文件只用在这里？</p>
 <p>当然可以隐藏别的文件啦，方法也是一样，只要改一下中间的文件路径就好了</p>
-<p>所以这里还有取消隐藏的方法，那就是把上面的 <code>+s +h</code>中的**+<strong>，改成</strong>-**就好了</p>
+<p>所以这里还有取消隐藏的方法，那就是把上面的 <code>+s +h</code>中的 <strong>+</strong> ，改成 <strong>-</strong> 就好了</p>
 <p>也就是</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">attrib #### -s -h</span><br></pre></td></tr></table></figure>
 
@@ -252,7 +253,7 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2023/12/28/231228/">2023年终总结</a>
+                <a class="prev" rel="prev" href="/2023/12/28/231228/">23年终总结</a>
             
             
             <a class="next" rel="next" href="/2023/11/20/231120/">pip换源</a>
