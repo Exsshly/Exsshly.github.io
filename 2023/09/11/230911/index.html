@@ -200,7 +200,7 @@
 <p>然后退回至代码根目录，执行</p>
 <p><code>pip install -r .\requirements.txt</code></p>
 <p>安装其他依赖(若是其他包管理方式则不一定是pip)</p>
-<p>至此环境安装完成</p>
+<p>至此环境安装完成（貌似pytorch自带一个cuda和cudnn，所以这里不需要安装，因此只需要显卡驱动够新就好）</p>
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>这里使用VsCode进行测试</p>
 <p><strong>更改解释器</strong>，打开IDE，打开源码文件夹，右下角更改解释器，这时上面会出现刚才自己创造的虚拟环境，选择即可。运行左侧detect.py，若有错误，根据报错信息修改；若正常运行，最后会提示结果保存在~/runs/detect/exp文件夹中，打开文件夹出现图片就算成功。</p>
 <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>以上安装基于CPU，而未安装带有GPU设备的版本，GPU版本的安装较之复杂一些（无非也就是Cuda的选择和安装以及cudnn的文件拷贝），关于显卡驱动、cuda以及其他相关加速程序这里没有提及一点，特此说明。</p>
